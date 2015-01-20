@@ -388,6 +388,7 @@ GameObject:
   - 148: {fileID: 958027972}
   - 114: {fileID: 958027969}
   - 114: {fileID: 958027971}
+  - 114: {fileID: 958027973}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -406,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6e6b84181f5d14fa7956b72e1de8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createWifiHotspot: 0
+  createWifiHotspot: 1
 --- !u!4 &958027970
 Transform:
   m_ObjectHideFlags: 0
@@ -442,6 +443,19 @@ NetworkView:
   m_ViewID:
     m_ID: 1
     m_Type: 1
+--- !u!114 &958027973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958027968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66829e8f2d5d7f4aaa088965297e0b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootSceneName: ShootScene
+  deplacementSceneName: MoveScene
 --- !u!1 &1256613053
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
