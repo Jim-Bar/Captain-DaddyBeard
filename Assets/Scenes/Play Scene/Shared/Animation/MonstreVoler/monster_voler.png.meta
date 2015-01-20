@@ -1,0 +1,124 @@
+fileFormatVersion: 2
+guid: 32572c926c144ef46bd13fa9d4162bb5
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: fly0
+    21300002: fly1
+    21300004: fly2
+    21300006: fly4
+    21300008: fly5
+    21300010: fly6
+    21300012: fly3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: fly0
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 105
+        width: 214
+        height: 433
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fly1
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 32
+        width: 264
+        height: 310
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fly2
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 70
+        width: 250
+        height: 258
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fly4
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 155
+        width: 222
+        height: 216
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fly5
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 112
+        width: 276
+        height: 322
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fly6
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 147
+        width: 154
+        height: 420
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fly3
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 373
+        width: 319
+        height: 296
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
