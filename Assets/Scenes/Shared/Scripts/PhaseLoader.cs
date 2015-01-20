@@ -11,6 +11,7 @@ using System.Collections;
  * 2 - A phase is identified by a type (shoot or deplacement), a level number and a phase number.
  *     For instance if I want to load the third phase (which is a deplacement phase) of the second level, I call :
  *     PhaseLoader.Load (PhaseLoader.Type.DEPLACEMENT, 2, 3);
+ * Note : You can also split the loading in two parts : PhaseLoader.Prepare (...) then PhaseLoader.Load ().
  * 
  * How to create a phase and load it later :
  * 1 - In a scene (can be an empty one, like EditorScene...) create an object 'World XX YY' where XX is the level number and YY the phase number.
@@ -28,6 +29,7 @@ public class PhaseLoader : MonoBehaviour {
 
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
 	private static string phaseName = null; // Name of the next phase to load.
+	private static Type phaseType = Type.SHOOT; // Type of the next phase to load.
 	private static bool loadPhaseNextSceneLoading = false; // Will the phase loader load a phase on the next scene loading ?
 
 	// Type of the phase to be loaded.
@@ -47,13 +49,24 @@ public class PhaseLoader : MonoBehaviour {
 
 	/*
 	 * Load a phase. Check if the phase exists (output an error message if not found).
-	 * 'phaseType' is the type of the phase loaded : PhaseLoader.Type.SHOOT or PhaseLoader.Type.DEPLACEMENT.
+	 * 'type' is the type of the phase loaded : PhaseLoader.Type.SHOOT or PhaseLoader.Type.DEPLACEMENT.
 	 * 'level' is the number of the level.
 	 * 'phase' is the number of the phase inside the level.
 	 */
-	public static void Load(Type phaseType, int level, int phase) {
-		loadPhaseNextSceneLoading = true;
+	public static void Load (Type type, int level, int phase) {
+		Prepare (type, level, phase);
+		Load ();
+	}
+
+	// Register phase data before loading it with Load ().
+	public static void Prepare (Type type, int level, int phase) {
 		phaseName = "World " + level.ToString("D2") + " " + phase.ToString("D2");
+		phaseType = type;
+	}
+
+	// Load a phase based on the data set by Prepare ().
+	public static void Load () {
+		loadPhaseNextSceneLoading = true;
 
 		#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 		string system = "Windows - ";
