@@ -12,6 +12,6 @@ public class PressLaunchGame : MonoBehaviour {
 
 	public void LoadGame () {
 		Debug.Log (GetType ().Name + " : Launching game !");
-		Application.LoadLevel ("Android - PlayScene");
+		Application.LoadLevel ("Android - LevelScene");
 	}
 }
