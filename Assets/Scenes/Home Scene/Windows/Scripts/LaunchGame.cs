@@ -19,7 +19,7 @@ public class LaunchGame : MonoBehaviour {
 		if (targetted)
 		{
 			RPCWrapper.RPC ("LoadGame", RPCMode.Others); // Say the clients to launch the game.
-			Application.LoadLevel ("Windows - PlayScene");
+			Application.LoadLevel ("Windows - LevelScene");
 		}
 	}
 
