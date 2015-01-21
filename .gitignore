@@ -3,7 +3,6 @@
 # =============== #
 Temp/
 Library/
-Builds/
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -30,3 +29,9 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# ====== #
+# Others #
+# ====== #
+Builds/
+ProjectSettings/EditorBuildSettings.asset
