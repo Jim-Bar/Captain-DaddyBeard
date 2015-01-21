@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66829e8f2d5d7f4aaa088965297e0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSceneName: ShootScene
+  shootSceneName: Windows - ShootScene
   deplacementSceneName: Windows - MoveScene
 --- !u!1 &1256613053
 GameObject:

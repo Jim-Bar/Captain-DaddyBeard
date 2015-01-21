@@ -85,6 +85,7 @@ GameObject:
   - 148: {fileID: 326098076}
   - 114: {fileID: 326098073}
   - 114: {fileID: 326098077}
+  - 114: {fileID: 326098078}
   - 114: {fileID: 326098075}
   m_Layer: 0
   m_Name: GameManager
@@ -151,6 +152,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b3cd1ee4643814b9d903f402a0aa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &326098078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 326098072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66829e8f2d5d7f4aaa088965297e0b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootSceneName: Android - ShootScene
+  deplacementSceneName: Android - MoveScene
 --- !u!1 &613716917
 GameObject:
   m_ObjectHideFlags: 0

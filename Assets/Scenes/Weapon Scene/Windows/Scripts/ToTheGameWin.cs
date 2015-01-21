@@ -9,6 +9,6 @@ public class ToTheGameWin : MonoBehaviour {
 	}
 
 	public void OnButtonPressedWin(){
-		Application.LoadLevel ("Windows - PlayScene");
+		PhaseLoader.Load ();
 	}
 }
