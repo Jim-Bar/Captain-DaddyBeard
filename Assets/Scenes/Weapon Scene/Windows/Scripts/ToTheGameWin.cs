@@ -5,11 +5,10 @@ public class ToTheGameWin : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		RPCWrapper.RegisterMethod (OnButtonPressedWin);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void OnButtonPressedWin(){
+		Application.LoadLevel ("Windows - PlayScene");
 	}
 }
