@@ -13,6 +13,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Weapon Scene/Windows/Windows - WeaponScene.unity
   - enabled: 0
     path: Assets/Scenes/Play Scene/Windows/Windows - PlayScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Move Scene/Windows/Windows - MoveScene.unity
   - enabled: 0
     path: Assets/Scenes/Home Scene/Android/Android - HomeScene.unity
   - enabled: 0
@@ -22,6 +24,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Play Scene/Android/Android - PlayScene.unity
   - enabled: 0
-    path: Assets/Scenes/Editor Scene/EditorScene.unity
-  - enabled: 1
-    path: Assets/Scenes/Move Scene/Windows/Windows - MoveScene.unity
+    path: Assets/Scenes/Move Scene/Android/Android - MoveScene.unity
