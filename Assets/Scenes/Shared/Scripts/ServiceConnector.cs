@@ -170,7 +170,8 @@ public class ServiceConnector : MonoBehaviour {
 		wifiProcess.StartInfo.UseShellExecute = false;
 		wifiProcess.StartInfo.CreateNoWindow = true;
 		wifiProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-		wifiProcess.StartInfo.FileName = "netsh";
+		//wifiProcess.StartInfo.FileName = "netsh";
+		wifiProcess.StartInfo.FileName = "C:\\Windows\\System32\\netsh";
 	}
 	
 	// Return true if the current process has admin privileges.
