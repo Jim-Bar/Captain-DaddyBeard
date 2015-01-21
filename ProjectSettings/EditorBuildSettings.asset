@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Home Scene/Windows/Windows - HomeScene.unity
   - enabled: 1
     path: Assets/Scenes/Play Scene/Windows/Windows - PlayScene.unity
