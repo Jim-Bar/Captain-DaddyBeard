@@ -45,7 +45,7 @@ public class GyroManager : MonoBehaviour {
 		//Vector3 ju = new Vector3(0,10,0);
 		isGrounded = CanJump ();
 		Debug.Log (" bool ground" + isGrounded);
-		if (dir.y * speed < -5F && isGrounded) {
+		if (dir.y * speed < -4F && isGrounded) {
 			Debug.Log (" Before jump" + dir.y * speed);
 			isGrounded=false;
 			//sphere.rigidbody2D.velocity = new Vector3(0, 0, 0);
