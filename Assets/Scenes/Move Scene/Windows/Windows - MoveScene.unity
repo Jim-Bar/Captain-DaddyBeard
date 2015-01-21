@@ -86,7 +86,6 @@ GameObject:
   - 92: {fileID: 631570413}
   - 124: {fileID: 631570412}
   - 81: {fileID: 631570411}
-  - 114: {fileID: 631570416}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -159,18 +158,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &631570416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 631570410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0cf9d6f58fc7cf499bd0a6987897051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphere: {fileID: 1870452578}
 --- !u!1 &1424624866
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6e6b84181f5d14fa7956b72e1de8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createWifiHotspot: 1
+  createWifiHotspot: 0
 --- !u!148 &1782703801
 NetworkView:
   m_ObjectHideFlags: 0
@@ -375,6 +362,7 @@ GameObject:
   - 23: {fileID: 1870452581}
   - 50: {fileID: 1870452580}
   - 58: {fileID: 1870452579}
+  - 114: {fileID: 1870452584}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -447,6 +435,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1870452584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870452578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cf9d6f58fc7cf499bd0a6987897051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2134012169
 GameObject:
   m_ObjectHideFlags: 0
