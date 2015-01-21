@@ -8,8 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Home Scene/Windows/Windows - HomeScene.unity
   - enabled: 1
+    path: Assets/Scenes/Level Scene/Windows/Windows - LevelScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Weapon Scene/Windows/Windows - WeaponScene.unity
+  - enabled: 1
     path: Assets/Scenes/Play Scene/Windows/Windows - PlayScene.unity
   - enabled: 0
     path: Assets/Scenes/Home Scene/Android/Android - HomeScene.unity
+  - enabled: 0
+    path: Assets/Scenes/Level Scene/Android/Android - LevelScene.unity
+  - enabled: 0
+    path: Assets/Scenes/Weapon Scene/Android/Android - WeaponScene.unity
   - enabled: 0
     path: Assets/Scenes/Play Scene/Android/Android - PlayScene.unity
