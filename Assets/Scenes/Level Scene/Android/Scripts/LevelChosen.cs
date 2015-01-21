@@ -14,8 +14,7 @@ public class LevelChosen : MonoBehaviour {
 		if(levelChosen != 0){
 			RPCWrapper.RPC("LoadWeaponLevel", RPCMode.Server);
 			Application.LoadLevel ("Android - WeaponScene");
-			// A CHANGER PAR LA FONCTION DE JIM pour accéder au android weapon scene, le niveau choisi étant : 
-			// levelChosen
+			PhaseLoader.Prepare (PhaseLoader.Type.SHOOT, levelChosen, 1);
 		}
 	}
 }

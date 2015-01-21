@@ -57,8 +57,6 @@ public class UpdateLevelWindows : MonoBehaviour {
 
 	public void LoadWeaponLevel(){
 		Application.LoadLevel ("Windows - WeaponScene");
-		// A CHANGER PAR LA FONCTION DE JIM pour accéder au windows weapon scene, le niveau choisi étant : 
-		// levelChoice
-		
+		PhaseLoader.Prepare (PhaseLoader.Type.SHOOT, levelChoice, 1);
 	}
 }

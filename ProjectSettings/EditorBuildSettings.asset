@@ -21,5 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Weapon Scene/Android/Android - WeaponScene.unity
   - enabled: 0
     path: Assets/Scenes/Play Scene/Android/Android - PlayScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Editor Scene/EditorScene.unity

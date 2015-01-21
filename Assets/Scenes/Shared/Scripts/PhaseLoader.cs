@@ -7,7 +7,7 @@ using System.Collections;
  * 
  * HOW TO USE THIS CLASS :
  * 1 - First of all, add this script to a game manager and fill the fields (Shoot Scene Name and Deplacement Scene Name)
- * 	   which are the names of the scenes used for shooting and deplacement (do not put 'Android - ' or 'Windows - ' prefix).
+ * 	   which are the names of the scenes used for shooting and deplacement.
  * 2 - A phase is identified by a type (shoot or deplacement), a level number and a phase number.
  *     For instance if I want to load the third phase (which is a deplacement phase) of the second level, I call :
  *     PhaseLoader.Load (PhaseLoader.Type.DEPLACEMENT, 2, 3);
@@ -21,10 +21,10 @@ using System.Collections;
  */
 public class PhaseLoader : MonoBehaviour {
 
-	// Names of the scenes of shoot and deplacement (without the Android or Windows prefix).
-	[Tooltip("Name of the scene of shoot (without the prefix 'Android - ' or 'Windows - ')")]
+	// Names of the scenes of shoot and deplacement.
+	[Tooltip("Name of the scene of shoot")]
 	[SerializeField] private string shootSceneName;
-	[Tooltip("Name of the scene of deplacement (without the prefix 'Android - ' or 'Windows - ')")]
+	[Tooltip("Name of the scene of deplacement")]
 	[SerializeField] private string deplacementSceneName;
 
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
@@ -68,15 +68,10 @@ public class PhaseLoader : MonoBehaviour {
 	public static void Load () {
 		loadPhaseNextSceneLoading = true;
 
-		#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-		string system = "Windows - ";
-		#else
-		string system = "Android - ";
-		#endif
 		if (phaseType == Type.SHOOT)
-			Application.LoadLevel (system + instance.shootSceneName);
+			Application.LoadLevel (instance.shootSceneName);
 		else
-			Application.LoadLevel (system + instance.deplacementSceneName);
+			Application.LoadLevel (instance.deplacementSceneName);
 	}
 
 	// Load a phase if the phase loader has been told to do so ('loadPhaseNextSceneLoading' set to 'true').
