@@ -8,13 +8,18 @@ using System.Collections;
  */
 public class WorldRotation : MonoBehaviour {
 
+	[Tooltip("The force with which the player jumps")] [Range(1, 1000)]
+	[SerializeField] private float jumpForce = 500;
+	[Tooltip("The step below which a jump attempt is detected")] [Range(0.00001f, 0.001f)]
+	[SerializeField] private float jumpDetection = 0.0001f;
+
 	private GameObject sphere = null;
 	private GameObject ground = null;
 	private int roll = 0;
-	
-	private float speed = 700.0F;
+
 	private bool isGrounded = true;
 	private int lastRoll = 0;
+	private float epsilon = 0.1f;
 	
 	
 	void Start () {
@@ -43,10 +48,10 @@ public class WorldRotation : MonoBehaviour {
 		
 		//Vector3 ju = new Vector3(0,10,0);
 		isGrounded = CanJump ();
-		if (dir.y * speed < -4F && isGrounded) {
-			//Debug.Log (" Before jump" + dir.y * speed);
+		Debug.Log ("IsGrounded : " + isGrounded);
+		if (dir.y < - jumpDetection && isGrounded) {
 			isGrounded=false;
-			sphere.rigidbody2D.AddForce(new Vector2(0,500F), ForceMode2D.Force);
+			sphere.rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
 		}		
 	}
 	
@@ -56,7 +61,7 @@ public class WorldRotation : MonoBehaviour {
 		//}
 		bool jump;
 		
-		RaycastHit2D hit = Physics2D.Raycast(sphere.transform.position, Vector3.down, 1.0f, 1 << LayerMask.NameToLayer("World"));
+		RaycastHit2D hit = Physics2D.Raycast(sphere.transform.position, Vector3.down, sphere.transform.localScale.y / 2 + epsilon, 1 << LayerMask.NameToLayer("World"));
 		
 		if (hit) {
 			jump = true;
