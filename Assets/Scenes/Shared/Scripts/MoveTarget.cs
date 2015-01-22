@@ -8,6 +8,7 @@ public class MoveTarget : MonoBehaviour {
 		// Register UpdateTarget() in the RPC wrapper.
 		RPCWrapper.RegisterMethod (UpdateTarget);
 
+
 		DontDestroyOnLoad (gameObject);
 	}
 
@@ -22,5 +23,9 @@ public class MoveTarget : MonoBehaviour {
 		Vector3 newPosition = Camera.main.ScreenToWorldPoint (newPositionInScreen);
 		newPosition.z = transform.position.z; // Keep initial z position.
 		transform.position = newPosition; // Apply new position.
+
+		RPCWrapper.RPC ("UpdateCamera", RPCMode.Others, newPosition);
 	}
+
+
 }

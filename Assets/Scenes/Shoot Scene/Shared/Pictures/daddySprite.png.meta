@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 7a149707f8609e347b650cb494f7b586
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: daddySprite_0
+    21300002: daddySprite_1
+    21300004: daddySprite_2
+    21300006: daddySprite_3
+    21300008: daddySprite_4
+    21300010: daddySprite_5
+    21300012: daddySprite_6
+    21300014: daddySprite_7
+    21300016: daddySprite_8
+    21300018: daddySprite_9
+    21300020: daddySprite_10
+    21300022: daddySprite_11
+    21300024: daddySprite_12
+    21300026: daddySprite_13
+    21300028: daddySprite_14
+    21300030: daddySprite_15
+    21300032: daddySprite_16
+    21300034: daddySprite_17
+    21300036: daddySprite_18
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: daddySprite_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 670
+        width: 120
+        height: 206
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_1
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 648
+        width: 133
+        height: 222
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_2
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 642
+        width: 137
+        height: 232
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_3
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 609
+        width: 140
+        height: 262
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_4
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 596
+        width: 146
+        height: 280
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_5
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 579
+        width: 129
+        height: 293
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 310
+        width: 146
+        height: 292
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_7
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 319
+        width: 126
+        height: 283
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_8
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 328
+        width: 133
+        height: 269
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_9
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 338
+        width: 124
+        height: 253
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_10
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 348
+        width: 130
+        height: 233
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_11
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 360
+        width: 120
+        height: 215
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_12
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 91
+        width: 129
+        height: 207
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_13
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 99
+        width: 121
+        height: 203
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_14
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 106
+        width: 114
+        height: 189
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_15
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 102
+        width: 115
+        height: 193
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_16
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 94
+        width: 117
+        height: 207
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_17
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 99
+        width: 102
+        height: 199
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: daddySprite_18
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 87
+        width: 121
+        height: 217
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
