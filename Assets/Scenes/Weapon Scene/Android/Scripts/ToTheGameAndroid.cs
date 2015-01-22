@@ -15,6 +15,6 @@ public class ToTheGameAndroid : MonoBehaviour {
 
 	public void OnButtonPressedAndroid(){
 		RPCWrapper.RPC("OnButtonPressedWin", RPCMode.Server);
-		Application.LoadLevel ("Android - PlayScene");
+		Application.LoadLevel ("Android - ShootScene");
 	}
 }
