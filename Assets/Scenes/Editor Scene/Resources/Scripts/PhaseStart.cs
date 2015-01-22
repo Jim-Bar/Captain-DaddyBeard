@@ -14,8 +14,8 @@ public class PhaseStart : MonoBehaviour {
 		if (players.Length == 0)
 			Debug.LogError (GetType ().Name + " : No player found. The player must have the tag \"" + playerTag + "\".");
 
-		foreach (GameObject player in players)
-			player.transform.position = transform.position;
+		for (int i = 0; i < players.Length; i++)
+			players[i].transform.position = transform.position + i * Vector3.up; // Put players above each other instead of the exact same place.
 
 		GameObject.Destroy (gameObject);
 	}
