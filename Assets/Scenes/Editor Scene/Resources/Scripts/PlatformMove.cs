@@ -28,7 +28,7 @@ public class PlatformMove : MonoBehaviour {
 	private bool goingUp = true;
 
 	private void Start () {
-		initialPosition = transform.position;
+		initialPosition = transform.localPosition;
 		goingRight = beginRight;
 		goingUp = beginUp;
 
@@ -51,24 +51,24 @@ public class PlatformMove : MonoBehaviour {
 
 		transform.Translate (newDeltaX, newDeltaY, 0);
 
-		if (transform.position.x - initialPosition.x >= maxDelta)
+		if (transform.localPosition.x - initialPosition.x >= maxDelta)
 		{
-			transform.Translate (maxDelta - (transform.position.x - initialPosition.x), 0, 0);
+			transform.Translate (maxDelta - (transform.localPosition.x - initialPosition.x), 0, 0);
 			goingRight = false;
 		}
-		else if (transform.position.x - initialPosition.x <= minDelta)
+		else if (transform.localPosition.x - initialPosition.x <= minDelta)
 		{
-			transform.Translate (minDelta - (transform.position.x - initialPosition.x), 0, 0);
+			transform.Translate (minDelta - (transform.localPosition.x - initialPosition.x), 0, 0);
 			goingRight = true;
 		}
-		if (transform.position.y - initialPosition.y >= maxDelta)
+		if (transform.localPosition.y - initialPosition.y >= maxDelta)
 		{
-			transform.Translate (0, maxDelta - (transform.position.y - initialPosition.y), 0);
+			transform.Translate (0, maxDelta - (transform.localPosition.y - initialPosition.y), 0);
 			goingUp = false;
 		}
-		else if (transform.position.y - initialPosition.y <= minDelta)
+		else if (transform.localPosition.y - initialPosition.y <= minDelta)
 		{
-			transform.Translate (0, minDelta - (transform.position.y - initialPosition.y), 0);
+			transform.Translate (0, minDelta - (transform.localPosition.y - initialPosition.y), 0);
 			goingUp = true;
 		}
 	}

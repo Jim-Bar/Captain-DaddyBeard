@@ -69,7 +69,7 @@ public class GyroManager : MonoBehaviour {
 
 	private bool fisrtCalibrationDone = false;
 	private Quaternion calibration = Quaternion.identity;
-	private const int marginToRecalibrate = 20; // Variation in degrees beyong which a calibration is made.
+	private const int marginToRecalibrate = 50; // Variation in degrees beyong which a calibration is made.
 	
 	private bool jump = false;
 
