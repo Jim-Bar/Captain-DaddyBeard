@@ -43,7 +43,7 @@ public class GyroManager : MonoBehaviour {
 		if (dir.y * speed < -4F && isGrounded) {
 			//Debug.Log (" Before jump" + dir.y * speed);
 			isGrounded=false;
-			sphere.rigidbody2D.AddForce(new Vector2(0,100F), ForceMode2D.Force);
+			sphere.rigidbody2D.AddForce(new Vector2(0,500F), ForceMode2D.Force);
 		}		
 	}
 
