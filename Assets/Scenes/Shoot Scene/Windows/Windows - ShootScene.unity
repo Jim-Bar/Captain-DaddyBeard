@@ -85,7 +85,6 @@ GameObject:
   - 212: {fileID: 53983369}
   - 50: {fileID: 53983368}
   - 61: {fileID: 53983367}
-  - 114: {fileID: 53983366}
   m_Layer: 0
   m_Name: Ground_Receding_2
   m_TagString: Untagged
@@ -105,17 +104,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 224830812}
   m_RootOrder: 6
---- !u!114 &53983366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 53983364}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &53983367
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,7 +152,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &73684523
 GameObject:
@@ -177,7 +165,6 @@ GameObject:
   - 212: {fileID: 73684527}
   - 50: {fileID: 73684526}
   - 61: {fileID: 73684525}
-  - 114: {fileID: 73684524}
   m_Layer: 0
   m_Name: Ground_Ascendent_2
   m_TagString: Untagged
@@ -185,17 +172,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &73684524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 73684523}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &73684525
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -244,7 +220,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &73684528
 Transform:
@@ -386,7 +362,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 236250824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60d66504c3aa97247a283b6d0444e7fe, type: 3}
+  m_Script: {fileID: 11500000, guid: c388865dd5e6af74abd4e8821ea67e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollingSpeed: 1
@@ -401,7 +377,6 @@ GameObject:
   - 212: {fileID: 896809759}
   - 50: {fileID: 896809758}
   - 61: {fileID: 896809761}
-  - 114: {fileID: 896809760}
   m_Layer: 0
   m_Name: Ground_Receding_2
   m_TagString: Untagged
@@ -458,19 +433,8 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &896809760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 896809756}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &896809761
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -493,7 +457,6 @@ GameObject:
   - 212: {fileID: 1122233933}
   - 50: {fileID: 1122233932}
   - 61: {fileID: 1122233935}
-  - 114: {fileID: 1122233934}
   m_Layer: 0
   m_Name: Ground_Receding_1
   m_TagString: Untagged
@@ -550,19 +513,8 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1122233934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1122233930}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1122233935
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -585,7 +537,6 @@ GameObject:
   - 212: {fileID: 1397790833}
   - 50: {fileID: 1397790832}
   - 61: {fileID: 1397790831}
-  - 114: {fileID: 1397790830}
   m_Layer: 0
   m_Name: Ground_Ascendent_1
   m_TagString: Untagged
@@ -605,17 +556,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 224830812}
   m_RootOrder: 5
---- !u!114 &1397790830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1397790828}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1397790831
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -664,7 +604,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1429412623
 GameObject:
@@ -677,7 +617,6 @@ GameObject:
   - 212: {fileID: 1429412627}
   - 50: {fileID: 1429412626}
   - 61: {fileID: 1429412628}
-  - 114: {fileID: 1429412625}
   m_Layer: 0
   m_Name: Ground_Ascendent_2
   m_TagString: Untagged
@@ -697,17 +636,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 224830812}
   m_RootOrder: 3
---- !u!114 &1429412625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1429412623}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1429412626
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -745,7 +673,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &1429412628
 BoxCollider2D:
@@ -769,7 +697,6 @@ GameObject:
   - 212: {fileID: 1624556753}
   - 50: {fileID: 1624556752}
   - 61: {fileID: 1624556754}
-  - 114: {fileID: 1624556751}
   m_Layer: 0
   m_Name: Ground_Ascendent_1
   m_TagString: Untagged
@@ -789,17 +716,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 224830812}
   m_RootOrder: 1
---- !u!114 &1624556751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1624556749}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1624556752
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -837,7 +753,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &1624556754
 BoxCollider2D:
@@ -861,7 +777,6 @@ GameObject:
   - 212: {fileID: 1841120267}
   - 50: {fileID: 1841120266}
   - 61: {fileID: 1841120265}
-  - 114: {fileID: 1841120264}
   m_Layer: 0
   m_Name: Ground_Receding_1
   m_TagString: Untagged
@@ -881,17 +796,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 224830812}
   m_RootOrder: 4
---- !u!114 &1841120264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1841120262}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1058d1e8972bb24dacc74baade7eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1841120265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -940,7 +844,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f27a2f6d9b789246ad6d1713e620bb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a93845e87fdf6cb45b7af25dcaec082d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1863618626
 GameObject:
@@ -966,11 +870,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1863618626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83fafbde840b47f45ad79d196cdfb503, type: 3}
+  m_Script: {fileID: 11500000, guid: a7b9b3bd54ada2444ab66c3f769ae956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingMonster: {fileID: 11400000, guid: 2589cd0e0bc8784468a903d7014ac67a, type: 2}
-  walkingMonster: {fileID: 11400000, guid: 53d1f0d0fb833a04da445d4087f6ce70, type: 2}
+  flyingMonster: {fileID: 11400000, guid: 76c6dd1c0586c8e4b99a2f9a32ca47eb, type: 2}
+  walkingMonster: {fileID: 11400000, guid: 39af0a0fec5be3a4993c5555798f22d6, type: 2}
 --- !u!4 &1863618628
 Transform:
   m_ObjectHideFlags: 0
@@ -1058,7 +962,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2134930737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60d66504c3aa97247a283b6d0444e7fe, type: 3}
+  m_Script: {fileID: 11500000, guid: c388865dd5e6af74abd4e8821ea67e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollingSpeed: 1
