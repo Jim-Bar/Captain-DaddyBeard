@@ -3,6 +3,8 @@ using System.Collections;
 
 /*
  * Compute the location  of the target on the screen (in the range [-1, 1]).
+ * Automatically enabled/disable itself when needed.
+ * 
  * Android only.
  */
 public class AimingManager : MonoBehaviour {
