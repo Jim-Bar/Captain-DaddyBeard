@@ -9,9 +9,10 @@ using System.Collections;
 public class PhaseStart : MonoBehaviour {
 
 	private void Start () {
-		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		string playerTag = "Player";
+		GameObject[] players = GameObject.FindGameObjectsWithTag (playerTag);
 		if (players.Length == 0)
-			Debug.LogError (GetType ().Name + " : No player found");
+			Debug.LogError (GetType ().Name + " : No player found. The player must have the tag \"" + playerTag + "\".");
 
 		foreach (GameObject player in players)
 			player.transform.position = transform.position;

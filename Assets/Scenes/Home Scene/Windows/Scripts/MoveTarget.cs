@@ -2,12 +2,23 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/*
+ * From relative coordinates ([-1, 1]), compute the position of the target.
+ * Return the computed position to the Android devices for the shoot scene (needed for the zoom).
+ * 
+ * Windows only.
+ */
 public class MoveTarget : MonoBehaviour {
+
+	private bool sendPositionToAndroid = false;
+	public bool SendPositionToAndroid
+	{
+		set { SendPositionToAndroid = value; }
+	}
 
 	private void Start () {
 		// Register UpdateTarget() in the RPC wrapper.
 		RPCWrapper.RegisterMethod (UpdateTarget);
-
 
 		DontDestroyOnLoad (gameObject);
 	}
@@ -24,7 +35,8 @@ public class MoveTarget : MonoBehaviour {
 		newPosition.z = transform.position.z; // Keep initial z position.
 		transform.position = newPosition; // Apply new position.
 
-		RPCWrapper.RPC ("UpdateCamera", RPCMode.Others, newPosition);
+		if (sendPositionToAndroid)
+			RPCWrapper.RPC ("UpdateCamera", RPCMode.Others, newPosition);
 	}
 
 

@@ -2,16 +2,13 @@
 using System.Collections;
 
 /*
- * Description to come.
- * 
- * Note to myself : to mention :
- * - Need a network view (update : no more, now need the RPC wrapper).
- * - Android only
+ * Compute the location  of the target on the screen (in the range [-1, 1]).
+ * Android only.
  */
 public class AimingManager : MonoBehaviour {
 
-	#if UNITY_ANDROID
-
+	[Tooltip("Names of the scenes where the target is used")]
+	[SerializeField] private string[] scenesWhereActive;
 	[Tooltip("Always display camera, not only when calibrating")]
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
@@ -64,6 +61,18 @@ public class AimingManager : MonoBehaviour {
 			if (upperLeftCalibrationDone && lowerRightCalibrationDone && Network.connections.Length > 0)
 				RPCWrapper.RPC ("UpdateTarget", RPCMode.Server, point);
 		}
+	}
+
+	private void OnLevelWasLoaded (int level) {
+		// Enable the script if it is required in the current scene. Otherwise disable it.
+		foreach (string scene in scenesWhereActive)
+			if (scene.Equals (Application.loadedLevelName))
+			{
+				enabled = true;
+				return;
+			}
+
+		enabled = false;
 	}
 
 	private void OnGUI() {
@@ -124,6 +133,4 @@ public class AimingManager : MonoBehaviour {
 		float a = deltaTime / (0.5f + deltaTime);
 		point = (1 - a) * point + a * lastPoint;
 	}
-
-	#endif
 }

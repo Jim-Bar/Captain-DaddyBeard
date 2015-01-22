@@ -26,7 +26,7 @@ public class PhaseLoader : MonoBehaviour {
 	[SerializeField] private string shootSceneName;
 	[Tooltip("Name of the scene of deplacement")]
 	[SerializeField] private string deplacementSceneName;
-
+	
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
 	private static string phaseName = null; // Name of the next phase to load.
 	private static Type phaseType = Type.SHOOT; // Type of the next phase to load.

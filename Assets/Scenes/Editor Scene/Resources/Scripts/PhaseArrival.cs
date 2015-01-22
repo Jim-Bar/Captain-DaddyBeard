@@ -21,9 +21,10 @@ public class PhaseArrival : MonoBehaviour {
 	private GameObject[] players;
 
 	private void Start () {
-		players = GameObject.FindGameObjectsWithTag ("Player");
+		string playerTag = "Player";
+		players = GameObject.FindGameObjectsWithTag (playerTag);
 		if (players.Length == 0)
-			Debug.LogError (GetType ().Name + " : No player found");
+			Debug.LogError (GetType ().Name + " : No player found. The player must have the tag \"" + playerTag + "\".");
 	}
 
 	private void OnTriggerEnter2D (Collider2D other) {

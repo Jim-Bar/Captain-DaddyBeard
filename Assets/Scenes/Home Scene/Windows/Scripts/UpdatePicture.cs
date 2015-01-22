@@ -15,8 +15,6 @@ public class UpdatePicture : MonoBehaviour
 	private Image image;
 
 	private void Start () {
-		//ServiceConnector.ProvideDelegate (new ServiceConnector.ClientConnected (MarkAsChecked));
-
 		// Get the component of type Image.
 		image = gameObject.GetComponent<Image>();
 

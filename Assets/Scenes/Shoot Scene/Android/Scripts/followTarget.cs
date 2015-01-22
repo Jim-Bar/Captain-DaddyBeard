@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class followTarget : MonoBehaviour {
+public class FollowTarget : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

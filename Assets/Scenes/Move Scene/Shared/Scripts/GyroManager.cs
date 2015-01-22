@@ -123,14 +123,16 @@ public class GyroManager : MonoBehaviour {
 	#endif
 
 	private void GetReferenceToPlayer () {
-		sphere = GameObject.FindGameObjectWithTag ("Player");
+		string playerTag = "Player";
+		sphere = GameObject.FindGameObjectWithTag (playerTag);
 		if (sphere == null)
-			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"Player\"");
+			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + playerTag + "\".");
 	}
 
 	private void GetReferenceToWorld () {
-		ground = GameObject.FindGameObjectWithTag ("World");
+		string worldTag = "World";
+		ground = GameObject.FindGameObjectWithTag (worldTag);
 		if (ground == null)
-			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"World\"");
+			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + worldTag + "\".");
 	}
 }

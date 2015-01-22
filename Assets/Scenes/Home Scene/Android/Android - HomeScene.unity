@@ -129,6 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a411c00dec6bb654fa7b54148aa4138f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenesWhereActive:
+  - Android - HomeScene
+  - Android - ShootScene
+  alwaysDisplayCamera: 0
+  debugMode: 0
 --- !u!148 &326098076
 NetworkView:
   m_ObjectHideFlags: 0
