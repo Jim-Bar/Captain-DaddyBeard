@@ -114,7 +114,7 @@ public class ServiceConnector : MonoBehaviour {
 	 */
 	private static int StartWifiHotspot (string ssid, string key) {
 		// Prerequisite : admin privileges and arguments validity.
-		if (true || IsAdmin ()) {
+		if (IsAdmin ()) {
 			if (ssid != null && key != null) {
 				if (8 <= key.Length || key.Length <= 63) {
 					// Step 1 : configure the wifi hotspot.
@@ -177,12 +177,7 @@ public class ServiceConnector : MonoBehaviour {
 	// Return true if the current process has admin privileges.
 	private static bool IsAdmin ()
 	{
-		/* TO FIX !
-		WindowsIdentity id = WindowsIdentity.GetCurrent ();
-		WindowsPrincipal p = new WindowsPrincipal (id);
-		return p.IsInRole (WindowsBuiltInRole.Administrator);
-		*/
-		return true;
+		return UacHelper.IsProcessElevated;
 	}
 
 	/*
