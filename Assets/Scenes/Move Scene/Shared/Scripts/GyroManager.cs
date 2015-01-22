@@ -3,13 +3,10 @@ using System.Collections;
 
 public class GyroManager : MonoBehaviour {
 
-	[SerializeField] private GameObject ground;
-	[SerializeField] private GameObject sphere;
-
+	private GameObject sphere = null;
+	private GameObject ground = null;
 	private int roll = 0;
 
-
-	
 	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 
 	private float speed = 700.0F;
@@ -20,20 +17,19 @@ public class GyroManager : MonoBehaviour {
 	void Start () {
 		RPCWrapper.RegisterMethod(UpdateRoll);
 		RPCWrapper.RegisterMethod(JumpSphere);
+
+		GetReferenceToPlayer ();
+		GetReferenceToWorld ();
 	}
 	
 	public void UpdateRoll (int newRoll)
 	{
 		roll = newRoll;
-		//Debug.Log (" Roll " + roll);
 		Vector2 p = Vector2.zero;
 		//ground.transform.eulerAngles = new Vector3(0, 0, -roll);
 		RaycastHit2D hit = Physics2D.Raycast(sphere.transform.position, Vector3.down, Mathf.Infinity, 1 << LayerMask.NameToLayer("World"));
-		if (hit) {            
-			//Debug.Log (hit.collider);
+		if (hit)          
 			p = hit.point;
-			
-		}
 		
 		ground.transform.RotateAround(p, Vector3.forward, -(roll-lastRoll));
 		lastRoll = roll;
@@ -44,16 +40,11 @@ public class GyroManager : MonoBehaviour {
 		
 		//Vector3 ju = new Vector3(0,10,0);
 		isGrounded = CanJump ();
-		Debug.Log (" bool ground" + isGrounded);
 		if (dir.y * speed < -4F && isGrounded) {
-			Debug.Log (" Before jump" + dir.y * speed);
+			//Debug.Log (" Before jump" + dir.y * speed);
 			isGrounded=false;
-			//sphere.rigidbody2D.velocity = new Vector3(0, 0, 0);
 			sphere.rigidbody2D.AddForce(new Vector2(0,100F), ForceMode2D.Force);
-		}
-		
-		//sphere.transform.Translate(dir * speed);
-		
+		}		
 	}
 
 	public bool CanJump() {
@@ -64,14 +55,13 @@ public class GyroManager : MonoBehaviour {
 		
 		RaycastHit2D hit = Physics2D.Raycast(sphere.transform.position, Vector3.down, 1.0f, 1 << LayerMask.NameToLayer("World"));
 		
-		if (hit) {            
-			Debug.Log(hit.collider);
+		if (hit) {
 			jump = true;
 		} else {
 			jump = false;
 		}
 		
-		Debug.DrawRay(sphere.transform.position, Vector3.down, Color.red);
+		//Debug.DrawRay(sphere.transform.position, Vector3.down, Color.red);
 		return jump;
 	}
 
@@ -85,6 +75,9 @@ public class GyroManager : MonoBehaviour {
 
 	void Start () {
 		Input.gyro.enabled = true;
+
+		GetReferenceToPlayer ();
+		GetReferenceToWorld ();
 	}
 
 	void Update () {
@@ -110,12 +103,12 @@ public class GyroManager : MonoBehaviour {
 	
 		Vector3 dir = Vector3.zero;
 		dir.y = -Input.acceleration.y;
-		Debug.Log (" Add input acc" + dir.y);
+		//Debug.Log (" Add input acc" + dir.y);
 		if (dir.sqrMagnitude > 1)
 			dir.Normalize();
 		
 		dir *= Time.deltaTime;
-		Debug.Log (" before rpc" + dir.y);
+		//Debug.Log (" before rpc" + dir.y);
 		if (Network.connections.Length > 0)
 			RPCWrapper.RPC ("JumpSphere", RPCMode.Others, dir);
 	}
@@ -128,4 +121,16 @@ public class GyroManager : MonoBehaviour {
 	}
 			
 	#endif
+
+	private void GetReferenceToPlayer () {
+		sphere = GameObject.FindGameObjectWithTag ("Player");
+		if (sphere == null)
+			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"Player\"");
+	}
+
+	private void GetReferenceToWorld () {
+		ground = GameObject.FindGameObjectWithTag ("World");
+		if (ground == null)
+			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"World\"");
+	}
 }
