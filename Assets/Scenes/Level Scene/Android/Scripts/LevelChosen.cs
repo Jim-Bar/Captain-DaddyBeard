@@ -14,7 +14,7 @@ public class LevelChosen : MonoBehaviour {
 		if(levelChosen != 0){
 			RPCWrapper.RPC("LoadWeaponLevel", RPCMode.Server);
 			Application.LoadLevel ("Android - WeaponScene");
-			PhaseLoader.Prepare (PhaseLoader.Type.SHOOT, levelChosen, 1);
+			PhaseLoader.Prepare (PhaseLoader.Type.DEPLACEMENT, levelChosen, 1);
 		}
 	}
 }

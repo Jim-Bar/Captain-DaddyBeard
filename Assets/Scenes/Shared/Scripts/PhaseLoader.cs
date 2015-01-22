@@ -60,18 +60,26 @@ public class PhaseLoader : MonoBehaviour {
 
 	// Register phase data before loading it with Load ().
 	public static void Prepare (Type type, int level, int phase) {
+		CheckExist ();
 		phaseName = "World " + level.ToString("D2") + " " + phase.ToString("D2");
 		phaseType = type;
 	}
 
 	// Load a phase based on the data set by Prepare ().
 	public static void Load () {
+		CheckExist ();
 		loadPhaseNextSceneLoading = true;
 
 		if (phaseType == Type.SHOOT)
 			Application.LoadLevel (instance.shootSceneName);
 		else
 			Application.LoadLevel (instance.deplacementSceneName);
+	}
+
+	// Log an error message if there is no instance of this class.
+	private static void CheckExist () {
+		if (instance == null)
+			Debug.LogError ("Phase Loader : No instance found !");
 	}
 
 	// Load a phase if the phase loader has been told to do so ('loadPhaseNextSceneLoading' set to 'true').

@@ -9,6 +9,6 @@ public class ToTheGameWin : MonoBehaviour {
 	}
 
 	public void OnButtonPressedWin(){
-		Application.LoadLevel ("Windows - ShootScene");
+		PhaseLoader.Load ();
 	}
 }
