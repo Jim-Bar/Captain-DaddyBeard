@@ -16,6 +16,8 @@ public class WorldRotation : MonoBehaviour {
 	[SerializeField] private float jumpDetection = 0.0025f;
 	[Tooltip("A value of 1 is normal, 0.5 is half the normal sensibility, ...")] [Range(0.1f, 1)]
 	[SerializeField] private float rollSensibility = 0.5f;
+	[Tooltip("Strength of the low pass filter. Lower means a higher strength")] [Range(0.01f, 0.1f)]
+	[SerializeField] private float rollLowPassFilter = 0.05f;
 	[Tooltip("Layer of the objects of the world (note that all world's objects must have this layer)")]
 	[SerializeField] private LayerMask worldLayer;
 
@@ -44,6 +46,7 @@ public class WorldRotation : MonoBehaviour {
 		RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector3.down, Mathf.Infinity, worldLayer);
 		if (hit.collider != null)
 		{
+			roll = LowPassFilter (roll, lastRoll);
 			ground.transform.RotateAround(hit.point, Vector3.forward, roll - lastRoll);
 			lastRoll = roll;
 		}
@@ -67,6 +70,13 @@ public class WorldRotation : MonoBehaviour {
 	// Mark the player as not touching the ground if he is touching nothing (fall from a platform, ...).
 	private void OnCollisionExit2D (Collision2D collision) {
 		isGrounded = false;
+	}
+
+	// Low pass filter.
+	private float LowPassFilter (float value, float lastValue) {
+		float deltaTime = Time.deltaTime;
+		float a = deltaTime / (rollLowPassFilter + deltaTime);
+		return (1 - a) * value + a * lastValue;
 	}
 
 	// Get a reference to the player. The player must have the tag "Player". Only works for one player.
