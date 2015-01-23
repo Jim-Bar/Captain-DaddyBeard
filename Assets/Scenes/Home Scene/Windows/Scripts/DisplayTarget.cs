@@ -14,8 +14,6 @@ public class DisplayTarget : MonoBehaviour {
 
 		// Register in the RPC wrapper.
 		RPCWrapper.RegisterMethod (SetTargetActive);
-
-		DontDestroyOnLoad (gameObject);
 	}
 
 	public void SetTargetActive (bool active) {

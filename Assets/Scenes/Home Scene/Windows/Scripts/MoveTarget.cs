@@ -10,17 +10,12 @@ using System.Collections;
  */
 public class MoveTarget : MonoBehaviour {
 
-	private bool sendPositionToAndroid = false;
-	public bool SendPositionToAndroid
-	{
-		set { SendPositionToAndroid = value; }
-	}
+	[Tooltip("Target position on Android is needed in the scene of shoot")]
+	[SerializeField] private bool sendPositionToAndroid = false;
 
 	private void Start () {
 		// Register UpdateTarget() in the RPC wrapper.
 		RPCWrapper.RegisterMethod (UpdateTarget);
-
-		DontDestroyOnLoad (gameObject);
 	}
 
 	public void UpdateTarget (Vector3 newPositionInScreen) {

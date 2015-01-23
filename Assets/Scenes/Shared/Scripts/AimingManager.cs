@@ -3,28 +3,31 @@ using System.Collections;
 
 /*
  * Compute the location  of the target on the screen (in the range [-1, 1]).
- * Automatically enabled/disable itself when needed.
+ * The calibration is conserved accross scenes.
  * 
  * Android only.
  */
 public class AimingManager : MonoBehaviour {
-
-	[Tooltip("Names of the scenes where the target is used")]
-	[SerializeField] private string[] scenesWhereActive;
+	
 	[Tooltip("Always display camera, not only when calibrating")]
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
 	[SerializeField] private bool debugMode = false; // If true, display calibration information on the screen.
+	[Tooltip("Should the calibration phase be enabled at the beginning ?")]
+	[SerializeField] private bool beginWithCalibration = true;
 
 	private WebCamTexture cameraStream = null; // Video stream from the device camera.
-	private bool calibrating = true; // Are we calibrating right now ?
+	private bool calibrating = true;
 
-	// Rotation pointing to the upper left corner, lower right corner, and center of the screen respectively.
-	private Quaternion upperLeftCalibration = Quaternion.identity; // World space.
-	private Quaternion lowerRightCalibration = Quaternion.identity; // World space.
-	private Quaternion localUpperLeftRotation = Quaternion.identity; // Screen center space.
-	private Quaternion localLowerRightRotation = Quaternion.identity; // Screen center space.
-	private Quaternion centerCalibration = Quaternion.identity; // World space.
+	/*
+	 * Rotation pointing to the upper left corner, lower right corner, and center of the screen respectively.
+	 * Kept static to avoid recalibration between scenes.
+	 */
+	private static Quaternion upperLeftCalibration = Quaternion.identity; // World space.
+	private static Quaternion lowerRightCalibration = Quaternion.identity; // World space.
+	private static Quaternion localUpperLeftRotation = Quaternion.identity; // Screen center space.
+	private static Quaternion localLowerRightRotation = Quaternion.identity; // Screen center space.
+	private static Quaternion centerCalibration = Quaternion.identity; // World space.
 
 	// Are the calibrations achieved ?
 	private bool upperLeftCalibrationDone = false;
@@ -35,15 +38,15 @@ public class AimingManager : MonoBehaviour {
 	private Vector3 lastPoint = Vector3.zero; // For the last frame.
 
 	private void Start () {
-		// Keep the manager alive throught scences.
-		DontDestroyOnLoad(transform.gameObject);
-
 		// Enable gyroscope.
 		Input.gyro.enabled = true;
 
 		// Initialize camera.
 		cameraStream = new WebCamTexture ();
 		cameraStream.Play ();
+
+		// Set if the calibration happens now or not.
+		calibrating = beginWithCalibration;
 	}
 	
 	private void Update () {
@@ -63,18 +66,6 @@ public class AimingManager : MonoBehaviour {
 			if (upperLeftCalibrationDone && lowerRightCalibrationDone && Network.connections.Length > 0)
 				RPCWrapper.RPC ("UpdateTarget", RPCMode.Server, point);
 		}
-	}
-
-	private void OnLevelWasLoaded (int level) {
-		// Enable the script if it is required in the current scene. Otherwise disable it.
-		foreach (string scene in scenesWhereActive)
-			if (scene.Equals (Application.loadedLevelName))
-			{
-				enabled = true;
-				return;
-			}
-
-		enabled = false;
 	}
 
 	private void OnGUI() {
