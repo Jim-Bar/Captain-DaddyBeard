@@ -2,25 +2,30 @@
 using System.Collections;
 
 /*
- * Manage world orientation, and jump.
+ * Manage : 
+ * - World orientation
+ * - Jump
  * 
  * Windows only.
  */
 public class WorldRotation : MonoBehaviour {
 
-	[Tooltip("The force with which the player jumps")] [Range(1, 1000)]
-	[SerializeField] private float jumpForce = 500;
-	[Tooltip("The step below which a jump attempt is detected")] [Range(0.00001f, 0.001f)]
-	[SerializeField] private float jumpDetection = 0.0001f;
+	[Tooltip("The force with which the player jumps")] [Range(500, 2000)]
+	[SerializeField] private float jumpForce = 1200;
+	[Tooltip("The step below which a jump attempt is detected")] [Range(0.001f, 0.01f)]
+	[SerializeField] private float jumpDetection = 0.0025f;
+	[Tooltip("A value of 1 is normal, 0.5 is half the normal sensibility, ...")] [Range(0.1f, 1)]
+	[SerializeField] private float rollSensibility = 0.5f;
+	[Tooltip("Layer of the objects of the world (note that all world's objects must have this layer)")]
+	[SerializeField] private LayerMask worldLayer;
 
-	private GameObject sphere = null;
+	// Reference towards the player and the world object.
+	private GameObject player = null;
 	private GameObject ground = null;
-	private int roll = 0;
 
+	// Roll and jump.
+	private float roll = 0, lastRoll = 0;
 	private bool isGrounded = true;
-	private int lastRoll = 0;
-	private float epsilon = 0.1f;
-	
 	
 	void Start () {
 		RPCWrapper.RegisterMethod(UpdateRoll);
@@ -29,55 +34,46 @@ public class WorldRotation : MonoBehaviour {
 		GetReferenceToPlayer ();
 		GetReferenceToWorld ();
 	}
-	
-	public void UpdateRoll (int newRoll)
-	{
-		roll = newRoll;
-		Vector2 p = Vector2.zero;
-		//ground.transform.eulerAngles = new Vector3(0, 0, -roll);
-		RaycastHit2D hit = Physics2D.Raycast(sphere.transform.position, Vector3.down, Mathf.Infinity, 1 << LayerMask.NameToLayer("World"));
-		if (hit)          
-			p = hit.point;
-		
-		ground.transform.RotateAround(p, Vector3.forward, -(roll-lastRoll));
-		lastRoll = roll;
-		
+
+	// Modify world rotation based on the device rotation.
+	public void UpdateRoll (int deviceRoll) {
+		// Reduce roll sensibility, and negate the roll (is it the opposite on the device).
+		roll = - deviceRoll / (2.0f - rollSensibility);
+
+		// Find the point on the ground below the player.
+		RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector3.down, Mathf.Infinity, worldLayer);
+		if (hit.collider != null)
+		{
+			ground.transform.RotateAround(hit.point, Vector3.forward, roll - lastRoll);
+			lastRoll = roll;
+		}
 	}
-	
-	public void JumpSphere (Vector3 dir){
-		
-		//Vector3 ju = new Vector3(0,10,0);
-		isGrounded = CanJump ();
-		Debug.Log ("IsGrounded : " + isGrounded);
-		if (dir.y < - jumpDetection && isGrounded) {
-			isGrounded=false;
-			sphere.rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+
+	// Have the character jump if the player gave an impulsion strong enough.
+	public void JumpSphere (Vector3 dir) {
+		if (isGrounded && dir.y < - jumpDetection) {
+			// Jump perpendicular to the direction of the ground.
+			player.rigidbody2D.AddForce(Quaternion.Euler(0, 0, roll) * Vector2.up * jumpForce, ForceMode2D.Force);
+			isGrounded = false; // The player jumps so he is not touching the ground anymore.
 		}		
 	}
-	
-	public bool CanJump() {
-		//if (isGrounded) {
-		//sphere.rigidbody2D.velocity = new Vector3(0, sphere.rigidbody2D.velocity.y, 0);
-		//}
-		bool jump;
-		
-		RaycastHit2D hit = Physics2D.Raycast(sphere.transform.position, Vector3.down, sphere.transform.localScale.y / 2 + epsilon, 1 << LayerMask.NameToLayer("World"));
-		
-		if (hit) {
-			jump = true;
-		} else {
-			jump = false;
-		}
-		
-		//Debug.DrawRay(sphere.transform.position, Vector3.down, Color.red);
-		return jump;
+
+	// Mark the player as touching the ground if he does touch an object with a layer 'worldLayer'.
+	private void OnCollisionEnter2D (Collision2D collision) {
+		if (1 << collision.collider.gameObject.layer == worldLayer.value)
+			isGrounded = true;
+	}
+
+	// Mark the player as not touching the ground if he is touching nothing (fall from a platform, ...).
+	private void OnCollisionExit2D (Collision2D collision) {
+		isGrounded = false;
 	}
 
 	// Get a reference to the player. The player must have the tag "Player". Only works for one player.
 	private void GetReferenceToPlayer () {
 		string playerTag = "Player";
-		sphere = GameObject.FindGameObjectWithTag (playerTag);
-		if (sphere == null)
+		player = GameObject.FindGameObjectWithTag (playerTag);
+		if (player == null)
 			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + playerTag + "\".");
 	}
 	
