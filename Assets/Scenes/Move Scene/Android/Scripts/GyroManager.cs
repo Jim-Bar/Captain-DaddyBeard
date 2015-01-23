@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GyroManager : MonoBehaviour {
 
-	private GameObject sphere = null;
+	private GameObject player = null;
 	private GameObject ground = null;
 	private int roll = 0;
 
@@ -48,7 +48,7 @@ public class GyroManager : MonoBehaviour {
 		dir *= Time.deltaTime;
 		//Debug.Log (" before rpc" + dir.y);
 		if (Network.connections.Length > 0)
-			RPCWrapper.RPC ("JumpSphere", RPCMode.Others, dir);
+			RPCWrapper.RPC ("JumpPlayer", RPCMode.Others, dir);
 	}
 		
 	private void Calibrate ()
@@ -61,8 +61,8 @@ public class GyroManager : MonoBehaviour {
 	// Get a reference to the player. The player must have the tag "Player". Only works for one player.
 	private void GetReferenceToPlayer () {
 		string playerTag = "Player";
-		sphere = GameObject.FindGameObjectWithTag (playerTag);
-		if (sphere == null)
+		player = GameObject.FindGameObjectWithTag (playerTag);
+		if (player == null)
 			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + playerTag + "\".");
 	}
 

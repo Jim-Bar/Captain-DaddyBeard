@@ -29,7 +29,7 @@ public class WorldRotation : MonoBehaviour {
 	
 	void Start () {
 		RPCWrapper.RegisterMethod(UpdateRoll);
-		RPCWrapper.RegisterMethod(JumpSphere);
+		RPCWrapper.RegisterMethod(JumpPlayer);
 		
 		GetReferenceToPlayer ();
 		GetReferenceToWorld ();
@@ -50,7 +50,7 @@ public class WorldRotation : MonoBehaviour {
 	}
 
 	// Have the character jump if the player gave an impulsion strong enough.
-	public void JumpSphere (Vector3 dir) {
+	public void JumpPlayer (Vector3 dir) {
 		if (isGrounded && dir.y < - jumpDetection) {
 			// Jump perpendicular to the direction of the ground.
 			player.rigidbody2D.AddForce(Quaternion.Euler(0, 0, roll) * Vector2.up * jumpForce, ForceMode2D.Force);
