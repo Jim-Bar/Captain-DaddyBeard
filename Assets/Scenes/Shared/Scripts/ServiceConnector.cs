@@ -25,12 +25,6 @@ using System.Text;
  * HOW TO USE THIS CLASS :
  * 1 - Create an object in the scene (it must last until the game ends. It can be the camera).
  * 2 - Attach this script to the object.
- * That's all. But if you want to be noticed when the connections are effective, then do the following :
- * 3 - Create a method that will be called when a client connect to the game (must be public, return void and takes an int (clients number) if it is on the server side, nothing otherwise).
- * 4 - At the beginning of the game, for the server side, call (just replace 'myDelegate' by the name of your method) :
- * ServiceConnector.ProvideDelegate (new ServiceConnector.ClientConnected (myDelegate));
- * 4bis - And for the client side :
- * ServiceConnector.ProvideDelegate (new ServiceConnector.ConnectedToServer (myDelegate));
  * And that's it !
  * 
  * Do not forget the JAR file, Android manifest and package identifier.
@@ -46,17 +40,6 @@ public class ServiceConnector : MonoBehaviour {
 	// Debugging purpose : allow another program to keep the wifi hotspot online (do not recreate it each time the game is launched).
 	[Tooltip("Will the game create the wifi hotspot (it could be already created by another program) ?")]
 	[SerializeField] private bool createWifiHotspot = true;
-	#endif
-
-	// Functions called when a client connects to the server (server side : ClientConnected, client side : ConnectedToServer).
-	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-	public delegate void ClientConnected (int numClients);
-	private static ClientConnected delegateMethod = null;
-	public static void ProvideDelegate(ClientConnected method) { delegateMethod = method; }
-	#elif UNITY_ANDROID
-	public delegate void ConnectedToServer ();
-	private static ConnectedToServer delegateMethod = null;
-	public static void ProvideDelegate(ConnectedToServer method) { delegateMethod = method; }
 	#endif
 
 	void Start () {
@@ -96,8 +79,6 @@ public class ServiceConnector : MonoBehaviour {
 
 	void OnPlayerConnected () {
 		UnityEngine.Debug.Log ("ServiceConnector : Client connected.");
-		if (delegateMethod != null) // Tell that a client has just connected (if there is a delegate).
-			delegateMethod (Network.connections.Length);
 	}
 
 	void OnDestroy () {
@@ -223,8 +204,6 @@ public class ServiceConnector : MonoBehaviour {
 
 	void OnConnectedToServer () {
 		UnityEngine.Debug.Log ("ServiceConnector : Connected to server.");
-		if (delegateMethod != null) // Tell that we have just connected to the server (if there is a delegate).
-			delegateMethod ();
 	}
 
 	void OnDestroy () {
