@@ -1,4 +1,4 @@
-# Captain-DaddyBeard
+﻿# Captain-DaddyBeard
 A multimodal game playable on PC and Android simultaneously !
 
 FAQ :
