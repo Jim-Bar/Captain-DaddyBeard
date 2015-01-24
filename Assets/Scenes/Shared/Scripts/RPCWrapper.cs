@@ -26,8 +26,9 @@ using System.Collections.Generic;
  * This class removes the RPCMode bug.
  */
 
+[RequireComponent (typeof (NetworkView))]
 public class RPCWrapper : MonoBehaviour {
-	
+
 	// Types of the delegates.
 	public delegate void TargetMethod_void ();
 	public delegate void TargetMethod_int (int arg);

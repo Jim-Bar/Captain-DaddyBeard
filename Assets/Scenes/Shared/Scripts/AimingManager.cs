@@ -58,7 +58,7 @@ public class AimingManager : MonoBehaviour {
 			Quaternion localRotation = Quaternion.Inverse(centerCalibration) * Input.gyro.attitude;
 			point.x = 2 * (localRotation.y - localLowerRightRotation.y) / (localUpperLeftRotation.y - localLowerRightRotation.y) - 1;
 			point.y = 2 * (localRotation.x - localUpperLeftRotation.x) / (localLowerRightRotation.x - localUpperLeftRotation.x) - 1;
-			lowPassFilter();
+			LowPassFilter();
 			point.x = Mathf.Min(1, Mathf.Max(-1, point.x));
 			point.y = Mathf.Min(1, Mathf.Max(-1, point.y));
 			lastPoint.x = point.x;
@@ -113,7 +113,7 @@ public class AimingManager : MonoBehaviour {
 	}
 
 	// Make the average between the two corner (compute center), and calculate position of the corners in the screen space. Stop the camera, not needed anymore.
-	private void ComputeCenterCalibration() {
+	private void ComputeCenterCalibration () {
 		centerCalibration = Quaternion.Slerp(upperLeftCalibration, lowerRightCalibration, 0.5f);
 		localUpperLeftRotation = Quaternion.Inverse(upperLeftCalibration) * centerCalibration;
 		localLowerRightRotation = Quaternion.Inverse(lowerRightCalibration) * centerCalibration;
@@ -123,7 +123,7 @@ public class AimingManager : MonoBehaviour {
 			cameraStream.Stop ();
 	}
 
-	private void lowPassFilter() {
+	private void LowPassFilter () {
 		float deltaTime = Time.deltaTime;
 		float a = deltaTime / (0.5f + deltaTime);
 		point = (1 - a) * point + a * lastPoint;
