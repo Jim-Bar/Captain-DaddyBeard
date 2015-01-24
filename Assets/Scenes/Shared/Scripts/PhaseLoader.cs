@@ -104,7 +104,7 @@ public class PhaseLoader : MonoBehaviour {
 		Object world = Resources.Load ("Phases/" + phaseName);
 		if (world != null)
 		{
-			if (Instantiate (world) != null)
+			if (Instantiate (world, Vector3.zero, Quaternion.identity) != null)
 				Debug.Log (GetType ().Name + " : Successfully loaded phase \"" + phaseName + "\"");
 			else
 				Debug.LogError (GetType ().Name + " : World instantiation failed");
