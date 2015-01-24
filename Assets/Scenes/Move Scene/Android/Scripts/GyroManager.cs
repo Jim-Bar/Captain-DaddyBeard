@@ -2,20 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 public class GyroManager : MonoBehaviour {
-
-	private GameObject player = null;
-	private GameObject ground = null;
+	
 	private int roll = 0;
-
 	private bool fisrtCalibrationDone = false;
 	private Quaternion calibration = Quaternion.identity;
 	private const int marginToRecalibrate = 50; // Variation in degrees beyong which a calibration is made.
 
 	void Start () {
 		Input.gyro.enabled = true;
-
-		GetReferenceToPlayer ();
-		GetReferenceToWorld ();
 	}
 
 	void Update () {
@@ -56,21 +50,5 @@ public class GyroManager : MonoBehaviour {
 		calibration = Quaternion.Inverse (Input.gyro.attitude);
 		if (calibration.w != 0 || calibration.x != 0 || calibration.y != 0 || calibration.z != 0)
 			fisrtCalibrationDone = true;
-	}
-
-	// Get a reference to the player. The player must have the tag "Player". Only works for one player.
-	private void GetReferenceToPlayer () {
-		string playerTag = "Player";
-		player = GameObject.FindGameObjectWithTag (playerTag);
-		if (player == null)
-			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + playerTag + "\".");
-	}
-
-	// Get a reference to the world. The world must have the tag "World".
-	private void GetReferenceToWorld () {
-		string worldTag = "World";
-		ground = GameObject.FindGameObjectWithTag (worldTag);
-		if (ground == null)
-			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + worldTag + "\".");
 	}
 }

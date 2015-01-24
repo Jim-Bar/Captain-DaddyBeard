@@ -10,10 +10,15 @@ public class ObjectFollowCamera : MonoBehaviour {
 	[SerializeField] private bool followX = true;
 	[Tooltip("Will the object follows the camera on the Y axis ?")]
 	[SerializeField] private bool followY = true;
+	
+	[Tooltip("Follows with an offset on the X axis")] [Range(-10, 10)]
+	[SerializeField] private float xOffset = 0;
+	[Tooltip("Follows with an offset on the Y axis")] [Range(-10, 10)]
+	[SerializeField] private float yOffset = 0;
 
 	void Update () {
-		float newX = followX ? Camera.main.transform.position.x : transform.position.x;
-		float newY = followY ? Camera.main.transform.position.y : transform.position.y;
+		float newX = followX ? Camera.main.transform.position.x + xOffset : transform.position.x;
+		float newY = followY ? Camera.main.transform.position.y + yOffset : transform.position.y;
 		transform.position = new Vector3 (newX, newY, transform.position.z);
 	}
 }

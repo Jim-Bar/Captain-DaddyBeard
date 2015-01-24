@@ -3,7 +3,9 @@ using System.Collections;
 
 /*
  * Attached to a collider, check if a player enters the collider, and load next scene accordingly.
- * Both Windows and Android.
+ * 
+ * Both Windows and Android (although it does nothing on Android).
+ * Use this script only for the prefabs of phases.
  * 
  * The player(s) must have the tag "Player".
  */
@@ -18,8 +20,11 @@ public class PhaseArrival : MonoBehaviour {
 	[Tooltip("Type of the next phase")]
 	[SerializeField] private PhaseLoader.Type nextPhaseType = PhaseLoader.Type.SHOOT;
 
-	private GameObject[] players;
+	// Do NOT move this line further up.
+	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 
+	private GameObject[] players;
+	
 	private void Start () {
 		string playerTag = "Player";
 		players = GameObject.FindGameObjectsWithTag (playerTag);
@@ -27,19 +32,28 @@ public class PhaseArrival : MonoBehaviour {
 			Debug.LogError (GetType ().Name + " : No player found. The player must have the tag \"" + playerTag + "\".");
 	}
 
+	// Only load next phase when we are the server. Otherwise we wait for an RPC to notify us.
 	private void OnTriggerEnter2D (Collider2D other) {
-		foreach (GameObject player in players)
-			if (player == other.gameObject)
+		foreach (GameObject player in players) // For all players...
+			if (player == other.gameObject) // ...if one is in the arrival area, load next phase.
 			{
-				if (!isFinalPhase)
-					PhaseLoader.Load (nextPhaseType, nextLevel, nextPhase);
-				else
-					#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-					Application.LoadLevel ("Windows - ScoreScene");
-					#else
-					Application.LoadLevel ("Android - ScoreScene");
-					#endif
+				LoadNextPhase ();
 				break; // Load next level only one time.
 			}
 	}
+
+	private void LoadNextPhase () {
+		if (!isFinalPhase)
+		{
+			RPCWrapper.RPC ("LoadNextPhase", RPCMode.Others, (int) nextPhaseType, nextLevel, nextPhase); // Tell the clients to load the next phase.
+			PhaseLoader.Load (nextPhaseType, nextLevel, nextPhase);
+		}
+		else
+		{
+			RPCWrapper.RPC ("LoadScoreScene", RPCMode.Others); // Tell the clients to load scores scene.
+			Application.LoadLevel ("Windows - ScoreScene");
+		}
+	}
+	
+	#endif
 }

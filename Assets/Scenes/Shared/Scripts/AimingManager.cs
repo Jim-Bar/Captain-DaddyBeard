@@ -29,24 +29,26 @@ public class AimingManager : MonoBehaviour {
 	private static Quaternion localLowerRightRotation = Quaternion.identity; // Screen center space.
 	private static Quaternion centerCalibration = Quaternion.identity; // World space.
 
-	// Are the calibrations achieved ?
-	private bool upperLeftCalibrationDone = false;
-	private bool lowerRightCalibrationDone = false;
+	// Are the calibrations achieved ? Kept static to avoid recalibration between scenes.
+	private static bool upperLeftCalibrationDone = false;
+	private static bool lowerRightCalibrationDone = false;
 
 	// Coordinates of the point targetted by the tablet on the screen (from -1 to 1). The z coordinate is useless (but RPC only supports Vector3).
 	private Vector3 point = Vector3.zero;
 	private Vector3 lastPoint = Vector3.zero; // For the last frame.
 
 	private void Start () {
+		// Set if the calibration happens now or not.
+		calibrating = beginWithCalibration;
+		RPCWrapper.RPC ("SetTargetActive", RPCMode.Server, !calibrating);
+
 		// Enable gyroscope.
 		Input.gyro.enabled = true;
 
 		// Initialize camera.
 		cameraStream = new WebCamTexture ();
-		cameraStream.Play ();
-
-		// Set if the calibration happens now or not.
-		calibrating = beginWithCalibration;
+		if (calibrating)
+			cameraStream.Play ();
 	}
 	
 	private void Update () {

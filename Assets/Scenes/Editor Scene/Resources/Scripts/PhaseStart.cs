@@ -3,6 +3,9 @@ using System.Collections;
 
 /*
  * Put the players at the position of this object.
+ * Both Windows and Android.
+ * 
+ * Use this script only for the prefabs of phases.
  * 
  * The players must have the tag "Player".
  */

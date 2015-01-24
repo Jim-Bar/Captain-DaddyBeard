@@ -19,7 +19,8 @@ using System.Collections.Generic;
  * - Add a dictionary of this delegate (do not forget to allocate it in AllocateDictionaries()).
  * - Create the corresponding overload of RegisterMethod().
  * - Idem for RPC().
- * - Finally, create the correct Receive_****() method.
+ * - Create the correct Receive_****() method.
+ * - Finally, fill the OnLevelWasLoaded() method.
  * 
  * This class will raise exceptions if methods not registered are called.
  * This class removes the RPCMode bug.
@@ -35,6 +36,7 @@ public class RPCWrapper : MonoBehaviour {
 	public delegate void TargetMethod_string (string arg);
 	public delegate void TargetMethod_Vector3 (Vector3 arg);
 	public delegate void TargetMethod_Quaternion (Quaternion arg);
+	public delegate void TargetMethod_int_int_int (int arg1, int arg2, int arg3);
 	
 	// Dictionaries that contain all the registered methods (sorted by type).
 	private static Dictionary<string, TargetMethod_void> methods_void;
@@ -44,6 +46,7 @@ public class RPCWrapper : MonoBehaviour {
 	private static Dictionary<string, TargetMethod_string> methods_string;
 	private static Dictionary<string, TargetMethod_Vector3> methods_Vector3;
 	private static Dictionary<string, TargetMethod_Quaternion> methods_Quaternion;
+	private static Dictionary<string, TargetMethod_int_int_int> methods_int_int_int;
 	
 	// Put the network view in cache (faster than reference networkView directly).
 	private static new NetworkView networkView = null;
@@ -62,7 +65,7 @@ public class RPCWrapper : MonoBehaviour {
 			}
 		}
 		else
-			Debug.LogWarning (GetType ().Name + " : Start() of " + GetType ().Name + " called more than one time");
+			Debug.LogWarning (GetType ().Name + " : Multiple instances of " + GetType ().Name + " detected");
 	}
 	
 	// Create the dictionaries of delegates.
@@ -74,6 +77,7 @@ public class RPCWrapper : MonoBehaviour {
 		methods_string = new Dictionary<string, TargetMethod_string> ();
 		methods_Vector3 = new Dictionary<string, TargetMethod_Vector3> ();
 		methods_Quaternion = new Dictionary<string, TargetMethod_Quaternion> ();
+		methods_int_int_int = new Dictionary<string, TargetMethod_int_int_int> ();
 	}
 	
 	// Register a method.
@@ -84,6 +88,7 @@ public class RPCWrapper : MonoBehaviour {
 	public static void RegisterMethod (TargetMethod_string method) { methods_string[method.Method.Name] = method; }
 	public static void RegisterMethod (TargetMethod_Vector3 method) { methods_Vector3[method.Method.Name] = method; }
 	public static void RegisterMethod (TargetMethod_Quaternion method) { methods_Quaternion[method.Method.Name] = method; }
+	public static void RegisterMethod (TargetMethod_int_int_int method) { methods_int_int_int[method.Method.Name] = method; }
 	
 	// Perform an RPC.
 	public static void RPC (string methodName, RPCMode receivers) { networkView.RPC ("Receive_void", receivers, methodName);	}
@@ -93,6 +98,7 @@ public class RPCWrapper : MonoBehaviour {
 	public static void RPC (string methodName, RPCMode receivers, string arg) { networkView.RPC ("Receive_string", receivers, methodName, arg); }
 	public static void RPC (string methodName, RPCMode receivers, Vector3 arg) { networkView.RPC ("Receive_Vector3", receivers, methodName, arg); }
 	public static void RPC (string methodName, RPCMode receivers, Quaternion arg) { networkView.RPC ("Receive_Quaternion", receivers, methodName, arg); }
+	public static void RPC (string methodName, RPCMode receivers, int arg1, int arg2, int arg3) { networkView.RPC ("Receive_int_int_int", receivers, methodName, arg1, arg2, arg3); }
 	
 	// Receive an RPC and call the targetted method (will raise an exception if there is no such method registered).
 	[RPC] private void Receive_void (string methodName) { methods_void[methodName] (); }
@@ -102,4 +108,17 @@ public class RPCWrapper : MonoBehaviour {
 	[RPC] private void Receive_string (string methodName, string arg) { methods_string[methodName] (arg); }
 	[RPC] private void Receive_Vector3 (string methodName, Vector3 arg) { methods_Vector3[methodName] (arg); }
 	[RPC] private void Receive_Quaternion (string methodName, Quaternion arg) { methods_Quaternion[methodName] (arg); }
+	[RPC] private void Receive_int_int_int (string methodName, int arg1, int arg2, int arg3) { methods_int_int_int[methodName] (arg1, arg2, arg3); }
+
+	// Clear methods registered each time a new scene is loaded.
+	private void OnLevelWasLoaded (int level) {
+		methods_void.Clear ();
+		methods_int.Clear ();
+		methods_bool.Clear ();
+		methods_float.Clear ();
+		methods_string.Clear ();
+		methods_Vector3.Clear ();
+		methods_Quaternion.Clear ();
+		methods_int_int_int.Clear ();
+	}
 }
