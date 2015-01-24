@@ -16,6 +16,8 @@ public class WorldRotation : MonoBehaviour {
 	[SerializeField] private float jumpDetection = 0.0025f;
 	[Tooltip("A value of 1 is normal, 0.5 is half the normal sensibility, ...")] [Range(0.1f, 1)]
 	[SerializeField] private float rollSensibility = 0.5f;
+	[Tooltip("When the angle is in the dead zone, the angle will be set to zero")] [Range(0, 5)]
+	[SerializeField] private int deadZone = 1;
 	[Tooltip("Strength of the low pass filter. Lower means a higher strength")] [Range(0.01f, 0.1f)]
 	[SerializeField] private float rollLowPassFilter = 0.05f;
 	[Tooltip("Layer of the objects of the world (note that all world's objects must have this layer)")]
@@ -41,6 +43,10 @@ public class WorldRotation : MonoBehaviour {
 	public void UpdateRoll (int deviceRoll) {
 		// Reduce roll sensibility, and negate the roll (is it the opposite on the device).
 		roll = - deviceRoll / (2.0f - rollSensibility);
+
+		// Apply dead zone.
+		if (Mathf.Abs (roll) < deadZone)
+			roll = 0;
 
 		// Find the point on the ground below the player.
 		RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector3.down, Mathf.Infinity, worldLayer);
