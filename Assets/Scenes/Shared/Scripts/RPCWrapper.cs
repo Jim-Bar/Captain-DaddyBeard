@@ -48,7 +48,14 @@ public class RPCWrapper : MonoBehaviour {
 	private static Dictionary<string, TargetMethod_Vector3> methods_Vector3;
 	private static Dictionary<string, TargetMethod_Quaternion> methods_Quaternion;
 	private static Dictionary<string, TargetMethod_int_int_int> methods_int_int_int;
-	
+
+	/*
+	 * When 'true', let exceptions propagate to the top when methods are not registered.
+	 * WARNING : When this option is 'true', ne message will be output when an RPC call fail !
+	 */
+	[Tooltip("Does the RPCWrapper output RPC fails ?")]
+	[SerializeField] private bool ignoreErrors = false;
+
 	// Put the network view in cache (faster than reference networkView directly).
 	private static new NetworkView networkView = null;
 	
@@ -92,7 +99,7 @@ public class RPCWrapper : MonoBehaviour {
 	public static void RegisterMethod (TargetMethod_int_int_int method) { methods_int_int_int[method.Method.Name] = method; }
 	
 	// Perform an RPC.
-	public static void RPC (string methodName, RPCMode receivers) { networkView.RPC ("Receive_void", receivers, methodName);	}
+	public static void RPC (string methodName, RPCMode receivers) { networkView.RPC ("Receive_void", receivers, methodName); }
 	public static void RPC (string methodName, RPCMode receivers, int arg) { networkView.RPC ("Receive_int", receivers, methodName, arg); }
 	public static void RPC (string methodName, RPCMode receivers, bool arg) { networkView.RPC ("Receive_bool", receivers, methodName, arg); }
 	public static void RPC (string methodName, RPCMode receivers, float arg) { networkView.RPC ("Receive_float", receivers, methodName, arg); }
@@ -102,14 +109,14 @@ public class RPCWrapper : MonoBehaviour {
 	public static void RPC (string methodName, RPCMode receivers, int arg1, int arg2, int arg3) { networkView.RPC ("Receive_int_int_int", receivers, methodName, arg1, arg2, arg3); }
 	
 	// Receive an RPC and call the targetted method (will raise an exception if there is no such method registered).
-	[RPC] private void Receive_void (string methodName) { methods_void[methodName] (); }
-	[RPC] private void Receive_int (string methodName, int arg) { methods_int[methodName] (arg); }
-	[RPC] private void Receive_bool (string methodName, bool arg) { methods_bool[methodName] (arg); }
-	[RPC] private void Receive_float (string methodName, float arg) { methods_float[methodName] (arg); }
-	[RPC] private void Receive_string (string methodName, string arg) { methods_string[methodName] (arg); }
-	[RPC] private void Receive_Vector3 (string methodName, Vector3 arg) { methods_Vector3[methodName] (arg); }
-	[RPC] private void Receive_Quaternion (string methodName, Quaternion arg) { methods_Quaternion[methodName] (arg); }
-	[RPC] private void Receive_int_int_int (string methodName, int arg1, int arg2, int arg3) { methods_int_int_int[methodName] (arg1, arg2, arg3); }
+	[RPC] private void Receive_void (string methodName) { if (methods_void.ContainsKey(methodName) || !ignoreErrors) methods_void[methodName] (); }
+	[RPC] private void Receive_int (string methodName, int arg) { if (methods_int.ContainsKey(methodName) || !ignoreErrors) methods_int[methodName] (arg); }
+	[RPC] private void Receive_bool (string methodName, bool arg) { if (methods_bool.ContainsKey(methodName) || !ignoreErrors) methods_bool[methodName] (arg); }
+	[RPC] private void Receive_float (string methodName, float arg) { if (methods_float.ContainsKey(methodName) || !ignoreErrors) methods_float[methodName] (arg); }
+	[RPC] private void Receive_string (string methodName, string arg) { if (methods_string.ContainsKey(methodName) || !ignoreErrors) methods_string[methodName] (arg); }
+	[RPC] private void Receive_Vector3 (string methodName, Vector3 arg) { if (methods_Vector3.ContainsKey(methodName) || !ignoreErrors) methods_Vector3[methodName] (arg); }
+	[RPC] private void Receive_Quaternion (string methodName, Quaternion arg) { if (methods_Quaternion.ContainsKey(methodName) || !ignoreErrors) methods_Quaternion[methodName] (arg); }
+	[RPC] private void Receive_int_int_int (string methodName, int arg1, int arg2, int arg3) { if (methods_int_int_int.ContainsKey(methodName) || !ignoreErrors) methods_int_int_int[methodName] (arg1, arg2, arg3); }
 
 	// Clear methods registered each time a new scene is loaded.
 	private void OnLevelWasLoaded (int level) {

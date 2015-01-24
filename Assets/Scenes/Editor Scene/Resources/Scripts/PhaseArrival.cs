@@ -9,6 +9,9 @@ using System.Collections;
  * 
  * The player(s) must have the tag "Player".
  */
+
+// 'Pragma' removes warnings as the fields bellow are not used on Android (see the comment bellow).
+#pragma warning disable 414
 public class PhaseArrival : MonoBehaviour {
 
 	[Tooltip("Is this phase the last of the current level ? If yes, information below will be ignored")]
@@ -20,7 +23,10 @@ public class PhaseArrival : MonoBehaviour {
 	[Tooltip("Type of the next phase")]
 	[SerializeField] private PhaseLoader.Type nextPhaseType = PhaseLoader.Type.SHOOT;
 
-	// Do NOT move this line further up.
+	/* 
+	 * Do NOT move this line further up (if you do, the settings in the editor for the fields
+	 * above will be lost when switching from Windows to Android in the Unity build settings).
+	 */
 	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 
 	private GameObject[] players;
@@ -46,7 +52,7 @@ public class PhaseArrival : MonoBehaviour {
 		if (!isFinalPhase)
 		{
 			RPCWrapper.RPC ("LoadNextPhase", RPCMode.Others, (int) nextPhaseType, nextLevel, nextPhase); // Tell the clients to load the next phase.
-			PhaseLoader.Load (nextPhaseType, nextLevel, nextPhase);
+			PhaseLoader.Load (nextLevel, nextPhase, nextPhaseType);
 		}
 		else
 		{

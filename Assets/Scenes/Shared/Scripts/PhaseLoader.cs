@@ -6,18 +6,27 @@ using System.Collections;
  * /!\ ONLY ONE INSTANCE OF THIS CLASS SHOULD BE USED AT THE SAME TIME /!\
  * 
  * HOW TO USE THIS CLASS :
- * 1 - First of all, add this script to a game manager and fill the fields (Shoot Scene Name and Deplacement Scene Name)
+ * 1 - First of all, add this script to a game manager and fill the fields 'Shoot Scene Name' and 'Deplacement Scene Name'
  * 	   which are the names of the scenes used for shooting and deplacement.
- * 2 - A phase is identified by a type (shoot or deplacement), a level number and a phase number.
- *     For instance if I want to load the third phase (let's say it is a deplacement phase) of the second level, I call :
- *     PhaseLoader.Load (PhaseLoader.Type.DEPLACEMENT, 2, 3);
+ * 2 - Fill also the field 'First Phases Types' which are just the type of the first phases of each level. There must have
+ *     as many elements as there are playable levels in the game.
+ * 3 - The phase loader automatically loads next phases when you have loaded the first phase of the level. To do so, call :
+ * 	   PhaseLoader.Load (levelIndex);
+ * 	   where 'levelIndex' is the number of the level (the first level should have the index 1, the second level 2, etc...).
+ * 3'- Alternatively, you can also load any other phase of a level (not only the first). A phase is identified by a type
+ *     (shoot or deplacement), a level number and a phase number. For instance if I want to load the third phase (let's say
+ *     it is a deplacement phase) of the second level, I call :
+ *     PhaseLoader.Load (2, 3, PhaseLoader.Type.DEPLACEMENT);
  * Note : You can also split the loading in two parts : PhaseLoader.Prepare (...) then PhaseLoader.Load ().
  * 
  * How to create a phase and load it later :
- * 1 - In a scene (can be an empty one, like EditorScene...) create an object 'World XX YY' where XX is the level number and YY the phase number.
+ * 1 - In the editor scene, create an object 'World XX YY' where XX is the level number and YY the phase number.
  * 2 - Add all the objects you want as children of 'World XX YY'.
- * 3 - Make a prefab of 'World XX YY' and put in the folder Scenes/Editor Scene/Resources/Phases.
- * 4 - You can now access it using the previously mentioned Load () method.
+ * 3 - Do not forget to put an start and an arrival
+ * 4 - Give to all the ground and platforms the layer 'World', and give the tag 'World' to the container 'World XX YY'.
+ * 5 - Make a prefab of 'World XX YY' and put in the folder Scenes/Editor Scene/Resources/Phases.
+ * 6 - You can now access it using the previously mentioned Load () method.
+ * 
  */
 public class PhaseLoader : MonoBehaviour {
 
@@ -26,6 +35,10 @@ public class PhaseLoader : MonoBehaviour {
 	[SerializeField] private string shootSceneName;
 	[Tooltip("Name of the scene of deplacement")]
 	[SerializeField] private string deplacementSceneName;
+
+	// Held the type of the first phase of each level.
+	[Tooltip("Types of the first phases of each level")]
+	[SerializeField] private Type[] firstPhasesTypes;
 	
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
 	private static string phaseName = null; // Name of the next phase to load.
@@ -53,13 +66,15 @@ public class PhaseLoader : MonoBehaviour {
 	 * 'level' is the number of the level.
 	 * 'phase' is the number of the phase inside the level.
 	 */
-	public static void Load (Type type, int level, int phase) {
-		Prepare (type, level, phase);
+	public static void Load (int level) { Load (level, 1, instance.firstPhasesTypes[level - 1]); }
+	public static void Load (int level, int phase, Type type) {
+		Prepare (level, phase, type);
 		Load ();
 	}
 
 	// Register phase data before loading it with Load ().
-	public static void Prepare (Type type, int level, int phase) {
+	public static void Prepare (int level) { Prepare (level, 1, instance.firstPhasesTypes[level - 1]); }
+	public static void Prepare (int level, int phase, Type type) {
 		CheckExist ();
 		phaseName = "World " + level.ToString("D2") + " " + phase.ToString("D2");
 		phaseType = type;

@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b3cd1ee4643814b9d903f402a0aa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreErrors: 1
 --- !u!148 &958027972
 NetworkView:
   m_ObjectHideFlags: 0
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootSceneName: Windows - ShootScene
   deplacementSceneName: Windows - MoveScene
+  firstPhasesTypes: 010000000000000001000000000000000000000000000000
 --- !u!1 &1256613053
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class PhaseWaitArrival : MonoBehaviour {
 	}
 	
 	private void LoadNextPhase (int nextPhaseType, int nextLevel, int nextPhase) {
-		PhaseLoader.Load ((PhaseLoader.Type) nextPhaseType, nextLevel, nextPhase);
+		PhaseLoader.Load (nextLevel, nextPhase, (PhaseLoader.Type) nextPhaseType);
 	}
 	
 	private void LoadScoreScene () {

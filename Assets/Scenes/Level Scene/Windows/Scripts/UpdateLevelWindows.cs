@@ -57,6 +57,6 @@ public class UpdateLevelWindows : MonoBehaviour {
 
 	public void LoadWeaponLevel(){
 		Application.LoadLevel ("Windows - WeaponScene");
-		PhaseLoader.Prepare (PhaseLoader.Type.DEPLACEMENT, levelChoice, 1);
+		PhaseLoader.Prepare (levelChoice);
 	}
 }
