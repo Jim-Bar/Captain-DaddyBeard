@@ -2,7 +2,7 @@
 using System.Collections;
 
 /*
- * A bullet is destroyed when touching any object but the player nor the target nor the arrival.
+ * A bullet is destroyed when touching any object but the player nor the arrival.
  * If the touched object is a monster, destroy it.
  * 
  * Windows and Android only (on Android only display an explosion).
@@ -19,9 +19,6 @@ public class Explode : MonoBehaviour {
 	// Reference towards the player.
 	private GameObject player = null;
 
-	// Reference towards the target.
-	private GameObject target = null;
-
 	// Reference towards the arrival.
 	private GameObject arrival = null;
 
@@ -36,10 +33,6 @@ public class Explode : MonoBehaviour {
 		else
 			player = players[0];
 
-		target = GameObject.Find ("Target");
-		if (target == null)
-			Debug.LogError (GetType ().Name + " : No target found.");
-
 		string arrivalTag = "Finish";
 		arrival = GameObject.FindGameObjectWithTag (arrivalTag);
 		if (arrival == null)
@@ -52,8 +45,8 @@ public class Explode : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Enemy"))
 			Network.Destroy (other.gameObject);
 
-		// If the object is not the player nor the target, destroy the bullet nor the arrival (and add explosion).
-		if (other.gameObject != player && other.gameObject != target && other.gameObject != arrival)
+		// If the object is not the player, destroy the bullet nor the arrival (and add explosion).
+		if (other.gameObject != player && other.gameObject != arrival)
 		{
 			Network.Destroy (gameObject);
 			Network.Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity, 0);
