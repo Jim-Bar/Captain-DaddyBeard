@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7376ff1130c81584cb4f3dc60983f302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletExplosion: {fileID: 158624, guid: 08530a094e1f8b04bb829c3762449ffa, type: 2}
 --- !u!148 &14884316
 NetworkView:
   m_ObjectHideFlags: 1

@@ -5,9 +5,11 @@ using System.Collections;
  * A bullet is destroyed when touching any object but the player nor the target nor the arrival.
  * If the touched object is a monster, destroy it.
  * 
- * Windows and Android only (but does nothing on Android, bullet are manager on the server).
+ * Windows and Android only (on Android only display an explosion).
  */
 public class Explode : MonoBehaviour {
+
+	[SerializeField] private GameObject bulletExplosion = null;
 
 	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 
@@ -56,4 +58,8 @@ public class Explode : MonoBehaviour {
 	}
 
 	#endif
+
+	private void OnDestroy () {
+		Instantiate (bulletExplosion, transform.position + Vector3.back, Quaternion.identity);
+	}
 }
