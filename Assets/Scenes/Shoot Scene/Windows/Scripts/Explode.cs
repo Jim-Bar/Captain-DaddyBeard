@@ -2,7 +2,7 @@
 using System.Collections;
 
 /*
- * A bullet is destroyed when touching any object but the player nor the target.
+ * A bullet is destroyed when touching any object but the player nor the target nor the arrival.
  * If the touched object is a monster, destroy it.
  * 
  * Windows and Android only (but does nothing on Android, bullet are manager on the server).
@@ -17,6 +17,9 @@ public class Explode : MonoBehaviour {
 	// Reference towards the target.
 	private GameObject target = null;
 
+	// Reference towards the arrival.
+	private GameObject arrival = null;
+
 	private void Start () {
 		string playerTag = "Player";
 		GameObject[] players = GameObject.FindGameObjectsWithTag (playerTag);
@@ -28,6 +31,11 @@ public class Explode : MonoBehaviour {
 		target = GameObject.Find ("Target");
 		if (target == null)
 			Debug.LogError (GetType ().Name + " : No target found.");
+
+		string arrivalTag = "Finish";
+		arrival = GameObject.FindGameObjectWithTag (arrivalTag);
+		if (arrival == null)
+			Debug.LogError (GetType ().Name + " : No arrival found. The arrival must have the tag \"" + arrivalTag + "\".");
 	}
 
 	// Destroy the bullet when it touches something.
@@ -36,14 +44,15 @@ public class Explode : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Enemy"))
 			Network.Destroy (other.gameObject);
 
-		// If the object is not the player nor the target, destroy the bullet.
-		if (other.gameObject != player && other.gameObject != target)
+		// If the object is not the player nor the target, destroy the bullet nor the arrival.
+		if (other.gameObject != player && other.gameObject != target && other.gameObject != arrival)
 			Network.Destroy (gameObject);
 	}
 
-	private void OnBecameInvisible () {
-		// Destroy the bullet if it is out of the screen.
-		Network.Destroy (gameObject);
+	private void Update () {
+		// Destroy the bullet if it is too far away.
+		if (Vector3.Distance (transform.position, Camera.main.transform.position) > 20)
+			Network.Destroy (gameObject);
 	}
 
 	#endif
