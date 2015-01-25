@@ -223,7 +223,7 @@ GameObject:
   - 4: {fileID: 526504809}
   - 114: {fileID: 526504808}
   m_Layer: 0
-  m_Name: MonsterLinker
+  m_Name: PrefabLinker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingMonster: {fileID: 5000000, guid: 76c6dd1c0586c8e4b99a2f9a32ca47eb, type: 2}
   walkingMonster: {fileID: 5000000, guid: 39af0a0fec5be3a4993c5555798f22d6, type: 2}
+  bullet: {fileID: 5050540, guid: c8d1aae2e65c0d94ab79d1b403cd5d49, type: 2}
 --- !u!4 &526504809
 Transform:
   m_ObjectHideFlags: 0
@@ -301,7 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
