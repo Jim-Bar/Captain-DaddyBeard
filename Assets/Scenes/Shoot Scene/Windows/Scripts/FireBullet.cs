@@ -30,6 +30,6 @@ public class FireBullet : MonoBehaviour {
 	private void ShootButtonPressed () {
 		GameObject bullet = Network.Instantiate (bulletPrefab, transform.position, Quaternion.identity, 0) as GameObject;
 		bullet.rigidbody2D.velocity = bulletSpeed * (target.transform.position - transform.position).normalized;
-		bullet.rigidbody2D.angularVelocity = Random.Range (-120, 120);
+		bullet.rigidbody2D.angularVelocity = Random.Range (-360, 360);
 	}
 }

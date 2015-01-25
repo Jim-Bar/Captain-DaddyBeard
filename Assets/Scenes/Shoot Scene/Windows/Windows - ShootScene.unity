@@ -444,4 +444,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1099013469}
   bulletPrefab: {fileID: 150540, guid: c8d1aae2e65c0d94ab79d1b403cd5d49, type: 2}
-  bulletSpeed: 10
+  bulletSpeed: 20
