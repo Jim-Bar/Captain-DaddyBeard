@@ -7,8 +7,11 @@ using System.Collections;
  * 
  * Windows and Android only (on Android only display an explosion).
  */
+
+#pragma warning disable 414
 public class Explode : MonoBehaviour {
 
+	// Prefab of a particle system.
 	[SerializeField] private GameObject bulletExplosion = null;
 
 	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
@@ -23,6 +26,9 @@ public class Explode : MonoBehaviour {
 	private GameObject arrival = null;
 
 	private void Start () {
+		if (bulletExplosion == null)
+			Debug.LogError (GetType ().Name + " : Field bullet explosion is empty");
+
 		string playerTag = "Player";
 		GameObject[] players = GameObject.FindGameObjectsWithTag (playerTag);
 		if (players.Length == 0)
@@ -46,9 +52,12 @@ public class Explode : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Enemy"))
 			Network.Destroy (other.gameObject);
 
-		// If the object is not the player nor the target, destroy the bullet nor the arrival.
+		// If the object is not the player nor the target, destroy the bullet nor the arrival (and add explosion).
 		if (other.gameObject != player && other.gameObject != target && other.gameObject != arrival)
+		{
 			Network.Destroy (gameObject);
+			Network.Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity, 0);
+		}
 	}
 
 	private void Update () {
@@ -58,8 +67,4 @@ public class Explode : MonoBehaviour {
 	}
 
 	#endif
-
-	private void OnDestroy () {
-		Instantiate (bulletExplosion, transform.position + Vector3.back, Quaternion.identity);
-	}
 }

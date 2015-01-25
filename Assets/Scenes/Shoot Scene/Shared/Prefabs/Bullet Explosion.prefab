@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 458624}
   - 198: {fileID: 19858624}
   - 199: {fileID: 19958624}
+  - 114: {fileID: 11409658}
   m_Layer: 0
   m_Name: Bullet Explosion
   m_TagString: Untagged
@@ -29,6 +30,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11409658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e50bf62e70d494d99c3540e37b94be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19858624
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -203,10 +215,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4282759372
+        rgba: 4285194228
       minMaxState: 0
     startSize:
-      scalar: .25
+      scalar: .5
       maxCurve:
         serializedVersion: 2
         m_Curve:
