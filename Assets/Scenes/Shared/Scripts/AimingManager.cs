@@ -39,7 +39,7 @@ public class AimingManager : MonoBehaviour {
 
 	private void Start () {
 		// Set if the calibration happens now or not.
-		calibrating = beginWithCalibration;
+		calibrating = !upperLeftCalibrationDone || !lowerRightCalibrationDone;
 		RPCWrapper.RPC ("SetTargetActive", RPCMode.Server, !calibrating);
 
 		// Enable gyroscope.
