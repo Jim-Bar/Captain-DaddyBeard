@@ -100,7 +100,7 @@ public class PhaseLoader : MonoBehaviour {
 	// Load a phase if the phase loader has been told to do so ('loadPhaseNextSceneLoading' set to 'true').
 	private void OnLevelWasLoaded (int level) {
 		// Do not load the phase on Android when the phase is deplacement.
-		#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+		#if UNITY_STANDALONE_WIN
 		if (loadPhaseNextSceneLoading)
 			LoadPhase ();
 		#elif UNITY_ANDROID

@@ -27,7 +27,7 @@ public class PhaseArrival : MonoBehaviour {
 	 * Do NOT move this line further up (if you do, the settings in the editor for the fields
 	 * above will be lost when switching from Windows to Android in the Unity build settings).
 	 */
-	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+	#if UNITY_STANDALONE_WIN
 
 	private GameObject[] players;
 	
