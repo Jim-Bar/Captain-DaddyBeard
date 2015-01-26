@@ -10,11 +10,7 @@ public class LevelChosen : MonoBehaviour {
 		levelChosen = 0;
 	}
 
-	public void ValidateLevel(){
-		if(levelChosen != 0){
-			RPCWrapper.RPC("LoadWeaponLevel", RPCMode.Server);
-			Application.LoadLevel ("Android - WeaponScene");
-			PhaseLoader.Prepare (levelChosen);
-		}
-	}
+	public void ValidatePressed(){
+		RPCWrapper.RPC("LoadWeaponLevel", RPCMode.Server);
+	}	
 }

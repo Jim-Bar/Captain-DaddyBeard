@@ -34,26 +34,17 @@ public class ScoreDisplay : MonoBehaviour {
 
 	//Change it when we have more than one level
 	public void NextLevelWin(){
-		Debug.Log ("Continue Pressed received Android > Windows");
-		Debug.Log ("Continue Pressed try to be sent Windows > Android");
 		RPCWrapper.RPC ("NextLevelAnd", RPCMode.Others);
-		Debug.Log ("Continue Pressed sent Windows > Android");
 		PhaseLoader.LoadNext ();
 	}
 
 	public void ReloadGameWin(){
-		Debug.Log ("Play Again Pressed received Android > Windows");
-		Debug.Log ("Play Again Pressed try to be sent Windows > Android");
 		RPCWrapper.RPC ("ReloadGameAnd", RPCMode.Others);
-		Debug.Log ("Play Again Pressed sent Windows > Android");
 		PhaseLoader.Reload ();
 	}
 
 	public void BacktoHomeWin(){
-		Debug.Log ("Quit Pressed received Android > Windows");
-		Debug.Log ("Quit Pressed try to be sent Windows > Android");
 		RPCWrapper.RPC ("BacktoHomeAnd", RPCMode.Others);
-		Debug.Log ("Quit Pressed sent Windows > Android");
 		Destroy(GameObject.Find("GameManager"));
 		Application.LoadLevel ("Windows - HomeScene");
 	}
