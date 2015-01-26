@@ -11,14 +11,17 @@ public class ScoreAction : MonoBehaviour {
 	}
 	
 	public void NextLevelAnd(){
+		Debug.Log ("Continue Pressed received Windows > Android");
 		PhaseLoader.LoadNext ();
 	}
 	
 	public void ReloadGameAnd(){
+		Debug.Log ("Play Again received Windows > Android");
 		PhaseLoader.Reload ();
 	}
 	
 	public void BacktoHomeAnd(){
+		Debug.Log ("Quit received Windows > Android");
 		Application.LoadLevel ("Android - HomeScene");
 	}
 }

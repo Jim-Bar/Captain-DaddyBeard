@@ -84,7 +84,7 @@ GameObject:
   - 224: {fileID: 598602666}
   - 222: {fileID: 598602668}
   - 114: {fileID: 598602667}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Score2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,6 +235,7 @@ GameObject:
   - 223: {fileID: 642269832}
   - 114: {fileID: 642269831}
   - 114: {fileID: 642269830}
+  - 114: {fileID: 642269833}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -320,6 +321,22 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &642269833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642269828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fa2b9520eccc845a8d3abcddbf84ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScore: {fileID: 1790235842}
+  score1: {fileID: 1075384610}
+  score2: {fileID: 598602667}
+  imageScore1: {fileID: 1418179180}
+  imageScore2: {fileID: 1195244848}
 --- !u!1 &1075384608
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +347,7 @@ GameObject:
   - 224: {fileID: 1075384609}
   - 222: {fileID: 1075384611}
   - 114: {fileID: 1075384610}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Score1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +413,7 @@ GameObject:
   - 224: {fileID: 1195244847}
   - 222: {fileID: 1195244849}
   - 114: {fileID: 1195244848}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +547,7 @@ GameObject:
   - 224: {fileID: 1418179182}
   - 222: {fileID: 1418179181}
   - 114: {fileID: 1418179180}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Image1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
