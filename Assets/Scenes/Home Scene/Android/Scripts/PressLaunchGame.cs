@@ -12,6 +12,11 @@ public class PressLaunchGame : MonoBehaviour {
 
 	public void LoadGame () {
 		Debug.Log (GetType ().Name + " : Launching game !");
-		Application.LoadLevel ("Android - LevelScene");
+		if(Player.id.Get() == 2){
+			Application.LoadLevel ("Android - LevelScene2");
+		}
+		else{
+			Application.LoadLevel ("Android - LevelScene");
+		}
 	}
 }
