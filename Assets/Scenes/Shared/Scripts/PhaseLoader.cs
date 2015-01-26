@@ -44,6 +44,7 @@ public class PhaseLoader : MonoBehaviour {
 	private static string phaseName = null; // Name of the next phase to load.
 	private static Type phaseType = Type.SHOOT; // Type of the next phase to load.
 	private static bool loadPhaseNextSceneLoading = false; // Will the phase loader load a phase on the next scene loading ?
+	private static int currentLevel = 0; // The level currently or lastly played.
 
 	// Type of the phase to be loaded.
 	public enum Type {
@@ -76,6 +77,7 @@ public class PhaseLoader : MonoBehaviour {
 	public static void Prepare (int level) { Prepare (level, 1, instance.firstPhasesTypes[level - 1]); }
 	public static void Prepare (int level, int phase, Type type) {
 		CheckExist ();
+		currentLevel = level;
 		phaseName = "World " + level.ToString("D2") + " " + phase.ToString("D2");
 		phaseType = type;
 	}
@@ -89,6 +91,16 @@ public class PhaseLoader : MonoBehaviour {
 			Application.LoadLevel (instance.shootSceneName);
 		else
 			Application.LoadLevel (instance.deplacementSceneName);
+	}
+
+	// Load the current level from the beginning.
+	public static void Reload () {
+		Load (currentLevel);
+	}
+
+	// Load the next level.
+	public static void LoadNext () {
+		Load (currentLevel + 1);
 	}
 
 	// Log an error message if there is no instance of this class.

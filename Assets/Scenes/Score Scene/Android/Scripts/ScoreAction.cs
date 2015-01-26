@@ -11,11 +11,11 @@ public class ScoreAction : MonoBehaviour {
 	}
 	
 	public void NextLevelAnd(){
-		PhaseLoader.Load ();// ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+		PhaseLoader.LoadNext ();
 	}
 	
 	public void ReloadGameAnd(){
-		PhaseLoader.Load ();// ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+		PhaseLoader.Reload ();
 	}
 	
 	public void BacktoHomeAnd(){

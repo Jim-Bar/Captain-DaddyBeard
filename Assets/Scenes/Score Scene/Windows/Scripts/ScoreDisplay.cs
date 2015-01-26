@@ -35,12 +35,12 @@ public class ScoreDisplay : MonoBehaviour {
 	//Change it when we have more than one level
 	public void NextLevelWin(){
 		RPCWrapper.RPC ("NextLevelAnd", RPCMode.Others);
-		PhaseLoader.Load ();// ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+		PhaseLoader.LoadNext ();
 	}
 
 	public void ReloadGameWin(){
 		RPCWrapper.RPC ("ReloadGameAnd", RPCMode.Others);
-		PhaseLoader.Load ();// ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+		PhaseLoader.Reload ();
 	}
 
 	public void BacktoHomeWin(){
