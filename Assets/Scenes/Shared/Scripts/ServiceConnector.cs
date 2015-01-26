@@ -4,7 +4,7 @@ using System.Diagnostics; // Process management.
 using System.Security.Principal; // Detection of admin privileges.
 
 // Includes for the UDP part of the server.
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -36,7 +36,7 @@ public class ServiceConnector : MonoBehaviour {
 	private static int connectionPort; // Used for IP discovering.
 	private static int standardPort; // Used when the client know the server IP (the game in general).
 
-	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+	#if UNITY_STANDALONE_WIN
 	// Debugging purpose : allow another program to keep the wifi hotspot online (do not recreate it each time the game is launched).
 	[Tooltip("Will the game create the wifi hotspot (it could be already created by another program) ?")]
 	[SerializeField] private bool createWifiHotspot = true;
@@ -45,6 +45,11 @@ public class ServiceConnector : MonoBehaviour {
 	void Start () {
 		DontDestroyOnLoad (transform.gameObject);
 		Connect ();
+
+		#if UNITY_ANDROID
+		// Receive the player id on connection.
+		RPCWrapper.RegisterMethod (GetPlayerId);
+		#endif
 	}
 
 	private void Connect () {
@@ -53,7 +58,7 @@ public class ServiceConnector : MonoBehaviour {
 		standardPort = 51977;
 
 		// Server side.
-		#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+		#if UNITY_STANDALONE_WIN
 		if (createWifiHotspot)
 			StartWifiHotspot (ssid, key); // Creates the wifi hotspot. This may take several seconds, so be patient on the client side.
 		else
@@ -75,10 +80,13 @@ public class ServiceConnector : MonoBehaviour {
 	/*
 	 * Server (Windows) side.
 	 */
-	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+	#if UNITY_STANDALONE_WIN
 
 	void OnPlayerConnected () {
 		UnityEngine.Debug.Log ("ServiceConnector : Client connected.");
+
+		// Send the player identifier. Every client receive it, but if they already have their, they ignore this message.
+		RPCWrapper.RPC ("GetPlayerId", RPCMode.Others, Network.connections.Length);
 	}
 
 	void OnDestroy () {
@@ -208,6 +216,11 @@ public class ServiceConnector : MonoBehaviour {
 
 	void OnDestroy () {
 		Network.Disconnect ();
+	}
+
+	// Receive the player id, sent by RPC by the server.
+	private void GetPlayerId (int playerId) {
+		Player.id.Set (playerId);
 	}
 
 	/*
