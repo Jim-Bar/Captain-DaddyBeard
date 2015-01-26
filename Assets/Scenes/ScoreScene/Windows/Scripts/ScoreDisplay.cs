@@ -7,12 +7,20 @@ public class ScoreDisplay : MonoBehaviour {
 	[SerializeField] Text totalScore;
 	[SerializeField] Text score1;
 	[SerializeField] Text score2;
+	[SerializeField] Image imageScore1;
+	[SerializeField] Image imageScore2;
 	// Use this for initialization
 	void Start () {
+		RPCWrapper.RegisterMethod (BacktoHomeWin);
+		RPCWrapper.RegisterMethod (ReloadGameWin);
+		RPCWrapper.RegisterMethod (NextLevelWin);
 		if(Network.connections.Length == 1){
 			int iScore1 = Player.score1.Get();
 			totalScore.text = iScore1.ToString();
-
+			score1.enabled = false;
+			score2.enabled = false;
+			imageScore1.enabled = false;
+			imageScore2.enabled = false;
 		}
 		else{
 			int iScore1 = Player.score1.Get();
@@ -22,6 +30,23 @@ public class ScoreDisplay : MonoBehaviour {
 			score1.text = iScore2.ToString();
 			totalScore.text = iTotalScore.ToString();
 		}
-	
 	}
+
+	//Change it when we have more than one level
+	public void NextLevelWin(){
+		RPCWrapper.RPC ("NextLevelAnd", RPCMode.Others);
+		PhaseLoader.Load ();// ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+	}
+
+	public void ReloadGameWin(){
+		RPCWrapper.RPC ("ReloadGameAnd", RPCMode.Others);
+		PhaseLoader.Load ();// ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+	}
+
+	public void BacktoHomeWin(){
+		RPCWrapper.RPC ("BacktoHomeAnd", RPCMode.Others);
+		Destroy(GameObject.Find("GameManager"));
+		Application.LoadLevel ("Windows - HomeScene");
+	}
+	
 }
