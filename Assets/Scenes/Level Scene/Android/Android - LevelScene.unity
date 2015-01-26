@@ -868,8 +868,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1296122773}
-        m_MethodName: ValidateLevel
+      - m_Target: {fileID: 1290290267}
+        m_MethodName: ValidatePressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
