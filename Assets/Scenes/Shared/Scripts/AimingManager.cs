@@ -13,8 +13,6 @@ public class AimingManager : MonoBehaviour {
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
 	[SerializeField] private bool debugMode = false; // If true, display calibration information on the screen.
-	[Tooltip("Should the calibration phase be enabled at the beginning ?")]
-	[SerializeField] private bool beginWithCalibration = true;
 
 	private WebCamTexture cameraStream = null; // Video stream from the device camera.
 	private bool calibrating = true;

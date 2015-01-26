@@ -70,7 +70,6 @@ public static class Player {
 		public void Set (int newId) {
 			if (!initialized)
 				id = newId;
-			Debug.Log ("Identifier : " + id);
 			initialized = true;
 		}
 		#endif

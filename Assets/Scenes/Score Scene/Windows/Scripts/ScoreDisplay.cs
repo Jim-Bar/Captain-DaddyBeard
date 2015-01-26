@@ -45,7 +45,6 @@ public class ScoreDisplay : MonoBehaviour {
 
 	public void BacktoHomeWin(){
 		RPCWrapper.RPC ("BacktoHomeAnd", RPCMode.Others);
-		Destroy(GameObject.Find("GameManager"));
 		Application.LoadLevel ("Windows - HomeScene");
 	}
 	
