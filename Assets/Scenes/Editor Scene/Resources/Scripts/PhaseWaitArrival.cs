@@ -23,7 +23,10 @@ public class PhaseWaitArrival : MonoBehaviour {
 	}
 	
 	private void LoadScoreScene () {
-		Application.LoadLevel ("Android - ScoreScene");
+		if (Player.id.Get () == 1)
+			Application.LoadLevel ("Android - ScoreScene1");
+		else if (Player.id.Get () == 2)
+			Application.LoadLevel ("Android - ScoreScene2");
 	}
 	
 	#endif
