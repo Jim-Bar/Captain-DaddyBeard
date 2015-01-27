@@ -10,8 +10,8 @@ public class NextLevel : MonoBehaviour {
 
 	public void ValidateLevel(int levelChosen){
 		if(levelChosen != 0){
-			Application.LoadLevel ("Android - WeaponScene");
 			PhaseLoader.Prepare (levelChosen);
+			Application.LoadLevel ("Android - WeaponScene");
 		}
 	}
 }

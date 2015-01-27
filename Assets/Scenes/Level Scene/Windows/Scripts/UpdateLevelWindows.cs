@@ -57,7 +57,7 @@ public class UpdateLevelWindows : MonoBehaviour {
 
 	public void LoadWeaponLevel(){
 		RPCWrapper.RPC ("ValidateLevel", RPCMode.Others, levelChoice);
-		Application.LoadLevel ("Windows - WeaponScene");
 		PhaseLoader.Prepare (levelChoice);
+		Application.LoadLevel ("Windows - WeaponScene");
 	}
 }

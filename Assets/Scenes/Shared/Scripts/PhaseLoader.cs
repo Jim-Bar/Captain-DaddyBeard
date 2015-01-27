@@ -36,7 +36,7 @@ public class PhaseLoader : MonoBehaviour {
 	[Tooltip("Name of the scene of deplacement")]
 	[SerializeField] private string deplacementSceneName;
 
-	// Held the type of the first phase of each level.
+	// hold the type of the first phase of each level.
 	[Tooltip("Types of the first phases of each level")]
 	[SerializeField] private Type[] firstPhasesTypes;
 	
@@ -114,10 +114,17 @@ public class PhaseLoader : MonoBehaviour {
 		// Do not load the phase on Android when the phase is deplacement.
 		#if UNITY_STANDALONE_WIN
 		if (loadPhaseNextSceneLoading)
+		{
+			loadPhaseNextSceneLoading = false;
 			LoadPhase ();
+		}
 		#elif UNITY_ANDROID
-		if (loadPhaseNextSceneLoading && phaseType != Type.DEPLACEMENT)
-			LoadPhase ();
+		if (loadPhaseNextSceneLoading)
+		{
+			loadPhaseNextSceneLoading = false;
+			if (phaseType != Type.DEPLACEMENT)
+				LoadPhase ();
+		}
 
 		// Create an object which will wait for the server notification to load next scene.
 		GameObject phaseArrivalWaiter = new GameObject ("Phase Arrival Waiter");
@@ -127,7 +134,6 @@ public class PhaseLoader : MonoBehaviour {
 
 	// Load a prefab of a phase.
 	private void LoadPhase () {
-		loadPhaseNextSceneLoading = false;
 		Object world = Resources.Load ("Phases/" + phaseName);
 		if (world != null)
 		{
