@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowUp: {fileID: 161412, guid: cd534f4eeacec134d9a772a293901d23, type: 2}
+  ArrowDown: {fileID: 183314, guid: 54c776c40e4ee5d4196d9734c7324112, type: 2}
+  ArrowLeft: {fileID: 199852, guid: eec9d0a9e6459824494423082e72ceb4, type: 2}
+  ArrowRight: {fileID: 129302, guid: 64f62ba766a55ac4e906371392072ade, type: 2}
 --- !u!1 &1185262927
 GameObject:
   m_ObjectHideFlags: 0

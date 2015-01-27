@@ -8,6 +8,15 @@ public class ComboManager : MonoBehaviour {
 	[Tooltip("Prefab of Arrow Up")]
 	[SerializeField] private GameObject ArrowUp = null;
 
+	[Tooltip("Prefab of Arrow Down")]
+	[SerializeField] private GameObject ArrowDown = null;
+
+	[Tooltip("Prefab of Arrow Left")]
+	[SerializeField] private GameObject ArrowLeft = null;
+
+	[Tooltip("Prefab of Arrow Right")]
+	[SerializeField] private GameObject ArrowRight = null;
+
 	private string ArrowTag = null;
 	private GameObject Arrow;
 	private Vector3 fp;   //First touch position
@@ -22,6 +31,15 @@ public class ComboManager : MonoBehaviour {
 		if (ArrowUp == null)
 			Debug.LogError (GetType ().Name + " : The field 'ArrowUp' is empty");
 
+		if (ArrowDown == null)
+			Debug.LogError (GetType ().Name + " : The field 'ArrowDown' is empty");
+
+		if (ArrowLeft == null)
+			Debug.LogError (GetType ().Name + " : The field 'ArrowLeft' is empty");
+
+		if (ArrowRight == null)
+			Debug.LogError (GetType ().Name + " : The field 'ArrowRight' is empty");
+
 		RPCWrapper.RegisterMethod(ComboTask);
 		dragDistance = Screen.height*20/100; //dragDistance is 20% height of the screen 
 	
@@ -31,16 +49,34 @@ public class ComboManager : MonoBehaviour {
 
 		Debug.Log("combo sent");
 
-		ArrowTag = comboTag;
+		if (ArrowTag == null) {
 
-		Debug.Log(ArrowTag);
+						ArrowTag = comboTag;
 
-		if (ArrowTag.Equals ("ArrowUp")) {
-			Debug.Log ("instantiate arrow ");
-			Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0 );
-			Arrow = Instantiate (ArrowUp, pos, Quaternion.identity) as GameObject;
+						Debug.Log (ArrowTag);
 
-		}
+						if (ArrowTag.Equals ("ArrowUp")) {
+								Debug.Log ("instantiate arrow ");
+								Vector3 pos = new Vector3 (transform.position.x, transform.position.y, 0);
+								Arrow = Instantiate (ArrowUp, pos, Quaternion.identity) as GameObject;
+
+						} else if (ArrowTag.Equals ("ArrowDown")) {
+								Debug.Log ("instantiate arrow ");
+								Vector3 pos = new Vector3 (transform.position.x, transform.position.y, 0);
+								Arrow = Instantiate (ArrowDown, pos, Quaternion.identity) as GameObject;
+			
+						} else if (ArrowTag.Equals ("ArrowLeft")) {
+								Debug.Log ("instantiate arrow ");
+								Vector3 pos = new Vector3 (transform.position.x, transform.position.y, 0);
+								Arrow = Instantiate (ArrowLeft, pos, Quaternion.identity) as GameObject;
+			
+						} else if (ArrowTag.Equals ("ArrowRight")) {
+								Debug.Log ("instantiate arrow ");
+								Vector3 pos = new Vector3 (transform.position.x, transform.position.y, 0);
+								Arrow = Instantiate (ArrowRight, pos, Quaternion.identity) as GameObject;
+			
+						}
+				}
 
 	}
 	
@@ -69,10 +105,30 @@ public class ComboManager : MonoBehaviour {
 						if ((lp.x>fp.x))  //If the movement was to the right)
 						{   //Right swipe
 							Debug.Log("Right Swipe");
+							if(ArrowTag.Equals("ArrowRight")) {
+								Destroy(Arrow);
+								ArrowTag = null;
+								if (Network.connections.Length > 0) {
+									Debug.Log("combo done"); 
+									bool ok = true;
+									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+								}
+								
+							}
 						}
 						else
 						{   //Left swipe
 							Debug.Log("Left Swipe"); 
+							if(ArrowTag.Equals("ArrowLeft")) {
+								Destroy(Arrow);
+								ArrowTag = null;
+								if (Network.connections.Length > 0) {
+									Debug.Log("combo done"); 
+									bool ok = true;
+									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+								}
+								
+							}
 						}
 					}
 					else
@@ -83,12 +139,27 @@ public class ComboManager : MonoBehaviour {
 							if(ArrowTag.Equals("ArrowUp")) {
 								Destroy(Arrow);
 								ArrowTag = null;
+								if (Network.connections.Length > 0) {
+									Debug.Log("combo done"); 
+									bool ok = true;
+									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+								}
 
 							}
 						}
 						else
 						{   //Down swipe
 							Debug.Log("Down Swipe");
+							if(ArrowTag.Equals("ArrowDown")) {
+								Destroy(Arrow);
+								ArrowTag = null;
+								if (Network.connections.Length > 0) {
+									Debug.Log("combo done"); 
+									bool ok = true;
+									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+								}
+								
+							}
 						}
 					}
 				} 
