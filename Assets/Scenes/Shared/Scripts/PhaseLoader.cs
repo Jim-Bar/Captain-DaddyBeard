@@ -42,9 +42,13 @@ public class PhaseLoader : MonoBehaviour {
 	
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
 	private static string phaseName = null; // Name of the next phase to load.
-	private static Type phaseType = Type.SHOOT; // Type of the next phase to load.
+	private static int nextLevel = 0; // The next level to load.
+	private static int nextPhase = 0; // The next phase to load.
+	private static Type nextPhaseType = Type.SHOOT; // Type of the next phase to load.
 	private static bool loadPhaseNextSceneLoading = false; // Will the phase loader load a phase on the next scene loading ?
 	private static int currentLevel = 0; // The level currently or lastly played.
+	private static int currentPhase = 0; // The phase currently or lastly played.
+	private static Type currentPhaseType = Type.SHOOT; // The type of the phase currently or lastly played.
 
 	// Type of the phase to be loaded.
 	public enum Type {
@@ -77,9 +81,10 @@ public class PhaseLoader : MonoBehaviour {
 	public static void Prepare (int level) { Prepare (level, 1, instance.firstPhasesTypes[level - 1]); }
 	public static void Prepare (int level, int phase, Type type) {
 		CheckExist ();
-		currentLevel = level;
+		nextLevel = level;
+		nextPhase = phase;
+		nextPhaseType = type;
 		phaseName = "World " + level.ToString("D2") + " " + phase.ToString("D2");
-		phaseType = type;
 	}
 
 	// Load a phase based on the data set by Prepare ().
@@ -87,7 +92,7 @@ public class PhaseLoader : MonoBehaviour {
 		CheckExist ();
 		loadPhaseNextSceneLoading = true;
 
-		if (phaseType == Type.SHOOT)
+		if (nextPhaseType == Type.SHOOT)
 			Application.LoadLevel (instance.shootSceneName);
 		else
 			Application.LoadLevel (instance.deplacementSceneName);
@@ -96,6 +101,11 @@ public class PhaseLoader : MonoBehaviour {
 	// Load the current level from the beginning.
 	public static void Reload () {
 		Load (currentLevel);
+	}
+
+	// Load the current phase of the current level.
+	public static void ReloadPhase () {
+		Load (currentLevel, currentPhase, currentPhaseType);
 	}
 
 	// Load the next level.
@@ -111,25 +121,26 @@ public class PhaseLoader : MonoBehaviour {
 
 	// Load a phase if the phase loader has been told to do so ('loadPhaseNextSceneLoading' set to 'true').
 	private void OnLevelWasLoaded (int level) {
-		// Do not load the phase on Android when the phase is deplacement.
-		#if UNITY_STANDALONE_WIN
 		if (loadPhaseNextSceneLoading)
 		{
 			loadPhaseNextSceneLoading = false;
+			currentLevel = nextLevel;
+			currentPhase = nextPhase;
+			currentPhaseType = nextPhaseType;
+
+			// Do not load the phase on Android when the phase is deplacement.
+			#if UNITY_STANDALONE_WIN
 			LoadPhase ();
-		}
-		#elif UNITY_ANDROID
-		if (loadPhaseNextSceneLoading)
-		{
-			loadPhaseNextSceneLoading = false;
-			if (phaseType != Type.DEPLACEMENT)
+			#elif UNITY_ANDROID
+			if (nextPhaseType != Type.DEPLACEMENT)
 				LoadPhase ();
+			#endif
 		}
 
 		// Create an object which will wait for the server notification to load next scene.
 		GameObject phaseArrivalWaiter = new GameObject ("Phase Arrival Waiter");
 		phaseArrivalWaiter.AddComponent<PhaseWaitArrival> ();
-		#endif
+
 	}
 
 	// Load a prefab of a phase.
