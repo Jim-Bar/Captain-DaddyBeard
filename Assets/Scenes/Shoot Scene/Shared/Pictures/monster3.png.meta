@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: dc7e725761fbfcb42857f80b7fe165f2
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: monster3_0
+    21300002: monster3_1
+    21300004: monster3_2
+    21300006: monster3_3
+    21300008: monster3_4
+    21300010: monster3_5
+    21300012: monster3_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,13 +32,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -42,6 +49,76 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: monster3_0
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 112
+        width: 181
+        height: 441
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monster3_1
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 80
+        width: 233
+        height: 360
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monster3_2
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 47
+        width: 234
+        height: 348
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monster3_3
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 3
+        width: 308
+        height: 368
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monster3_4
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 47
+        width: 244
+        height: 330
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monster3_5
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 81
+        width: 272
+        height: 350
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monster3_6
+      rect:
+        serializedVersion: 2
+        x: 1771
+        y: 145
+        width: 215
+        height: 430
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

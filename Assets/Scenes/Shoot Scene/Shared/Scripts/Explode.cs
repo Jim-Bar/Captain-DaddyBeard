@@ -46,7 +46,7 @@ public class Explode : MonoBehaviour {
 			Network.Destroy (other.gameObject);
 
 		// If the object is not the player, destroy the bullet nor the arrival (and add explosion).
-		if (other.gameObject != player && other.gameObject != arrival)
+		if (other.gameObject != player && other.gameObject != arrival && !other.gameObject.CompareTag ("Bonus"))
 		{
 			Network.Destroy (gameObject);
 			Network.Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity, 0);
