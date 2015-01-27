@@ -38,7 +38,7 @@ public class AimingManager : MonoBehaviour {
 	private void Start () {
 		// Set if the calibration happens now or not.
 		calibrating = !upperLeftCalibrationDone || !lowerRightCalibrationDone;
-		RPCWrapper.RPC ("SetTargetActive", RPCMode.Server, !calibrating);
+		RPCWrapper.RPC ("SetVisible", RPCMode.Server, !calibrating);
 
 		// Enable gyroscope.
 		Input.gyro.enabled = true;
@@ -95,7 +95,7 @@ public class AimingManager : MonoBehaviour {
 				upperLeftCalibrationDone = false;
 				lowerRightCalibrationDone = false;
 				calibrating = true;
-				RPCWrapper.RPC ("SetTargetActive", RPCMode.Server, !calibrating);
+				RPCWrapper.RPC ("SetVisible", RPCMode.Server, !calibrating);
 				if (!cameraStream.isPlaying) // If the camera is not already playing and we want to recalibrate.
 				    cameraStream.Play ();
 			}
@@ -116,7 +116,7 @@ public class AimingManager : MonoBehaviour {
 		localUpperLeftRotation = Quaternion.Inverse(upperLeftCalibration) * centerCalibration;
 		localLowerRightRotation = Quaternion.Inverse(lowerRightCalibration) * centerCalibration;
 		calibrating = false;
-		RPCWrapper.RPC ("SetTargetActive", RPCMode.Server, !calibrating);
+		RPCWrapper.RPC ("SetVisible", RPCMode.Server, !calibrating);
 		if (!alwaysDisplayCamera)
 			cameraStream.Stop ();
 	}

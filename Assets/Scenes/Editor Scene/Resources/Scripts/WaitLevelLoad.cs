@@ -2,13 +2,14 @@
 using System.Collections;
 
 /*
- * This script is used when a phase is finished : the 'PhaseArrival' script will then
- * call an RPC below to tell Android to load the next scene.
+ * This script is used when :
+ * - a phase is finished : the 'PhaseArrival' script will then call an RPC below to tell Android to load the next scene.
+ * - the player collide with a dead zone : the 'DeadZone' script will do the same than above.
  * 
  * Both Windows and Android (although it does nothing on Windows).
  * Use this script only for the prefabs of phases.
  */
-public class PhaseWaitArrival : MonoBehaviour {
+public class WaitLevelLoad : MonoBehaviour {
 	
 	#if UNITY_ANDROID
 	
@@ -16,6 +17,7 @@ public class PhaseWaitArrival : MonoBehaviour {
 		// Server tells clients when to load next phase.
 		RPCWrapper.RegisterMethod (LoadNextPhase);
 		RPCWrapper.RegisterMethod (LoadScoreScene);
+		RPCWrapper.RegisterMethod (ReloadCurrentPhase);
 	}
 	
 	private void LoadNextPhase (int nextPhaseType, int nextLevel, int nextPhase) {
@@ -28,6 +30,10 @@ public class PhaseWaitArrival : MonoBehaviour {
 		else if (Player.id.Get () == 2)
 			Application.LoadLevel ("Android - ScoreScene2");
 	}
-	
+
+	private void ReloadCurrentPhase () {
+		PhaseLoader.ReloadPhase ();
+	}
+
 	#endif
 }

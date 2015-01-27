@@ -134,13 +134,12 @@ public class PhaseLoader : MonoBehaviour {
 			#elif UNITY_ANDROID
 			if (nextPhaseType != Type.DEPLACEMENT)
 				LoadPhase ();
+
+			// Create an object which will wait for the server notification to load next scene.
+			GameObject levelLoadWaiter = new GameObject ("Level Loading Waiter");
+			levelLoadWaiter.AddComponent<WaitLevelLoad> ();
 			#endif
 		}
-
-		// Create an object which will wait for the server notification to load next scene.
-		GameObject phaseArrivalWaiter = new GameObject ("Phase Arrival Waiter");
-		phaseArrivalWaiter.AddComponent<PhaseWaitArrival> ();
-
 	}
 
 	// Load a prefab of a phase.
