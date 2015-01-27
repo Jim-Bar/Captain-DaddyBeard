@@ -12,15 +12,18 @@ using System.Collections;
  */
 public class PrefabLinker : MonoBehaviour {
 
-	[SerializeField] private Rigidbody2D flyingMonster;
-	[SerializeField] private Rigidbody2D walkingMonster;
+	[SerializeField] private GameObject flyingMonster;
+	[SerializeField] private GameObject jumpingMonster;
+	[SerializeField] private GameObject slipingMonster;
 	[SerializeField] private Rigidbody2D bullet;
 	
 	void Start () {
 		if (flyingMonster == null)
 			Debug.LogError (GetType ().Name + " : The field 'flyingMonster' is empty");
-		if (walkingMonster == null)
+		if (jumpingMonster == null)
 			Debug.LogError (GetType ().Name + " : The field 'walkingMonster' is empty");
+		if (slipingMonster == null)
+			Debug.LogError (GetType ().Name + " : The field 'slipingMonster' is empty");
 		if (bullet == null)
 			Debug.LogError (GetType ().Name + " : The field 'bullet' is empty");
 

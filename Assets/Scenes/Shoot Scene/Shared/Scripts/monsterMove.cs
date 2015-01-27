@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class monsterMove : MonoBehaviour {
+public class MonsterMove : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+	#if UNITY_STANDALONE_WIN
 	void Update () {
-		transform.Translate (-0.1f, 0, 0);
+		transform.Translate (-0.075f, 0, 0);
 	}
-
-
+	#endif
 }

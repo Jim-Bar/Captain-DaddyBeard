@@ -6,7 +6,7 @@ public class GyroManager : MonoBehaviour {
 	private int roll = 0;
 	private bool fisrtCalibrationDone = false;
 	private Quaternion calibration = Quaternion.identity;
-	private const int marginToRecalibrate = 50; // Variation in degrees beyong which a calibration is made.
+	private const int marginToRecalibrate = 120; // Variation in degrees beyong which a calibration is made.
 
 	void Start () {
 		Input.gyro.enabled = true;

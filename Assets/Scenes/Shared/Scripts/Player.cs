@@ -42,7 +42,7 @@ public static class Player {
 	}
 
 	public class Energy {
-		private const int maxEnergy = 100;
+		private const int maxEnergy = 200;
 		private int energy = maxEnergy;
 		public int Get () { return energy;	}
 

@@ -16,15 +16,15 @@ public class MonsterSpawner : MonoBehaviour {
 	[SerializeField] private GameObject slipingMonster;
 
 	void Update () {
-		SpawnMonster (flyingMonster);
+		SpawnMonster (flyingMonster, 3);
 		SpawnMonster (jumpingMonster);
 		SpawnMonster (slipingMonster);
 	}
 
-	private void SpawnMonster (GameObject monsterPrefab) {
+	private void SpawnMonster (GameObject monsterPrefab, float height = 0) {
 		if (Random.Range (0, 500) < 1)
 		{
-			GameObject monster = Network.Instantiate (monsterPrefab, Camera.main.transform.position + new Vector3 (20, 3, 10), Quaternion.identity, 0) as GameObject;
+			GameObject monster = Network.Instantiate (monsterPrefab, Camera.main.transform.position + new Vector3 (20, height, 10), Quaternion.identity, 0) as GameObject;
 			monster.transform.parent = gameObject.transform;			
 		}
 	}
