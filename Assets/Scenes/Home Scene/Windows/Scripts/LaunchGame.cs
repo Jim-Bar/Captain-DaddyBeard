@@ -10,7 +10,7 @@ public class LaunchGame : MonoBehaviour {
 	private bool targetted = false;
 
 	void Start () {
-		// Register TryLaunchingGame() in the RPC wrapper.
+		//this line is very important, that is the way we use to call any sound from the sound manager
 		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundValidate ();
 		RPCWrapper.RegisterMethod (TryLaunchingGame);
 	}
