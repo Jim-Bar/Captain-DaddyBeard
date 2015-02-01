@@ -11,6 +11,7 @@ public class LaunchGame : MonoBehaviour {
 
 	void Start () {
 		// Register TryLaunchingGame() in the RPC wrapper.
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundValidate ();
 		RPCWrapper.RegisterMethod (TryLaunchingGame);
 	}
 
