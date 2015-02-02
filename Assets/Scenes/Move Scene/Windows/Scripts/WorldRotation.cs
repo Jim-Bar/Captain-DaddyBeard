@@ -38,7 +38,7 @@ public class WorldRotation : MonoBehaviour {
 	void Start () {
 		RPCWrapper.RegisterMethod(UpdateRoll);
 		RPCWrapper.RegisterMethod(JumpPlayer);
-		RPCWrapper.RegisterMethod(ComboTest);
+		//RPCWrapper.RegisterMethod(ComboTest);
 		
 		GetReferenceToPlayer ();
 		GetReferenceToWorld ();
@@ -105,10 +105,10 @@ public class WorldRotation : MonoBehaviour {
 				arg = "ArrowRight";
 				break;
 			}
-			if (Network.connections.Length > 0) {
-				Debug.Log("Combo"); 
-				RPCWrapper.RPC ("ComboTask", RPCMode.Others, arg);
-			}
+			//if (Network.connections.Length > 0) {
+				//Debug.Log("Combo"); 
+				//RPCWrapper.RPC ("ComboTask", RPCMode.Others, arg);
+			//}
 				
 		}		
 	}

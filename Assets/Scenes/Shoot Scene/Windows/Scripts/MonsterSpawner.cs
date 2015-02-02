@@ -17,11 +17,11 @@ public class MonsterSpawner : MonoBehaviour {
 
 	void Update () {
 		SpawnMonster (flyingMonster, 3);
-		SpawnMonster (jumpingMonster);
-		SpawnMonster (slipingMonster);
+		SpawnMonster (jumpingMonster,0);
+		SpawnMonster (slipingMonster,0);
 	}
 
-	private void SpawnMonster (GameObject monsterPrefab, float height = 0) {
+	private void SpawnMonster (GameObject monsterPrefab, float height) {
 		if (Random.Range (0, 500) < 1)
 		{
 			GameObject monster = Network.Instantiate (monsterPrefab, Camera.main.transform.position + new Vector3 (20, height, 10), Quaternion.identity, 0) as GameObject;

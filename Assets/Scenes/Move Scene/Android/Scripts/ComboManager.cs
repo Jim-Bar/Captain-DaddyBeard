@@ -111,7 +111,7 @@ public class ComboManager : MonoBehaviour {
 								if (Network.connections.Length > 0) {
 									Debug.Log("combo done"); 
 									bool ok = true;
-									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+									RPCWrapper.RPC ("ElevatorCombo", RPCMode.Others, ok);
 								}
 								
 							}
@@ -125,7 +125,7 @@ public class ComboManager : MonoBehaviour {
 								if (Network.connections.Length > 0) {
 									Debug.Log("combo done"); 
 									bool ok = true;
-									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+									RPCWrapper.RPC ("ElevatorCombo", RPCMode.Others, ok);
 								}
 								
 							}
@@ -142,7 +142,7 @@ public class ComboManager : MonoBehaviour {
 								if (Network.connections.Length > 0) {
 									Debug.Log("combo done"); 
 									bool ok = true;
-									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+									RPCWrapper.RPC ("ElevatorCombo", RPCMode.Others, ok);
 								}
 
 							}
@@ -156,7 +156,7 @@ public class ComboManager : MonoBehaviour {
 								if (Network.connections.Length > 0) {
 									Debug.Log("combo done"); 
 									bool ok = true;
-									RPCWrapper.RPC ("ComboTest", RPCMode.Others, ok);
+									RPCWrapper.RPC ("ElevatorCombo", RPCMode.Others, ok);
 								}
 								
 							}
