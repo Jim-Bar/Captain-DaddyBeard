@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476742}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -494,6 +495,22 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e1c5b39e4c2c644a84c4241f26ef3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 176744}
+  validate: {fileID: 176754}
+  theme: {fileID: 176750}
+  shoot: {fileID: 176752}
+  explode: {fileID: 176746}
 --- !u!114 &11476742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,6 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6e6b84181f5d14fa7956b72e1de8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createWifiHotspot: 1
 --- !u!114 &11476744
 MonoBehaviour:
   m_ObjectHideFlags: 1
