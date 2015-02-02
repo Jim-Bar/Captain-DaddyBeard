@@ -9,7 +9,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	public static GameObject itemBeingDragged;
 	Vector3 startPosition;
 	Vector2 touchPosition;
-	Transform startParent;
+	//Transform startParent;
 
 	#region IBeginDragHandler implementation
 
@@ -17,7 +17,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	{
 		itemBeingDragged = gameObject;
 		startPosition = transform.position;
-		startParent = transform.parent;
+		//startParent = transform.parent;
 		GetComponent<CanvasGroup> ().blocksRaycasts = false;
 	}
 
