@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -977,9 +977,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 171663028}
   player2: {fileID: 216264617}
+  weapon11: {fileID: 1013435267}
+  weapon12: {fileID: 560212424}
+  weapon13: {fileID: 1482806664}
   weapon21: {fileID: 358411600}
   weapon22: {fileID: 1579880125}
   weapon23: {fileID: 1786700313}
+  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
+  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
+  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
+  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
 --- !u!1 &1786700311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
