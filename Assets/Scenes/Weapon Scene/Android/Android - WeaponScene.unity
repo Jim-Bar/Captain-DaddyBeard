@@ -85,6 +85,7 @@ GameObject:
   - 222: {fileID: 323570469}
   - 114: {fileID: 323570468}
   - 114: {fileID: 323570470}
+  - 225: {fileID: 323570471}
   m_Layer: 5
   m_Name: Weapon2
   m_TagString: Untagged
@@ -148,6 +149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponNumber: 2
+--- !u!225 &323570471
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323570466}
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &359465036
 Prefab:
   m_ObjectHideFlags: 0
@@ -689,6 +700,7 @@ GameObject:
   - 222: {fileID: 901147661}
   - 114: {fileID: 901147660}
   - 114: {fileID: 901147662}
+  - 225: {fileID: 901147663}
   m_Layer: 5
   m_Name: Weapon3
   m_TagString: Untagged
@@ -752,6 +764,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponNumber: 3
+--- !u!225 &901147663
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 901147658}
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1067086614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +1601,7 @@ GameObject:
   - 222: {fileID: 1895155415}
   - 114: {fileID: 1895155414}
   - 114: {fileID: 1895155416}
+  - 225: {fileID: 1895155417}
   m_Layer: 5
   m_Name: Weapon4
   m_TagString: Untagged
@@ -1642,6 +1665,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponNumber: 4
+--- !u!225 &1895155417
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1895155412}
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1916850287
 GameObject:
   m_ObjectHideFlags: 0
