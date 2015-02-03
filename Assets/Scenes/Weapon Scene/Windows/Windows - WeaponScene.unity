@@ -1067,12 +1067,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 171663028}
   player2: {fileID: 216264617}
-  weapon11: {fileID: 0}
-  weapon12: {fileID: 0}
-  weapon13: {fileID: 0}
-  weapon21: {fileID: 0}
-  weapon22: {fileID: 0}
-  weapon23: {fileID: 0}
+  weapon11: {fileID: 1013435265}
+  weapon12: {fileID: 560212422}
+  weapon13: {fileID: 1482806662}
+  weapon21: {fileID: 358411598}
+  weapon22: {fileID: 1579880124}
+  weapon23: {fileID: 1786700311}
 --- !u!1 &1786700311
 GameObject:
   m_ObjectHideFlags: 0
