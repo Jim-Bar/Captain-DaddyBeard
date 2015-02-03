@@ -6,17 +6,23 @@ public class ToTheGameWin : MonoBehaviour {
 
 	[SerializeField] Text player1;
 	[SerializeField] Text player2;
-	[SerializeField] Image weapon11;
-	[SerializeField] Image weapon12;
-	[SerializeField] Image weapon13;
-	[SerializeField] Image weapon21;
-	[SerializeField] Image weapon22;
-	[SerializeField] Image weapon23;
+	[SerializeField] private GameObject goweapon11;
+	[SerializeField] private GameObject goweapon12;
+	[SerializeField] private GameObject goweapon13;
+	[SerializeField] private GameObject goweapon21;
+	[SerializeField] private GameObject goweapon22;
+	[SerializeField] private GameObject goweapon23;
 	[SerializeField] private Sprite nochoice = null;
 	[SerializeField] private Sprite weapon1 = null;
 	[SerializeField] private Sprite weapon2 = null;
 	[SerializeField] private Sprite weapon3 = null;
 	[SerializeField] private Sprite weapon4 = null;
+	private Image weapon11;
+	private Image weapon12;
+	private Image weapon13;
+	private Image weapon21;
+	private Image weapon22;
+	private Image weapon23;
 	//[SerializeField] private Sprite weapon5 = null;
 	//[SerializeField] private Sprite weapon6 = null;
 	private int w11, w12, w13, w21, w22, w23, w1, w2;
@@ -28,12 +34,12 @@ public class ToTheGameWin : MonoBehaviour {
 		RPCWrapper.RegisterMethod (OnValidateWindows);
 		ready1 = false;
 		ready2 = false;
-		weapon11 = weapon11.GetComponent<Image> ();
-		weapon12 = weapon12.GetComponent<Image> ();
-		weapon13 = weapon13.GetComponent<Image> ();
-		weapon21 = weapon21.GetComponent<Image> ();
-		weapon22 = weapon22.GetComponent<Image> ();
-		weapon23 = weapon23.GetComponent<Image> ();
+		weapon11 = goweapon11.GetComponent<Image> ();
+		weapon12 = goweapon12.GetComponent<Image> ();
+		weapon13 = goweapon13.GetComponent<Image> ();
+		weapon21 = goweapon21.GetComponent<Image> ();
+		weapon22 = goweapon22.GetComponent<Image> ();
+		weapon23 = goweapon23.GetComponent<Image> ();
 		if(Network.connections.Length == 1){
 			player1.enabled = false;
 			player2.enabled = false;
@@ -57,6 +63,7 @@ public class ToTheGameWin : MonoBehaviour {
 	}
 
 	public void AddWeapon(int player, int weapon){
+		Debug.Log ("the function is called");
 		switch(player){
 			case 2:
 				if(!ready2){

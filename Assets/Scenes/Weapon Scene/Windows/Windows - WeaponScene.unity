@@ -304,13 +304,13 @@ RectTransform:
   m_GameObject: {fileID: 358411598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .99999994, y: .99999994, z: .99999994}
   m_Children: []
   m_Father: {fileID: 1618566284}
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -165.000031, y: -140}
+  m_AnchoredPosition: {x: -165.001846, y: -140}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &358411600
@@ -977,12 +977,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 171663028}
   player2: {fileID: 216264617}
-  weapon11: {fileID: 1013435267}
-  weapon12: {fileID: 560212424}
-  weapon13: {fileID: 1482806664}
-  weapon21: {fileID: 358411600}
-  weapon22: {fileID: 1579880125}
-  weapon23: {fileID: 1786700313}
+  goweapon11: {fileID: 1013435265}
+  goweapon12: {fileID: 560212422}
+  goweapon13: {fileID: 1482806662}
+  goweapon21: {fileID: 358411598}
+  goweapon22: {fileID: 1579880124}
+  goweapon23: {fileID: 1786700311}
   nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
   weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
   weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
