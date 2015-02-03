@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f160a4b46346804e932fec3da34b03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indiceSprite: {fileID: 21300000, guid: 9dc411f4834dc194dbfddf6060793707, type: 3}
+  bonusSprite: {fileID: 21300000, guid: de93cdc95672fc943a57551239bf2a5f, type: 3}
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
@@ -85,7 +87,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: de93cdc95672fc943a57551239bf2a5f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9dc411f4834dc194dbfddf6060793707, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

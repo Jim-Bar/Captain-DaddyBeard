@@ -16,18 +16,15 @@ public class MoveForward : MonoBehaviour {
 	}
 
 	#elif UNITY_STANDALONE_WIN
-	[SerializeField] private GameObject lifeBar;
 
-	[SerializeField] private Sprite oneCore;
-	[SerializeField] private Sprite twoCore;
-	[SerializeField] private Sprite threeCore;
-
-	private Image image;
-
+	[SerializeField] private GameObject l2;
+	[SerializeField] private GameObject l3;
+	[SerializeField] private GameObject l4;
+	[SerializeField] private GameObject l5;
+	[SerializeField] private GameObject l6;
 
 	void Update () {
 		transform.Translate (atSpeed * Time.deltaTime, 0, 0);
-		image = lifeBar.GetComponent<Image> ();
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -40,17 +37,28 @@ public class MoveForward : MonoBehaviour {
 			case 0:
 				RPCWrapper.RPC ("ReloadCurrentPhase", RPCMode.Others);
 				PhaseLoader.ReloadPhase();
-				Player.health.Add(3);
+				Player.health.Add(6);
+				l2.SetActive(true);
+				l3.SetActive(true);
+				l4.SetActive(true);
+				l5.SetActive(true);
+				l6.SetActive(true);
 				break;
 			case 1:
-				image.sprite = oneCore;
+				l2.SetActive(false);
 				break;
 			case 2:
-				image.sprite = twoCore;
+				l3.SetActive(false);
+				break;
+			case 3:
+				l4.SetActive(false);
+				break;
+			case 4:
+				l5.SetActive(false);
 				break;
 			default:
-				image.sprite = threeCore;
-				break;
+				l6.SetActive(false);
+				break;			
 			}
 		}
 	}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnergyBar : MonoBehaviour {
 
-	public bool isScan;
+	private bool isScan;
 	// Use this for initialization
 	void Start () {
 		isScan = false;
@@ -21,7 +21,7 @@ public class EnergyBar : MonoBehaviour {
 			Player.energy1.Add (1);
 		}
 
-		gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (Player.energy1.Get () * 2, 30);
+		gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (Player.energy1.Get () / 5, 30);
 
 
 	}

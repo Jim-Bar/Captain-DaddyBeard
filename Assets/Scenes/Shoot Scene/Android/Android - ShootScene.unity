@@ -427,6 +427,7 @@ GameObject:
   - 4: {fileID: 791632384}
   - 212: {fileID: 791632386}
   - 114: {fileID: 791632385}
+  - 114: {fileID: 791632387}
   m_Layer: 0
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -480,6 +481,19 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &791632387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 791632383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc6488f74514134baf54a573e06e0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 150540, guid: c8d1aae2e65c0d94ab79d1b403cd5d49, type: 2}
+  bulletSpeed: 20
 --- !u!1 &800994518
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +868,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1358278141}
+--- !u!1 &1473453923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1473453924}
+  - 114: {fileID: 1473453925}
+  m_Layer: 0
+  m_Name: MonsterSpawnerAndroid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1473453924
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1473453923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 147.692169, y: 375.90387, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+--- !u!114 &1473453925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1473453923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55dca8060bcb86145a43abb0d1a45148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyingMonster: {fileID: 179700, guid: e7183f6a9dd53d34bb38f2a95581ff79, type: 2}
+  jumpingMonster: {fileID: 169818, guid: 6ee8844cd19ecdd44af85eba15dcec7a, type: 2}
+  slipingMonster: {fileID: 198022, guid: d6167dde35003dc4f9df0a0b3e5d9a3c, type: 2}
 --- !u!1 &1641713335
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,10 +1046,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atSpeed: 1
-  lifeBar: {fileID: 0}
-  oneCore: {fileID: 0}
-  twoCore: {fileID: 0}
-  threeCore: {fileID: 0}
+  l2: {fileID: 0}
+  l3: {fileID: 0}
+  l4: {fileID: 0}
+  l5: {fileID: 0}
+  l6: {fileID: 0}
 --- !u!212 &1885183600
 SpriteRenderer:
   m_ObjectHideFlags: 0

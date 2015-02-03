@@ -43,20 +43,20 @@ public class Explode : MonoBehaviour {
 	private void OnTriggerEnter2D (Collider2D other) {
 		// If the object is a monster, destroy it.
 		if (other.gameObject.CompareTag ("Enemy"))
-			Network.Destroy (other.gameObject);
+			Destroy (other.gameObject);
 
 		// If the object is not the player, destroy the bullet nor the arrival (and add explosion).
 		if (other.gameObject != player && other.gameObject != arrival && !other.gameObject.CompareTag ("Bonus"))
 		{
-			Network.Destroy (gameObject);
-			Network.Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity, 0);
+			Destroy (gameObject);
+			Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity);
 		}
 	}
 
 	private void Update () {
 		// Destroy the bullet if it is too far away.
 		if (Vector3.Distance (transform.position, Camera.main.transform.position) > 20)
-			Network.Destroy (gameObject);
+			Destroy (gameObject);
 	}
 
 	#endif

@@ -19,6 +19,7 @@ public class BonusSpawner : MonoBehaviour {
 				if(go.tag == "Bonus")
 				{
 					Network.Destroy(go);
+					Player.energy1.Add(200);
 				}
 			}
 		}
