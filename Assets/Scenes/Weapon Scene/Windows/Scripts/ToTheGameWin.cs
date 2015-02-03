@@ -28,6 +28,12 @@ public class ToTheGameWin : MonoBehaviour {
 		RPCWrapper.RegisterMethod (OnValidateWindows);
 		ready1 = false;
 		ready2 = false;
+		weapon11 = weapon11.GetComponent<Image> ();
+		weapon12 = weapon12.GetComponent<Image> ();
+		weapon13 = weapon13.GetComponent<Image> ();
+		weapon21 = weapon21.GetComponent<Image> ();
+		weapon22 = weapon22.GetComponent<Image> ();
+		weapon23 = weapon23.GetComponent<Image> ();
 		if(Network.connections.Length == 1){
 			player1.enabled = false;
 			player2.enabled = false;
