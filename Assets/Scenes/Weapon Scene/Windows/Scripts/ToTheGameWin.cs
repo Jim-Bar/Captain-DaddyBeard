@@ -56,7 +56,7 @@ public class ToTheGameWin : MonoBehaviour {
 		switch(player){
 			case 2:
 				if(!ready2){
-					if(w2 >= 3){
+					if(w2 > 3){
 						w2 = 1;
 					}
 					switch(w2){
@@ -141,7 +141,7 @@ public class ToTheGameWin : MonoBehaviour {
 				break;
 			default:
 				if(!ready1){
-					if(w1 >= 3){
+					if(w1 > 3){
 						w1 = 1;
 					}
 					switch(w1){
