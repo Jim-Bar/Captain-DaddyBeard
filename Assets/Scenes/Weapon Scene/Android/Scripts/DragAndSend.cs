@@ -19,6 +19,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		startPosition = transform.position;
 		//startParent = transform.parent;
 		GetComponent<CanvasGroup> ().blocksRaycasts = false;
+		GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().ShowText(weaponNumber);
 	}
 
 	#region IDragHandler implementation
@@ -46,6 +47,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			}
 
 		transform.position = startPosition;
+		GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().HideText();
 	}
 	
 	#endregion
@@ -53,7 +55,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	// Update is called once per frame
 	void Update () {
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) {
-			touchPosition = Input.GetTouch(0).deltaPosition;
+			touchPosition = Camera.main.ScreenToWorldPoint((Input.GetTouch (0).position));
 		}
 
 	}
