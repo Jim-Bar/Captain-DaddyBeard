@@ -62,7 +62,7 @@ public class ToTheGameWin : MonoBehaviour {
 		PhaseLoader.Load ();
 	}
 
-	public void AddWeapon(int player, int weapon){
+	public void AddWeapon(int player, int weapon, int debug){
 		Debug.Log ("the function is called");
 		switch(player){
 			case 2:
