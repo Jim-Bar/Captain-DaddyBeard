@@ -41,10 +41,10 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	{
 		itemBeingDragged = null;
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
-			if(transform.position.y - startPosition.y > 200){
+			//if(transform.position.y - startPosition.y > 200){
 				Debug.Log ("Send the message");
 				RPCWrapper.RPC ("AddWeapon", RPCMode.Server, Player.id.Get (), weaponNumber);
-			}
+			//}
 
 		transform.position = startPosition;
 		GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().HideText();
