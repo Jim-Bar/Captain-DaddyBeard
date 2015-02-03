@@ -4,25 +4,17 @@ using System.Collections;
 
 public class ToTheGameWin : MonoBehaviour {
 
+	private Image iWeapon21;
+	private Image iWeapon22;
+	private Image iWeapon23;
 	[SerializeField] Text player1;
 	[SerializeField] Text player2;
-	[SerializeField] private GameObject goweapon11;
-	[SerializeField] private GameObject goweapon12;
-	[SerializeField] private GameObject goweapon13;
-	[SerializeField] private GameObject goweapon21;
-	[SerializeField] private GameObject goweapon22;
-	[SerializeField] private GameObject goweapon23;
-	[SerializeField] private Sprite nochoice = null;
-	[SerializeField] private Sprite weapon1 = null;
-	[SerializeField] private Sprite weapon2 = null;
-	[SerializeField] private Sprite weapon3 = null;
-	[SerializeField] private Sprite weapon4 = null;
-	private Image weapon11;
-	private Image weapon12;
-	private Image weapon13;
-	private Image weapon21;
-	private Image weapon22;
-	private Image weapon23;
+	[SerializeField] private GameObject weapon11;
+	[SerializeField] private GameObject weapon12;
+	[SerializeField] private GameObject weapon13;
+	[SerializeField] private GameObject weapon21;
+	[SerializeField] private GameObject weapon22;
+	[SerializeField] private GameObject weapon23;
 	//[SerializeField] private Sprite weapon5 = null;
 	//[SerializeField] private Sprite weapon6 = null;
 	private int w11, w12, w13, w21, w22, w23, w1, w2;
@@ -34,18 +26,15 @@ public class ToTheGameWin : MonoBehaviour {
 		RPCWrapper.RegisterMethod (OnValidateWindows);
 		ready1 = false;
 		ready2 = false;
-		weapon11 = goweapon11.GetComponent<Image> ();
-		weapon12 = goweapon12.GetComponent<Image> ();
-		weapon13 = goweapon13.GetComponent<Image> ();
-		weapon21 = goweapon21.GetComponent<Image> ();
-		weapon22 = goweapon22.GetComponent<Image> ();
-		weapon23 = goweapon23.GetComponent<Image> ();
+		iWeapon21 = weapon21.GetComponent<Image> ();
+		iWeapon22 = weapon22.GetComponent<Image> ();
+		iWeapon23 = weapon23.GetComponent<Image> ();
 		if(Network.connections.Length == 1){
 			player1.enabled = false;
 			player2.enabled = false;
-			weapon21.enabled = false;
-			weapon22.enabled = false;
-			weapon23.enabled = false;
+			iWeapon21.enabled = false;
+			iWeapon22.enabled = false;
+			iWeapon23.enabled = false;
 			ready2 = true;
 		}
 		w11 = 0;
@@ -62,7 +51,7 @@ public class ToTheGameWin : MonoBehaviour {
 		PhaseLoader.Load ();
 	}
 
-	public void AddWeapon(int player, int weapon, int debug){
+	public void AddWeapon(int player, int weapon){
 		Debug.Log ("the function is called");
 		switch(player){
 			case 2:
@@ -74,23 +63,23 @@ public class ToTheGameWin : MonoBehaviour {
 						case 2:
 							switch(weapon){
 								case 1:
-									weapon22.sprite = weapon1;
+									weapon22.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w22 = 1;
 									break;
 								case 2:
-									weapon22.sprite = weapon2;
+									weapon22.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w22 = 2;
 									break;
 								case 3:
-									weapon22.sprite = weapon3;
+									weapon22.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w22 = 3;
 									break;
 								case 4:
-									weapon22.sprite = weapon4;
+									weapon22.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w22 = 4;
 									break;
 								default:
-									weapon22.sprite = nochoice;
+									weapon22.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (0);
 									w22 = 0;
 									ready2 = false;
 									break;
@@ -99,23 +88,23 @@ public class ToTheGameWin : MonoBehaviour {
 						case 3:
 							switch(weapon){
 								case 1:
-									weapon23.sprite = weapon1;
+									weapon23.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w23 = 1;
 									break;
 								case 2:
-									weapon23.sprite = weapon2;
+									weapon23.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w23 = 2;
 									break;
 								case 3:
-									weapon23.sprite = weapon3;
+									weapon23.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w23 = 3;
 									break;
 								case 4:
-									weapon23.sprite = weapon4;
+									weapon23.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w23 = 4;
 									break;
 								default:
-									weapon23.sprite = nochoice;
+									weapon23.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (0);
 									w23 = 0;
 									ready2 = false;
 									break;
@@ -124,23 +113,23 @@ public class ToTheGameWin : MonoBehaviour {
 						default:
 							switch(weapon){
 								case 1:
-									weapon21.sprite = weapon1;
+									weapon21.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w21 = 1;
 									break;
 								case 2:
-									weapon21.sprite = weapon2;
+									weapon21.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w21 = 2;
 									break;
 								case 3:
-									weapon21.sprite = weapon3;
+									weapon21.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w21 = 3;
 									break;
 								case 4:
-									weapon21.sprite = weapon4;
+									weapon21.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w21 = 4;
 									break;
 								default:
-									weapon21.sprite = nochoice;
+									weapon21.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (0);
 									w21 = 0;
 									ready2 = false;
 									break;
@@ -159,23 +148,23 @@ public class ToTheGameWin : MonoBehaviour {
 						case 2:
 							switch(weapon){
 								case 1:
-									weapon12.sprite = weapon1;
+									weapon12.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w12 = 1;
 									break;
 								case 2:
-									weapon12.sprite = weapon2;
+									weapon12.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w12 = 2;
 									break;
 								case 3:
-									weapon12.sprite = weapon3;
+									weapon12.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w12 = 3;
 									break;
 								case 4:
-									weapon12.sprite = weapon4;
+									weapon12.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w12 = 4;
 									break;
 								default:
-									weapon12.sprite = nochoice;
+									weapon12.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (0);
 									w12 = 0;
 									ready1 = false;
 									break;
@@ -184,23 +173,23 @@ public class ToTheGameWin : MonoBehaviour {
 						case 3:
 							switch(weapon){
 								case 1:
-									weapon13.sprite = weapon1;
+									weapon13.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w13 = 1;
 									break;
 								case 2:
-									weapon13.sprite = weapon2;
+									weapon13.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w13 = 2;
 									break;
 								case 3:
-									weapon13.sprite = weapon3;
+									weapon13.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w13 = 3;
 									break;
 								case 4:
-									weapon13.sprite = weapon4;
+									weapon13.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w13 = 4;
 									break;
 								default:
-									weapon13.sprite = nochoice;
+									weapon13.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (0);
 									w13 = 0;
 									ready1 = false;
 									break;
@@ -209,23 +198,23 @@ public class ToTheGameWin : MonoBehaviour {
 						default:
 							switch(weapon){
 								case 1:
-									weapon11.sprite = weapon1;
+									weapon11.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w11 = 1;
 									break;
 								case 2:
-									weapon11.sprite = weapon2;
+									weapon11.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w11 = 2;
 									break;
 								case 3:
-									weapon11.sprite = weapon3;
+									weapon11.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w11 = 3;
 									break;
 								case 4:
-									weapon11.sprite = weapon4;
+									weapon11.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (weapon);
 									w11 = 4;
 									break;
 								default:
-									weapon11.sprite = nochoice;
+									weapon11.GetComponent<ChangeWeaponWindows>().UpdateWeaponWin (0);
 									w11 = 0;
 									ready1 = false;
 									break;

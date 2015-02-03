@@ -121,7 +121,7 @@ public class RPCWrapper : MonoBehaviour {
 	[RPC] private void Receive_string (string methodName, string arg) { if (methods_string.ContainsKey(methodName) || !ignoreErrors) methods_string[methodName] (arg); }
 	[RPC] private void Receive_Vector3 (string methodName, Vector3 arg) { if (methods_Vector3.ContainsKey(methodName) || !ignoreErrors) methods_Vector3[methodName] (arg); }
 	[RPC] private void Receive_Quaternion (string methodName, Quaternion arg) { if (methods_Quaternion.ContainsKey(methodName) || !ignoreErrors) methods_Quaternion[methodName] (arg); }
-	[RPC] private void Receive_int_int (string methodName, int arg1, int arg2) { if (methods_int_int_int.ContainsKey(methodName) || !ignoreErrors) methods_int_int[methodName] (arg1, arg2); }
+	[RPC] private void Receive_int_int (string methodName, int arg1, int arg2) { if (methods_int_int.ContainsKey(methodName) || !ignoreErrors) methods_int_int[methodName] (arg1, arg2); }
 	[RPC] private void Receive_int_int_int (string methodName, int arg1, int arg2, int arg3) { if (methods_int_int_int.ContainsKey(methodName) || !ignoreErrors) methods_int_int_int[methodName] (arg1, arg2, arg3); }
 
 	// Clear methods registered each time a new scene is loaded.
@@ -133,6 +133,7 @@ public class RPCWrapper : MonoBehaviour {
 		methods_string.Clear ();
 		methods_Vector3.Clear ();
 		methods_Quaternion.Clear ();
+		methods_int_int.Clear ();
 		methods_int_int_int.Clear ();
 	}
 }

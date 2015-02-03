@@ -43,7 +43,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
 			//if(transform.position.y - startPosition.y > 200){
 				Debug.Log ("Send the message");
-				RPCWrapper.RPC ("AddWeapon", RPCMode.Server, Player.id.Get (), weaponNumber, 0);
+				RPCWrapper.RPC ("AddWeapon", RPCMode.Server, Player.id.Get (), weaponNumber);
 			//}
 
 		transform.position = startPosition;

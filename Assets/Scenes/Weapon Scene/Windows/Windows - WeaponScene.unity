@@ -289,6 +289,7 @@ GameObject:
   - 224: {fileID: 358411599}
   - 222: {fileID: 358411601}
   - 114: {fileID: 358411600}
+  - 114: {fileID: 358411602}
   m_Layer: 0
   m_Name: ImageArme21
   m_TagString: Untagged
@@ -340,6 +341,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 358411598}
+--- !u!114 &358411602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358411598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c136ab1e677fd94f889b6ca2239b2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelChoice: 0
+  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
+  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
+  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
+  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
 --- !u!1 &560212422
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +368,7 @@ GameObject:
   - 224: {fileID: 560212423}
   - 222: {fileID: 560212425}
   - 114: {fileID: 560212424}
+  - 114: {fileID: 560212426}
   m_Layer: 0
   m_Name: ImageArme12
   m_TagString: Untagged
@@ -401,6 +420,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 560212422}
+--- !u!114 &560212426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 560212422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c136ab1e677fd94f889b6ca2239b2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelChoice: 0
+  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
+  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
+  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
+  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
 --- !u!1 &833244609
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +574,7 @@ GameObject:
   - 224: {fileID: 1013435266}
   - 222: {fileID: 1013435268}
   - 114: {fileID: 1013435267}
+  - 114: {fileID: 1013435269}
   m_Layer: 0
   m_Name: ImageArme11
   m_TagString: Untagged
@@ -589,6 +626,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1013435265}
+--- !u!114 &1013435269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1013435265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c136ab1e677fd94f889b6ca2239b2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelChoice: 0
+  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
+  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
+  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
+  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
 --- !u!1 &1111121054
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +803,7 @@ GameObject:
   - 224: {fileID: 1482806663}
   - 222: {fileID: 1482806665}
   - 114: {fileID: 1482806664}
+  - 114: {fileID: 1482806666}
   m_Layer: 0
   m_Name: ImageArme13
   m_TagString: Untagged
@@ -800,6 +855,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1482806662}
+--- !u!114 &1482806666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1482806662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c136ab1e677fd94f889b6ca2239b2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelChoice: 0
+  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
+  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
+  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
+  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
 --- !u!1 &1579880124
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +882,7 @@ GameObject:
   - 224: {fileID: 1579880127}
   - 222: {fileID: 1579880126}
   - 114: {fileID: 1579880125}
+  - 114: {fileID: 1579880128}
   m_Layer: 0
   m_Name: ImageArme22
   m_TagString: Untagged
@@ -861,6 +934,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -140}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &1579880128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579880124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c136ab1e677fd94f889b6ca2239b2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelChoice: 0
+  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
+  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
+  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
+  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
 --- !u!1 &1618566283
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,17 +1067,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 171663028}
   player2: {fileID: 216264617}
-  goweapon11: {fileID: 1013435265}
-  goweapon12: {fileID: 560212422}
-  goweapon13: {fileID: 1482806662}
-  goweapon21: {fileID: 358411598}
-  goweapon22: {fileID: 1579880124}
-  goweapon23: {fileID: 1786700311}
-  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
-  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
-  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
-  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
-  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
+  weapon11: {fileID: 0}
+  weapon12: {fileID: 0}
+  weapon13: {fileID: 0}
+  weapon21: {fileID: 0}
+  weapon22: {fileID: 0}
+  weapon23: {fileID: 0}
 --- !u!1 &1786700311
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1083,7 @@ GameObject:
   - 224: {fileID: 1786700312}
   - 222: {fileID: 1786700314}
   - 114: {fileID: 1786700313}
+  - 114: {fileID: 1786700315}
   m_Layer: 0
   m_Name: ImageArme23
   m_TagString: Untagged
@@ -1049,6 +1135,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1786700311}
+--- !u!114 &1786700315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1786700311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c136ab1e677fd94f889b6ca2239b2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelChoice: 0
+  nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
+  weapon1: {fileID: 21300000, guid: 12619fdefdedbf4469cb79db7d6c0742, type: 3}
+  weapon2: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  weapon3: {fileID: 21300000, guid: 6d9df5ae4669aec48a0d0f3375b7ed0b, type: 3}
+  weapon4: {fileID: 21300000, guid: 02eecf587ef8fc64396917427ce67c7c, type: 3}
 --- !u!1 &2004817289
 GameObject:
   m_ObjectHideFlags: 0
