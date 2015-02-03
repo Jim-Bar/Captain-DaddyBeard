@@ -138,7 +138,7 @@ public class ToTheGameWin : MonoBehaviour {
 				}
 				break;
 			default:
-				if(!ready2){
+				if(!ready1){
 					if(w1 >= 3){
 						w1 = 1;
 					}
