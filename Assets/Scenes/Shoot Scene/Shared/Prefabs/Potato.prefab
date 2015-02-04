@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 450540}
   - 212: {fileID: 21250540}
-  - 148: {fileID: 14884316}
   - 50: {fileID: 5050540}
   - 58: {fileID: 5850540}
   - 114: {fileID: 11450540}
@@ -70,18 +69,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletExplosion: {fileID: 158624, guid: 08530a094e1f8b04bb829c3762449ffa, type: 2}
---- !u!148 &14884316
-NetworkView:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150540}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 450540}
-  m_ViewID:
-    m_ID: 0
-    m_Type: 0
 --- !u!212 &21250540
 SpriteRenderer:
   m_ObjectHideFlags: 1
