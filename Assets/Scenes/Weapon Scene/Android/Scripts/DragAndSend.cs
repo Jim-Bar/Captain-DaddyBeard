@@ -37,19 +37,13 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 	#region IEndDragHandler implementation
 	
-	/*public void OnEndDrag (PointerEventData eventData)
+	public void OnEndDrag (PointerEventData eventData)
 	{
 		itemBeingDragged = null;
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
-<<<<<<< HEAD
-			if(transform.position.y - startPosition.y > 200){
-				Debug.Log ("Send the message");
-=======
-			
->>>>>>> 03165dbc11e79894e265110cb6bec65983dbc34d
-				RPCWrapper.RPC ("AddWeapon", RPCMode.Server, Player.id.Get (), weaponNumber);
-
-
+		//if(transform.position.y - startPosition.y > 200){
+			Debug.Log ("Send the message");
+			RPCWrapper.RPC ("AddWeapon", RPCMode.Server, Player.id.Get (), weaponNumber);
 		transform.position = startPosition;
 		GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().HideText();
 	}*/
