@@ -77,7 +77,7 @@ public class PlatformElevator : MonoBehaviour {
 				}
 			} 
 			if(limit()) {
-
+				Debug.Log("ok");
 				comboPerformed = false;
 				if (detectPlayer()) {
 					performCombo();
