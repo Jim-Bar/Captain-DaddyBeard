@@ -10,9 +10,8 @@ public class MonsterSpawnerAndroid : MonoBehaviour {
 	private int numPrefab;
 	// Use this for initialization
 	void Start () {
-		numPrefab = 1;
-		RPCWrapper.RegisterMethod (UpdateGO);
 		RPCWrapper.RegisterMethod (InstanciateGO);
+		numPrefab = 1;
 	}
 	
 	// Update is called once per frame

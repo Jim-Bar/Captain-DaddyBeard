@@ -3,9 +3,12 @@ using System.Collections;
 
 public class MonsterMove : MonoBehaviour {
 
-	#if UNITY_STANDALONE_WIN
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
 	void Update () {
 		transform.Translate (-0.075f, 0, 0);
 	}
-	#endif
 }

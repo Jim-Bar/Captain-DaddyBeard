@@ -16,16 +16,19 @@ public class MonsterSpawner : MonoBehaviour {
 	[SerializeField] private GameObject slipingMonster;
 
 	void Update () {
-		SpawnMonster (flyingMonster, 3);
-		SpawnMonster (jumpingMonster,0);
-		SpawnMonster (slipingMonster,0);
+		SpawnMonster (flyingMonster,3,1);
+		SpawnMonster (jumpingMonster,0,2);
+		SpawnMonster (slipingMonster,0,3);
 	}
 
-	private void SpawnMonster (GameObject monsterPrefab, float height) {
+	private void SpawnMonster (GameObject monsterPrefab, float height, int numPrefab) {
 		if (Random.Range (0, 500) < 1)
 		{
-			GameObject monster = Network.Instantiate (monsterPrefab, Camera.main.transform.position + new Vector3 (20, height, 10), Quaternion.identity, 0) as GameObject;
-			monster.transform.parent = gameObject.transform;			
+			Vector3 pos = Camera.main.transform.position + new Vector3 (20, height, 10);
+			GameObject monster = Instantiate (monsterPrefab, pos, Quaternion.identity) as GameObject;
+			monster.transform.parent = gameObject.transform;	
+			RPCWrapper.RPC("UpdateGO", RPCMode.Server, numPrefab);
+			RPCWrapper.RPC("InstanciateGO", RPCMode.Server, pos);
 		}
 	}
 

@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973abfad0d48f3647a3f0b4d895a29da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendPositionToAndroid: 0
+  sendPositionToAndroid: 1
 --- !u!58 &1385386869
 CircleCollider2D:
   m_ObjectHideFlags: 0

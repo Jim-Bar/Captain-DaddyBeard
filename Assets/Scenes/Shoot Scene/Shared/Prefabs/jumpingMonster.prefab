@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5069818}
   - 58: {fileID: 5869818}
   - 95: {fileID: 9569818}
-  - 114: {fileID: 11469818}
+  - 114: {fileID: 11430908}
   m_Layer: 0
   m_Name: jumpingMonster
   m_TagString: Enemy
@@ -71,10 +71,10 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 1c6336f3362c30a4cacc91e60a4b943c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11469818
+--- !u!114 &11430908
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 169818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a6d494f33e8e84c9d0272cb633f1f3, type: 3}
+  m_Script: {fileID: 11500000, guid: a929d2d97cfb5f849946f92b6fb58f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!148 &14869818
