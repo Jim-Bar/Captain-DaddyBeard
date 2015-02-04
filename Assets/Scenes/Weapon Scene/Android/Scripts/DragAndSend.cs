@@ -46,7 +46,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			RPCWrapper.RPC ("AddWeapon", RPCMode.Server, Player.id.Get (), weaponNumber);
 		transform.position = startPosition;
 		GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().HideText();
-	}*/
+	}
 	
 	#endregion
 
