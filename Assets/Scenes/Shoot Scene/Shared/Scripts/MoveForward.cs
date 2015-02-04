@@ -25,6 +25,9 @@ public class MoveForward : MonoBehaviour {
 
 	void Update () {
 		transform.Translate (atSpeed * Time.deltaTime, 0, 0);
+		RPCWrapper.RegisterMethod (Restart);
+		RPCWrapper.RegisterMethod (PauseButtonPressed);
+		RPCWrapper.RegisterMethod (ResumeButtonPressed);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -35,14 +38,7 @@ public class MoveForward : MonoBehaviour {
 
 			switch (Player.health.Get()) {
 			case 0:
-				RPCWrapper.RPC ("ReloadCurrentPhase", RPCMode.Others);
-				PhaseLoader.ReloadPhase();
-				Player.health.Add(6);
-				l2.SetActive(true);
-				l3.SetActive(true);
-				l4.SetActive(true);
-				l5.SetActive(true);
-				l6.SetActive(true);
+				Restart();
 				break;
 			case 1:
 				l2.SetActive(false);
@@ -61,6 +57,28 @@ public class MoveForward : MonoBehaviour {
 				break;			
 			}
 		}
+	}
+
+	public void Restart()
+	{
+		RPCWrapper.RPC ("ReloadCurrentPhase", RPCMode.Others);
+		PhaseLoader.ReloadPhase ();
+		Player.health.Add (6);
+		l2.SetActive (true);
+		l3.SetActive (true);
+		l4.SetActive (true);
+		l5.SetActive (true);
+		l6.SetActive (true);
+	}
+
+	public void PauseButtonPressed()
+	{
+		Time.timeScale = 0;
+	}
+
+	public void ResumeButtonPressed()
+	{
+		Time.timeScale = 1;
 	}
 
 	#endif

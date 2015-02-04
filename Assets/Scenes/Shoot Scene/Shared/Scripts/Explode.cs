@@ -14,7 +14,7 @@ public class Explode : MonoBehaviour {
 	// Prefab of a particle system.
 	[SerializeField] private GameObject bulletExplosion = null;
 
-	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+
 
 	// Reference towards the player.
 	private GameObject player = null;
@@ -37,6 +37,8 @@ public class Explode : MonoBehaviour {
 		arrival = GameObject.FindGameObjectWithTag (arrivalTag);
 		if (arrival == null)
 			Debug.LogError (GetType ().Name + " : No arrival found. The arrival must have the tag \"" + arrivalTag + "\".");
+
+		Destroy (gameObject, 5);
 	}
 
 	// Destroy the bullet when it touches something.
@@ -53,11 +55,7 @@ public class Explode : MonoBehaviour {
 		}
 	}
 
-	private void Update () {
-		// Destroy the bullet if it is too far away.
-		if (Vector3.Distance (transform.position, Camera.main.transform.position) > 20)
-			Destroy (gameObject);
-	}
 
-	#endif
+
+
 }
