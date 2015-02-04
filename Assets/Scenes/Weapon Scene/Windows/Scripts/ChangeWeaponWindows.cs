@@ -5,12 +5,10 @@ using System.Collections;
 public class ChangeWeaponWindows : MonoBehaviour {
 	
 	private Image image;
-	public int levelChoice;
 	[SerializeField] private Sprite nochoice = null;
 	[SerializeField] private Sprite weapon1 = null;
 	[SerializeField] private Sprite weapon2 = null;
 	[SerializeField] private Sprite weapon3 = null;
-	[SerializeField] private Sprite weapon4 = null;
 	//[SerializeField] private Sprite weapon5 = null;
 	//[SerializeField] private Sprite weapon6 = null;
 	// Use this for initialization
@@ -29,9 +27,6 @@ public class ChangeWeaponWindows : MonoBehaviour {
 				break;
 			case 3:
 				image.sprite = weapon3;
-				break;
-			case 4:
-				image.sprite = weapon4;
 				break;
 			default:
 				image.sprite = nochoice;
