@@ -26,6 +26,7 @@ public class MoveForward : MonoBehaviour {
 	void Update () {
 		transform.Translate (atSpeed * Time.deltaTime, 0, 0);
 		RPCWrapper.RegisterMethod (Restart);
+		RPCWrapper.RegisterMethod (GoHomeScene);
 		RPCWrapper.RegisterMethod (PauseButtonPressed);
 		RPCWrapper.RegisterMethod (ResumeButtonPressed);
 	}
@@ -79,6 +80,12 @@ public class MoveForward : MonoBehaviour {
 	public void ResumeButtonPressed()
 	{
 		Time.timeScale = 1;
+	}
+
+	public void GoHomeScene()
+	{	
+		Time.timeScale = 1;
+		Application.LoadLevel ("Windows - HomeScene");
 	}
 
 	#endif

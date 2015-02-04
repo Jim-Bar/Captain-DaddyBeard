@@ -1139,7 +1139,7 @@ MonoBehaviour:
   followX: 1
   followY: 1
   xOffset: 8
-  yOffset: 0
+  yOffset: 3.79999995
 --- !u!58 &2134930742
 CircleCollider2D:
   m_ObjectHideFlags: 0

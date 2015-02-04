@@ -16,9 +16,9 @@ public class MonsterSpawner : MonoBehaviour {
 	[SerializeField] private GameObject slipingMonster;
 
 	void Update () {
-		SpawnMonster (flyingMonster,3,1);
-		SpawnMonster (jumpingMonster,0,2);
-		SpawnMonster (slipingMonster,0,3);
+		SpawnMonster (flyingMonster,Random.Range (-2,3),1);
+		SpawnMonster (jumpingMonster,-4,2);
+		SpawnMonster (slipingMonster,-4,3);
 	}
 
 	private void SpawnMonster (GameObject monsterPrefab, float height, int numPrefab) {

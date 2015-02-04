@@ -24,13 +24,14 @@ public class FireBullet : MonoBehaviour {
 		if (bulletPrefab == null)
 			Debug.LogError (GetType ().Name + " : The field 'bullet' is empty");
 
-		RPCWrapper.RegisterMethod (ShootButtonPressed);
+		RPCWrapper.RegisterMethod (ShootPressed);
 	}
 	
-	private void ShootButtonPressed () {
+	private void ShootPressed () {
 		GameObject bullet = Instantiate (bulletPrefab, transform.position + 0.1f * Vector3.forward, Quaternion.identity) as GameObject;
 		bullet.rigidbody2D.velocity = bulletSpeed * (target.transform.position - transform.position).normalized;
 		bullet.rigidbody2D.angularVelocity = Random.Range (-360, 360);
 		RPCWrapper.RPC("InstanciateShoot", RPCMode.Others, target.transform.position);
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundShoot();
 	}
 }

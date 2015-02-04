@@ -29,4 +29,12 @@ public class PauseGame : MonoBehaviour {
 		RPCWrapper.RPC ("Restart", RPCMode.Server);
 		RPCWrapper.RPC ("ResumeButtonPressed", RPCMode.Server);
 	}
+
+	public void QuitButtonPressed () {
+		Time.timeScale = 1;
+		game.gameObject.SetActive (true);
+		pause.gameObject.SetActive (false);
+		RPCWrapper.RPC ("GoHomeScene", RPCMode.Server);
+		Application.LoadLevel ("Android - HomeScene");
+	}
 }

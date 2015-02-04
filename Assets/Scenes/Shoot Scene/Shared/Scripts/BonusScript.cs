@@ -3,12 +3,12 @@ using System.Collections;
 
 public class BonusScript : MonoBehaviour {
 
-	[SerializeField] private Sprite indiceSprite = null;
-	[SerializeField] private Sprite bonusSprite = null;
+	[SerializeField] private GameObject cloud = null;
+
 
 	private GameObject buttonSwitch;
 
-	#if UNITY_ANDROID
+	//#if UNITY_ANDROID
 
 	// Use this for initialization
 	void Start () {
@@ -18,13 +18,13 @@ public class BonusScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (buttonSwitch.GetComponent<SwitchScanShoot>().isShoot) {
-			gameObject.GetComponent<SpriteRenderer>().sprite = indiceSprite;
+			cloud.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,1f);
 		} 
 		else
 		{
-			gameObject.GetComponent<SpriteRenderer>().sprite = bonusSprite;
+			cloud.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,.5f);
 		}
 	}
 
-	#endif
+	//#endif
 }
