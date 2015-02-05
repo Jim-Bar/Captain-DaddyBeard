@@ -163,20 +163,25 @@ public class PhaseLoader : MonoBehaviour {
 	}
 
 	private void OnGUI () {
-		const float transitionDuration = 3;
-		const float transitionLeavingDuration = 0.5f;
-		if (transitionDisplayed && Time.timeSinceLevelLoad <= transitionDuration)
+		if (transitionDisplayed)
 		{
+			const float transitionDuration = 3;
+			const float transitionLeavingDuration = 0.5f;
+			float timeSinceLevelLoad = Time.timeSinceLevelLoad;
 			float deltaMax = Screen.width / 20;
-			float deltaX = Time.timeSinceLevelLoad * deltaMax / transitionDuration;
-			GUI.DrawTexture(new Rect(- deltaX, 0, Screen.width + deltaMax, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
-			Debug.Log ("Width = " + Screen.width + deltaMax);
+			if (timeSinceLevelLoad <= transitionDuration)
+			{
+				float deltaX = timeSinceLevelLoad * deltaMax / transitionDuration;
+				GUI.DrawTexture(new Rect(- deltaX, 0, Screen.width + deltaMax, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+			}
+			else if (timeSinceLevelLoad <= transitionDuration + transitionLeavingDuration)
+			{
+				float deltaX = timeSinceLevelLoad * deltaMax / transitionDuration;
+				float deltaExpX = Mathf.Exp (65 * transitionLeavingDuration * ((timeSinceLevelLoad - transitionDuration) - transitionLeavingDuration / 2));
+				GUI.DrawTexture(new Rect(- Mathf.Max (deltaX, deltaExpX + deltaMax), 0, Screen.width + deltaMax, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+			}
+			else
+				transitionDisplayed = false;
 		}
-		else if (transitionDisplayed && Time.timeSinceLevelLoad <= transitionLeavingDuration)
-		{
-
-		}
-		else
-			transitionDisplayed = false;
 	}
 }
