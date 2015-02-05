@@ -10,10 +10,10 @@ public class BonusSpawner : MonoBehaviour {
 	[SerializeField] private GameObject cloud3;
 	[SerializeField] private GameObject cloud4;
 
-	private GameObject bonusPrefab;
 	private int compteur = 0;
 
 	void Update () {
+		compteur ++;
 		if (compteur >= 800)
 		{
 			SpawnBonus ();
@@ -30,30 +30,29 @@ public class BonusSpawner : MonoBehaviour {
 				if(go.tag == "Bonus")
 				{
 					Network.Destroy(go);
-					Player.energy1.Add(200);
 				}
 			}
 		}
 	}
 	
 	private void SpawnBonus () {
-			
+
+		GameObject go;
 		switch (Random.Range (1, 4)) {
 				case 1:
-						bonusPrefab = cloud1;
-						break;
+					go = Network.Instantiate (cloud1, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					break;
 				case 2:
-						bonusPrefab = cloud2;
-						break;
+					go = Network.Instantiate (cloud2, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					break;
 				case 3:
-						bonusPrefab = cloud3;
-						break;
+					go = Network.Instantiate (cloud3, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					break;
 				default:
-						bonusPrefab = cloud4;
-						break;
+					go = Network.Instantiate (cloud4, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					break;
 				}
 
-		GameObject go = Network.Instantiate (bonusPrefab, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
 		if (Random.Range (0, 3) < 1)
 			Destroy (go.transform.GetChild (0).gameObject);
 		go.transform.parent = gameObject.transform;	
