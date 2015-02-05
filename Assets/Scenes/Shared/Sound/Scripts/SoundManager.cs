@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
 
+	[Tooltip("Disable all the sounds")]
+	[SerializeField] private bool disableSounds = false;
 
 	[SerializeField] public GameObject jump;
 	[SerializeField] public GameObject validate;
@@ -15,6 +17,12 @@ public class SoundManager : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		if (disableSounds)
+		{
+			AudioListener.pause = true;
+			AudioListener.volume = 0; 
+		}
+
 		jump.audio.Stop ();
 		validate.audio.Stop ();
 		theme.audio.Stop ();
