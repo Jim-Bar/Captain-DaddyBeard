@@ -94,8 +94,7 @@ public class ToTheGameWin : MonoBehaviour {
 				if(w11 > 0){
 					ready1 = true;
 					if(ready2){
-						RPCWrapper.RPC ("ToTheGameAndroidFunc", RPCMode.Others);
-						PhaseLoader.Load ();
+						GameObject.Find ("Next").GetComponent<ToTheGame> ().TryLaunchingGame();
 					}
 				}
 			}
@@ -108,8 +107,7 @@ public class ToTheGameWin : MonoBehaviour {
 				if(w21 > 0){
 					ready2 = true;
 					if(ready1){
-						RPCWrapper.RPC ("ToTheGameAndroidFunc", RPCMode.Others);
-						PhaseLoader.Load ();
+						GameObject.Find ("Next").GetComponent<ToTheGame> ().TryLaunchingGame();
 					}
 				}
 			}
