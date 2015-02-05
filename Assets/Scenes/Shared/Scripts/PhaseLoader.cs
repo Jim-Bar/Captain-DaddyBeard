@@ -50,10 +50,14 @@ public class PhaseLoader : MonoBehaviour {
 	private static int nextPhase = 0; // The next phase to load.
 	private static Type nextPhaseType = Type.SHOOT; // Type of the next phase to load.
 	private static bool loadPhaseNextSceneLoading = false; // Will the phase loader load a phase on the next scene loading ?
-	private static bool transitionDisplayed = false; // Is the transition currently displayed ?
 	private static int currentLevel = 0; // The level currently or lastly played.
 	private static int currentPhase = 0; // The phase currently or lastly played.
 	private static Type currentPhaseType = Type.SHOOT; // The type of the phase currently or lastly played.
+
+	// Is the transition currently displayed ? (Note that these attributes could be static).
+	private bool transitionEndDisplayed = false;
+	private bool transitionStartDisplayed = false;
+	private float timeTransitionBegan = 0;
 
 	// Type of the phase to be loaded.
 	public enum Type {
@@ -97,10 +101,9 @@ public class PhaseLoader : MonoBehaviour {
 		CheckExist ();
 		loadPhaseNextSceneLoading = true;
 
-		if (nextPhaseType == Type.SHOOT)
-			Application.LoadLevel (instance.shootSceneName);
-		else
-			Application.LoadLevel (instance.deplacementSceneName);
+		// The load is made in OnGUI ().
+		instance.transitionStartDisplayed = true;
+		instance.timeTransitionBegan = Time.timeSinceLevelLoad;
 	}
 
 	// Load the current level from the beginning.
@@ -118,6 +121,13 @@ public class PhaseLoader : MonoBehaviour {
 		Load (currentLevel + 1);
 	}
 
+	private static void ActualLoad () {
+		if (nextPhaseType == Type.SHOOT)
+			Application.LoadLevel (instance.shootSceneName);
+		else
+			Application.LoadLevel (instance.deplacementSceneName);
+	}
+
 	// Log an error message if there is no instance of this class.
 	private static void CheckExist () {
 		if (instance == null)
@@ -129,7 +139,6 @@ public class PhaseLoader : MonoBehaviour {
 		if (loadPhaseNextSceneLoading)
 		{
 			loadPhaseNextSceneLoading = false;
-			transitionDisplayed = true;
 			currentLevel = nextLevel;
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
@@ -163,25 +172,40 @@ public class PhaseLoader : MonoBehaviour {
 	}
 
 	private void OnGUI () {
-		if (transitionDisplayed)
+		const float transitionDuration = 3;
+		float deltaTotal = Screen.width / 20;
+		if (transitionStartDisplayed) // Just before the phase scene is loaded.
 		{
-			const float transitionDuration = 3;
-			const float transitionLeavingDuration = 0.5f;
+			const float transitionArrivalDuration = 0.5f;
 			float timeSinceLevelLoad = Time.timeSinceLevelLoad;
-			float deltaMax = Screen.width / 20;
-			if (timeSinceLevelLoad <= transitionDuration)
+			if (timeSinceLevelLoad - timeTransitionBegan <= transitionArrivalDuration)
 			{
-				float deltaX = timeSinceLevelLoad * deltaMax / transitionDuration;
-				GUI.DrawTexture(new Rect(- deltaX, 0, Screen.width + deltaMax, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+				float deltaExpX = Mathf.Exp (30 * transitionArrivalDuration * (transitionArrivalDuration - timeSinceLevelLoad + timeTransitionBegan));
+				GUI.DrawTexture(new Rect(deltaExpX + deltaTotal, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
 			}
-			else if (timeSinceLevelLoad <= transitionDuration + transitionLeavingDuration)
+			else if (timeSinceLevelLoad - timeTransitionBegan <= transitionDuration + transitionArrivalDuration)
 			{
-				float deltaX = timeSinceLevelLoad * deltaMax / transitionDuration;
-				float deltaExpX = Mathf.Exp (65 * transitionLeavingDuration * ((timeSinceLevelLoad - transitionDuration) - transitionLeavingDuration / 2));
-				GUI.DrawTexture(new Rect(- Mathf.Max (deltaX, deltaExpX + deltaMax), 0, Screen.width + deltaMax, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+				float deltaX = deltaTotal * (transitionDuration + transitionArrivalDuration - timeSinceLevelLoad + timeTransitionBegan) / transitionDuration;
+				GUI.DrawTexture(new Rect(deltaX, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
 			}
 			else
-				transitionDisplayed = false;
+			{
+				transitionStartDisplayed = false;
+				transitionEndDisplayed = true;
+				ActualLoad ();
+			}
+		}
+		else if (transitionEndDisplayed) // Just after the phase scene is loaded.
+		{
+			const float transitionLeavingDuration = 0.5f;
+			float timeSinceLevelLoad = Time.timeSinceLevelLoad;
+			if (timeSinceLevelLoad <= transitionLeavingDuration)
+			{
+				float deltaExpX = Mathf.Exp (30 * transitionLeavingDuration * timeSinceLevelLoad);
+				GUI.DrawTexture(new Rect(- deltaExpX, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+			}
+			else
+				transitionEndDisplayed = false;
 		}
 	}
 }
