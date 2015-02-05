@@ -15,6 +15,7 @@ public class UpdatePicture : MonoBehaviour
 	private Image image;
 
 	private void Start () {
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme();
 		// Get the component of type Image.
 		image = gameObject.GetComponent<Image>();
 
