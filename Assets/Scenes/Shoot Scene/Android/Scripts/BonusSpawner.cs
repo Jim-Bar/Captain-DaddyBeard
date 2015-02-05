@@ -27,8 +27,14 @@ public class BonusSpawner : MonoBehaviour {
 			if(hit.collider != null)
 			{
 				GameObject go = hit.collider.gameObject;
-				if(go.tag == "Bonus")
+				if(go.tag == "LifeBonus")
 				{
+					RPCWrapper.RPC("LifeBonus", RPCMode.Server, 1);
+					Network.Destroy(go);
+				}
+				else if(go.tag == "EnergyBonus")
+				{
+					RPCWrapper.RPC("EnergyBonus", RPCMode.Server, 200);
 					Network.Destroy(go);
 				}
 			}
@@ -40,19 +46,20 @@ public class BonusSpawner : MonoBehaviour {
 		GameObject go;
 		switch (Random.Range (1, 4)) {
 				case 1:
-					go = Network.Instantiate (cloud1, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					go = cloud1;
 					break;
 				case 2:
-					go = Network.Instantiate (cloud2, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					go = cloud2;
 					break;
 				case 3:
-					go = Network.Instantiate (cloud3, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					go = cloud3;
 					break;
 				default:
-					go = Network.Instantiate (cloud4, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+					go = cloud4;
 					break;
 				}
 
+		go = Network.Instantiate (go, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
 		if (Random.Range (0, 3) < 1)
 			Destroy (go.transform.GetChild (0).gameObject);
 		go.transform.parent = gameObject.transform;	
