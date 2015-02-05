@@ -522,7 +522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6e6b84181f5d14fa7956b72e1de8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createWifiHotspot: 0
 --- !u!114 &11433970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,6 +548,7 @@ MonoBehaviour:
   shootSceneName: Android - ShootScene
   deplacementSceneName: Android - MoveScene
   firstPhasesTypes: 010000000000000001000000000000000000000000000000
+  transitionPicture: {fileID: 2800000, guid: 70ed43dfece0647409f81d3fcad87a17, type: 3}
 --- !u!148 &14833968
 NetworkView:
   m_ObjectHideFlags: 1

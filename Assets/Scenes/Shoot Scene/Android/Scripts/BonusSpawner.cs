@@ -5,10 +5,21 @@ using System.Collections.Generic;
 public class BonusSpawner : MonoBehaviour {
 	
 
-	[SerializeField] private GameObject bonus;
-		
+	[SerializeField] private GameObject cloud1;
+	[SerializeField] private GameObject cloud2;
+	[SerializeField] private GameObject cloud3;
+	[SerializeField] private GameObject cloud4;
+
+	private GameObject bonusPrefab;
+	private int compteur = 0;
+
 	void Update () {
-		SpawnBonus (bonus);
+		if (compteur >= 800)
+		{
+			SpawnBonus ();
+			compteur = 0;
+		}
+		
 
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
 		{
@@ -25,12 +36,28 @@ public class BonusSpawner : MonoBehaviour {
 		}
 	}
 	
-	private void SpawnBonus (GameObject bonusPrefab) {
-		if (Random.Range (0, 1000) < 1)
-		{
-			GameObject go = Network.Instantiate (bonusPrefab, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
-			go.transform.parent = gameObject.transform;	
-		}
+	private void SpawnBonus () {
+			
+		switch (Random.Range (1, 4)) {
+				case 1:
+						bonusPrefab = cloud1;
+						break;
+				case 2:
+						bonusPrefab = cloud2;
+						break;
+				case 3:
+						bonusPrefab = cloud3;
+						break;
+				default:
+						bonusPrefab = cloud4;
+						break;
+				}
+
+		GameObject go = Network.Instantiate (bonusPrefab, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 3.5f), Quaternion.identity, 0) as GameObject;
+		if (Random.Range (0, 3) < 1)
+			Destroy (go.transform.GetChild (0).gameObject);
+		go.transform.parent = gameObject.transform;	
+
 	}
 
 }

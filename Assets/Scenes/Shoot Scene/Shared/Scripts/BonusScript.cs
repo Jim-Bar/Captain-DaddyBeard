@@ -3,8 +3,6 @@ using System.Collections;
 
 public class BonusScript : MonoBehaviour {
 
-	[SerializeField] private GameObject cloud = null;
-
 
 	private GameObject buttonSwitch;
 
@@ -18,11 +16,11 @@ public class BonusScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (buttonSwitch.GetComponent<SwitchScanShoot>().isShoot) {
-			cloud.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,1f);
+			gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,1f);
 		} 
 		else
 		{
-			cloud.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,.5f);
+			gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,.5f);
 		}
 	}
 

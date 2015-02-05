@@ -36,16 +36,21 @@ public class PhaseLoader : MonoBehaviour {
 	[Tooltip("Name of the scene of deplacement")]
 	[SerializeField] private string deplacementSceneName;
 
-	// hold the type of the first phase of each level.
+	// Hold the type of the first phase of each level.
 	[Tooltip("Types of the first phases of each level")]
 	[SerializeField] private Type[] firstPhasesTypes;
-	
+
+	// Picture used for the transitions between phases.
+	[Tooltip("Transition picture")]
+	[SerializeField] private Texture2D transitionPicture;
+
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
 	private static string phaseName = null; // Name of the next phase to load.
 	private static int nextLevel = 0; // The next level to load.
 	private static int nextPhase = 0; // The next phase to load.
 	private static Type nextPhaseType = Type.SHOOT; // Type of the next phase to load.
 	private static bool loadPhaseNextSceneLoading = false; // Will the phase loader load a phase on the next scene loading ?
+	private static bool transitionDisplayed = false; // Is the transition currently displayed ?
 	private static int currentLevel = 0; // The level currently or lastly played.
 	private static int currentPhase = 0; // The phase currently or lastly played.
 	private static Type currentPhaseType = Type.SHOOT; // The type of the phase currently or lastly played.
@@ -124,6 +129,7 @@ public class PhaseLoader : MonoBehaviour {
 		if (loadPhaseNextSceneLoading)
 		{
 			loadPhaseNextSceneLoading = false;
+			transitionDisplayed = true;
 			currentLevel = nextLevel;
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
@@ -154,5 +160,28 @@ public class PhaseLoader : MonoBehaviour {
 		}
 		else
 			Debug.LogError (GetType ().Name + " : Phase \"" + phaseName + "\" not found.");
+	}
+
+	private void OnGUI () {
+		if (transitionDisplayed)
+		{
+			const float transitionDuration = 3;
+			const float transitionLeavingDuration = 0.5f;
+			float timeSinceLevelLoad = Time.timeSinceLevelLoad;
+			float deltaMax = Screen.width / 20;
+			if (timeSinceLevelLoad <= transitionDuration)
+			{
+				float deltaX = timeSinceLevelLoad * deltaMax / transitionDuration;
+				GUI.DrawTexture(new Rect(- deltaX, 0, Screen.width + deltaMax, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+			}
+			else if (timeSinceLevelLoad <= transitionDuration + transitionLeavingDuration)
+			{
+				float deltaX = timeSinceLevelLoad * deltaMax / transitionDuration;
+				float deltaExpX = Mathf.Exp (65 * transitionLeavingDuration * ((timeSinceLevelLoad - transitionDuration) - transitionLeavingDuration / 2));
+				GUI.DrawTexture(new Rect(- Mathf.Max (deltaX, deltaExpX + deltaMax), 0, Screen.width + deltaMax, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+			}
+			else
+				transitionDisplayed = false;
+		}
 	}
 }
