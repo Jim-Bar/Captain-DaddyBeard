@@ -108,7 +108,7 @@ MonoBehaviour:
   jumpForce: 1200
   jumpDetection: .00249999994
   rollSensibility: .5
-  deadZone: 1
+  deadZone: 2
   rollLowPassFilter: .0500000007
   worldLayer:
     serializedVersion: 2
