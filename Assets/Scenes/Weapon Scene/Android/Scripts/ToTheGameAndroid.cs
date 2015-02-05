@@ -7,6 +7,7 @@ public class ToTheGameAndroid : MonoBehaviour {
 	[SerializeField] public Text carac;
 
 	void Start () {
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundValidate();
 		RPCWrapper.RegisterMethod (ToTheGameAndroidFunc);
 		carac.enabled = false;
 	}
