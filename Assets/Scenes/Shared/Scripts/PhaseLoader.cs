@@ -173,10 +173,10 @@ public class PhaseLoader : MonoBehaviour {
 	}
 
 	private void OnGUI () {
-		const float transitionDuration = 3;
 		float deltaTotal = Screen.width / 20;
 		if (transitionStartDisplayed) // Just before the phase scene is loaded.
 		{
+			const float transitionDuration = 2;
 			const float transitionArrivalDuration = 0.5f;
 			float timeSinceLevelLoad = Time.timeSinceLevelLoad;
 			if (timeSinceLevelLoad - timeTransitionBegan <= transitionArrivalDuration)
