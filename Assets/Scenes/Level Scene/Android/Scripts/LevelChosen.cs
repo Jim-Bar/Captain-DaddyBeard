@@ -11,6 +11,6 @@ public class LevelChosen : MonoBehaviour {
 	}
 
 	public void ValidatePressed(){
-		RPCWrapper.RPC("LoadWeaponLevel", RPCMode.Server);
+		RPCWrapper.RPC("TryLaunchingWeaponScene", RPCMode.Server);
 	}	
 }

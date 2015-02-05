@@ -19,7 +19,6 @@ public class UpdateLevelWindows : MonoBehaviour {
 		levelChoice = 0;
 		image = gameObject.GetComponent<Image>();
 		RPCWrapper.RegisterMethod (UpdateColorWin);
-		RPCWrapper.RegisterMethod (LoadWeaponLevel);
 	}
 
 	public void UpdateColorWin (int level){
@@ -54,11 +53,4 @@ public class UpdateLevelWindows : MonoBehaviour {
 				break;
 		}
 	}
-
-	public void LoadWeaponLevel(){
-		RPCWrapper.RPC ("ValidateLevel", RPCMode.Others, levelChoice);
-		PhaseLoader.Prepare (levelChoice);
-		Application.LoadLevel ("Windows - WeaponScene");
-	}
-	
 }
