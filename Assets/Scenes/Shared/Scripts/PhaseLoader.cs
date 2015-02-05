@@ -139,6 +139,7 @@ public class PhaseLoader : MonoBehaviour {
 		if (loadPhaseNextSceneLoading)
 		{
 			loadPhaseNextSceneLoading = false;
+			transitionEndDisplayed = true;
 			currentLevel = nextLevel;
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
@@ -181,17 +182,16 @@ public class PhaseLoader : MonoBehaviour {
 			if (timeSinceLevelLoad - timeTransitionBegan <= transitionArrivalDuration)
 			{
 				float deltaExpX = Mathf.Exp (30 * transitionArrivalDuration * (transitionArrivalDuration - timeSinceLevelLoad + timeTransitionBegan));
-				GUI.DrawTexture(new Rect(deltaExpX + deltaTotal, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+				GUI.DrawTexture(new Rect(deltaExpX, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
 			}
 			else if (timeSinceLevelLoad - timeTransitionBegan <= transitionDuration + transitionArrivalDuration)
 			{
-				float deltaX = deltaTotal * (transitionDuration + transitionArrivalDuration - timeSinceLevelLoad + timeTransitionBegan) / transitionDuration;
-				GUI.DrawTexture(new Rect(deltaX, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+				float deltaX = deltaTotal * (timeSinceLevelLoad - timeTransitionBegan - transitionDuration - transitionArrivalDuration) / transitionDuration;
+				GUI.DrawTexture(new Rect(- deltaX - deltaTotal, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
 			}
 			else
 			{
 				transitionStartDisplayed = false;
-				transitionEndDisplayed = true;
 				ActualLoad ();
 			}
 		}
@@ -202,7 +202,7 @@ public class PhaseLoader : MonoBehaviour {
 			if (timeSinceLevelLoad <= transitionLeavingDuration)
 			{
 				float deltaExpX = Mathf.Exp (30 * transitionLeavingDuration * timeSinceLevelLoad);
-				GUI.DrawTexture(new Rect(- deltaExpX, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+				GUI.DrawTexture(new Rect(- deltaExpX - deltaTotal, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
 			}
 			else
 				transitionEndDisplayed = false;
