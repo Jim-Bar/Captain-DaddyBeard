@@ -5,7 +5,7 @@ public class PressLaunchGame : MonoBehaviour {
 
 	public void ValidateButtonPressed () {
 		RPCWrapper.RPC ("TryLaunchingGame", RPCMode.Server);
-
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundValidate();
 		// Register LoadGame() in the RPC wrapper.
 		RPCWrapper.RegisterMethod (LoadGame);
 	}

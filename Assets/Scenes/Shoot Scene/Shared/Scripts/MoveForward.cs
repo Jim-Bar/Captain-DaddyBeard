@@ -29,6 +29,8 @@ public class MoveForward : MonoBehaviour {
 		RPCWrapper.RegisterMethod (GoHomeScene);
 		RPCWrapper.RegisterMethod (PauseButtonPressed);
 		RPCWrapper.RegisterMethod (ResumeButtonPressed);
+		RPCWrapper.RegisterMethod (EnergyBonus);
+		RPCWrapper.RegisterMethod (LifeBonus);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -86,6 +88,14 @@ public class MoveForward : MonoBehaviour {
 	{	
 		Time.timeScale = 1;
 		Application.LoadLevel ("Windows - HomeScene");
+	}
+
+	public void EnergyBonus(int quantity){
+		Player.energy1.Add (quantity);
+	}
+
+	public void LifeBonus(int quantity){
+		Player.health.Add (quantity);
 	}
 
 	#endif

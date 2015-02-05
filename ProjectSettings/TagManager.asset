@@ -5,6 +5,11 @@ TagManager:
   tags:
   - World
   - Enemy
+  - LifeBonus
+  - EnergyBonus
+  - 
+  - 
+  - 
   - Bonus
   - 
   Builtin Layer 0: Default
