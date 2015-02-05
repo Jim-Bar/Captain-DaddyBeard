@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour {
 	[SerializeField] public GameObject theme;
 	[SerializeField] public GameObject shoot;
 	[SerializeField] public GameObject explode;
-	private bool bShoot;
+	//private bool bShoot;
 	
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour {
 		shoot.audio.Stop ();
 		explode.audio.Stop ();
 		theme.audio.Stop ();
-		bShoot = false;
+		//bShoot = false;
 	}
 
 	//The commentaries before each function is the way to call these functions.
@@ -39,7 +39,8 @@ public class SoundManager : MonoBehaviour {
 
 	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundShoot();
 	public void SoundShoot(){
-		bShoot = true;
+		//bShoot = true;
+		shoot.audio.Play ();
 	}
 
 
@@ -54,10 +55,10 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	//Update is called once per frame
-	void Update(){
+	/*void Update(){
 		if(bShoot){
 			shoot.audio.Play ();
 			bShoot = false;
 		}
-	}
+	}*/
 }
