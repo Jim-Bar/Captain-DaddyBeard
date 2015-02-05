@@ -59,12 +59,9 @@ public class GyroManager : MonoBehaviour {
 	{
 		if (Input.deviceOrientation == DeviceOrientation.FaceUp)
 		{
-			Debug.Log ("Recalibrate !");
 			calibration = Quaternion.Inverse (Input.gyro.attitude);
 			if (calibration.w != 0 || calibration.x != 0 || calibration.y != 0 || calibration.z != 0)
 				firstCalibrationDone = true;
 		}
-		else
-			Debug.Log ("Not recalibrated !");
 	}
 }
