@@ -28,7 +28,7 @@ public class BonusSpawner : MonoBehaviour {
 	private void SpawnBonus (GameObject bonusPrefab) {
 		if (Random.Range (0, 1000) < 1)
 		{
-			GameObject go = Network.Instantiate (bonusPrefab, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), Camera.main.transform.position.z + 9), Quaternion.identity, 0) as GameObject;
+			GameObject go = Network.Instantiate (bonusPrefab, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), /*Camera.main.transform.position.z + 9*/2.5f), Quaternion.identity, 0) as GameObject;
 			go.transform.parent = gameObject.transform;	
 		}
 	}

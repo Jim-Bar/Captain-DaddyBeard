@@ -8,13 +8,13 @@ public class BonusScript : MonoBehaviour {
 
 	private GameObject buttonSwitch;
 
-	//#if UNITY_ANDROID
+	#if UNITY_ANDROID
 
 	// Use this for initialization
 	void Start () {
 		buttonSwitch = GameObject.Find ("buttonSwitch");
 	}
-		
+
 	// Update is called once per frame
 	void Update () {
 		if (buttonSwitch.GetComponent<SwitchScanShoot>().isShoot) {
@@ -26,5 +26,5 @@ public class BonusScript : MonoBehaviour {
 		}
 	}
 
-	//#endif
+	#endif
 }
