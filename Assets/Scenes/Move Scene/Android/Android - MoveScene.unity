@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215cbfed881785b41b21b05baf00a195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoRecalibrationEnabled: 1
 --- !u!4 &2143748069
 Transform:
   m_ObjectHideFlags: 0
