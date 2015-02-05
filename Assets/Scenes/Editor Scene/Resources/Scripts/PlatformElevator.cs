@@ -22,6 +22,8 @@ public class PlatformElevator : MonoBehaviour {
 	// Reference towards the player and the world object.
 	private GameObject player = null;
 
+	private GameObject cr = null;
+
 	private bool movingUp = false;
 	private bool movingDown = false;
 	
@@ -30,9 +32,8 @@ public class PlatformElevator : MonoBehaviour {
 	//private bool goingUp = true;
 
 	private bool comboPerformed = false;
-
-	//RPC function 
-	public void ElevatorCombo (bool ok) {
+	
+	public void ValidateCombo (bool ok) {
 		if (ok) {
 			Debug.Log("Ok combo receive"); 
 			comboPerformed = true;
@@ -54,9 +55,10 @@ public class PlatformElevator : MonoBehaviour {
 			Debug.LogError (GetType ().Name + " : This script cannot be used with " + platformRotate.GetType ().Name);
 			enabled = false;
 		}
-		RPCWrapper.RegisterMethod(ElevatorCombo);
 
+		cr = GameObject.Find("ComboCenter");
 		GetReferenceToPlayer ();
+
 	
 	}
 	
@@ -109,10 +111,8 @@ public class PlatformElevator : MonoBehaviour {
 			arg = "ArrowRight";
 			break;
 		}
-		if (Network.connections.Length > 0) {
-			Debug.Log("Combo"); 
-			RPCWrapper.RPC ("ComboTask", RPCMode.Others, arg);
-		}
+		ComboRequest ct = cr.GetComponent<ComboRequest>();
+		ct.AskCombo (this.gameObject, arg);
 
 	}
 
@@ -134,8 +134,10 @@ public class PlatformElevator : MonoBehaviour {
 
 	private bool detectPlayer() {
 
-		if (player.transform.position.x >= transform.localPosition.x - distancePlayer &&
-						player.transform.position.x <= transform.localPosition.x + distancePlayer) {
+		Debug.Log ("pos db : " + player.transform.position.x + " vs pos plat " + transform.localPosition.x);
+
+		if (player.transform.position.x >= transform.parent.parent.position.x + transform.localPosition.x - distancePlayer &&
+		    player.transform.position.x <= transform.parent.parent.position.x + transform.localPosition.x + distancePlayer) {
 
 			return true;
 		} else {
