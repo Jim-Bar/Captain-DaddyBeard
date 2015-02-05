@@ -9,6 +9,9 @@ public class SoundManager : MonoBehaviour {
 	[SerializeField] public GameObject theme;
 	[SerializeField] public GameObject shoot;
 	[SerializeField] public GameObject explode;
+	[SerializeField] public GameObject theme1;
+	[SerializeField] public GameObject theme2;
+	[SerializeField] public GameObject theme3;
 	
 	// Use this for initialization
 	void Start () {
@@ -49,5 +52,20 @@ public class SoundManager : MonoBehaviour {
 	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme();
 	public void SoundTheme(){
 		theme.audio.Play ();
+	}
+
+	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme1();
+	public void SoundTheme1(){
+		theme1.audio.Play ();
+	}
+
+	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme2();
+	public void SoundTheme2(){
+		theme2.audio.Play ();
+	}
+
+	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme3();
+	public void SoundTheme3(){
+		theme3.audio.Play ();
 	}
 }

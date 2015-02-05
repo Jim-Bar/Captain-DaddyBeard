@@ -7,7 +7,6 @@ public class LevelChosen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundValidate();
 		levelChosen = 0;
 	}
 
