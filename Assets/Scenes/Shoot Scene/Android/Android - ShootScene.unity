@@ -650,7 +650,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a086f3c103d67bd4ea0277e580b07604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonus: {fileID: 190062, guid: 7c3d3a9833992564b8ec7db8a284cff0, type: 2}
+  cloud1: {fileID: 149248, guid: ba8ac67cbe43e8848adbef1535cac79c, type: 2}
+  cloud2: {fileID: 149248, guid: ce45c18deee1be24bb45655f5ada76db, type: 2}
+  cloud3: {fileID: 149248, guid: dd231f3faf5308045b263d29d3d947e4, type: 2}
+  cloud4: {fileID: 149248, guid: 5b209b1af90246343a3bc3f4eaeca274, type: 2}
 --- !u!1 &957427094
 GameObject:
   m_ObjectHideFlags: 0
