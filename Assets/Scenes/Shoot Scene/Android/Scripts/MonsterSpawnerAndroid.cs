@@ -7,24 +7,12 @@ public class MonsterSpawnerAndroid : MonoBehaviour {
 	[SerializeField] private GameObject jumpingMonster;
 	[SerializeField] private GameObject slipingMonster;
 	private GameObject monster;
-	private int numPrefab;
-	// Use this for initialization
+
 	void Start () {
 		RPCWrapper.RegisterMethod (InstanciateGO);
-		numPrefab = 1;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
-	public void UpdateGO(int num)
-	{
-		numPrefab = num;
-	}
-
-	public void InstanciateGO(Vector3 pos){
+	public void InstanciateGO(int numPrefab, Vector3 pos){
 
 		switch (numPrefab) {
 				case 1:

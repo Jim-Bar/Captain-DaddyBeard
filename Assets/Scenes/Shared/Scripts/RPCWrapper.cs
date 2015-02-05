@@ -38,6 +38,7 @@ public class RPCWrapper : MonoBehaviour {
 	public delegate void TargetMethod_Vector3 (Vector3 arg);
 	public delegate void TargetMethod_Quaternion (Quaternion arg);
 	public delegate void TargetMethod_int_int (int arg1, int arg2);
+	public delegate void TargetMethod_int_Vector3 (int arg1, Vector3 arg2);
 	public delegate void TargetMethod_int_int_int (int arg1, int arg2, int arg3);
 	
 	// Dictionaries that contain all the registered methods (sorted by type).
@@ -49,6 +50,7 @@ public class RPCWrapper : MonoBehaviour {
 	private static Dictionary<string, TargetMethod_Vector3> methods_Vector3;
 	private static Dictionary<string, TargetMethod_Quaternion> methods_Quaternion;
 	private static Dictionary<string, TargetMethod_int_int> methods_int_int;
+	private static Dictionary<string, TargetMethod_int_Vector3> methods_int_Vector3;
 	private static Dictionary<string, TargetMethod_int_int_int> methods_int_int_int;
 
 	/*
@@ -88,6 +90,7 @@ public class RPCWrapper : MonoBehaviour {
 		methods_Vector3 = new Dictionary<string, TargetMethod_Vector3> ();
 		methods_Quaternion = new Dictionary<string, TargetMethod_Quaternion> ();
 		methods_int_int = new Dictionary<string, TargetMethod_int_int> ();
+		methods_int_Vector3 = new Dictionary<string, TargetMethod_int_Vector3> ();
 		methods_int_int_int = new Dictionary<string, TargetMethod_int_int_int> ();
 	}
 	
@@ -100,6 +103,7 @@ public class RPCWrapper : MonoBehaviour {
 	public static void RegisterMethod (TargetMethod_Vector3 method) { methods_Vector3[method.Method.Name] = method; }
 	public static void RegisterMethod (TargetMethod_Quaternion method) { methods_Quaternion[method.Method.Name] = method; }
 	public static void RegisterMethod (TargetMethod_int_int method) { methods_int_int[method.Method.Name] = method; }
+	public static void RegisterMethod (TargetMethod_int_Vector3 method) { methods_int_Vector3[method.Method.Name] = method; }
 	public static void RegisterMethod (TargetMethod_int_int_int method) { methods_int_int_int[method.Method.Name] = method; }
 	
 	// Perform an RPC.
@@ -111,6 +115,7 @@ public class RPCWrapper : MonoBehaviour {
 	public static void RPC (string methodName, RPCMode receivers, Vector3 arg) { networkView.RPC ("Receive_Vector3", receivers, methodName, arg); }
 	public static void RPC (string methodName, RPCMode receivers, Quaternion arg) { networkView.RPC ("Receive_Quaternion", receivers, methodName, arg); }
 	public static void RPC (string methodName, RPCMode receivers, int arg1, int arg2) { networkView.RPC ("Receive_int_int", receivers, methodName, arg1, arg2); }
+	public static void RPC (string methodName, RPCMode receivers, int arg1, Vector3 arg2) { networkView.RPC ("Receive_int_Vector3", receivers, methodName, arg1, arg2); }
 	public static void RPC (string methodName, RPCMode receivers, int arg1, int arg2, int arg3) { networkView.RPC ("Receive_int_int_int", receivers, methodName, arg1, arg2, arg3); }
 	
 	// Receive an RPC and call the targetted method (will raise an exception if there is no such method registered).
@@ -122,6 +127,7 @@ public class RPCWrapper : MonoBehaviour {
 	[RPC] private void Receive_Vector3 (string methodName, Vector3 arg) { if (methods_Vector3.ContainsKey(methodName) || !ignoreErrors) methods_Vector3[methodName] (arg); }
 	[RPC] private void Receive_Quaternion (string methodName, Quaternion arg) { if (methods_Quaternion.ContainsKey(methodName) || !ignoreErrors) methods_Quaternion[methodName] (arg); }
 	[RPC] private void Receive_int_int (string methodName, int arg1, int arg2) { if (methods_int_int.ContainsKey(methodName) || !ignoreErrors) methods_int_int[methodName] (arg1, arg2); }
+	[RPC] private void Receive_int_Vector3 (string methodName, int arg1, Vector3 arg2) { if (methods_int_Vector3.ContainsKey(methodName) || !ignoreErrors) methods_int_Vector3[methodName] (arg1, arg2); }
 	[RPC] private void Receive_int_int_int (string methodName, int arg1, int arg2, int arg3) { if (methods_int_int_int.ContainsKey(methodName) || !ignoreErrors) methods_int_int_int[methodName] (arg1, arg2, arg3); }
 
 	// Clear methods registered each time a new scene is loaded.
@@ -134,6 +140,7 @@ public class RPCWrapper : MonoBehaviour {
 		methods_Vector3.Clear ();
 		methods_Quaternion.Clear ();
 		methods_int_int.Clear ();
+		methods_int_Vector3.Clear ();
 		methods_int_int_int.Clear ();
 	}
 }

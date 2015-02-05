@@ -9,7 +9,7 @@ using System.Collections.Generic;
  */
 public class MonsterSpawner : MonoBehaviour {
 
-	#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+	#if UNITY_STANDALONE_WIN
 
 	[SerializeField] private GameObject flyingMonster;
 	[SerializeField] private GameObject jumpingMonster;
@@ -26,9 +26,8 @@ public class MonsterSpawner : MonoBehaviour {
 		{
 			Vector3 pos = Camera.main.transform.position + new Vector3 (20, height, 10);
 			GameObject monster = Instantiate (monsterPrefab, pos, Quaternion.identity) as GameObject;
-			monster.transform.parent = gameObject.transform;	
-			RPCWrapper.RPC("UpdateGO", RPCMode.Server, numPrefab);
-			RPCWrapper.RPC("InstanciateGO", RPCMode.Server, pos);
+			monster.transform.parent = gameObject.transform;
+			RPCWrapper.RPC("InstanciateGO", RPCMode.Server, numPrefab, pos);
 		}
 	}
 
