@@ -44,6 +44,10 @@ public class PhaseLoader : MonoBehaviour {
 	[Tooltip("Transition picture")]
 	[SerializeField] private Texture2D transitionPicture;
 
+	// Font used for the transitions between phases.
+	[Tooltip("Transition font")]
+	[SerializeField] private Font transitionFont;
+
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
 	private static string phaseName = null; // Name of the next phase to load.
 	private static int nextLevel = 0; // The next level to load.
@@ -57,6 +61,7 @@ public class PhaseLoader : MonoBehaviour {
 	// Is the transition currently displayed ? 
 	private static bool transitionDisplayed = false;
 	private static float timeTransitionBegan = 0;
+	private GUIStyle transitionTextStyle;
 
 	// Type of the phase to be loaded.
 	public enum Type {
@@ -65,11 +70,30 @@ public class PhaseLoader : MonoBehaviour {
 	};
 
 	private void Awake () {
+		// Check taht tehre is only one instance.
 		if (instance == null)
 			instance = this;
 		else
 			Debug.LogError (GetType ().Name + " : Two instances of " + GetType ().Name + " running at the same time.");
 
+		// Check that fields are filled.
+		if (shootSceneName == null)
+			Debug.LogError (GetType ().Name + " : The field \"Shoot Scene\" is empty !");
+		if (deplacementSceneName == null)
+			Debug.LogError (GetType ().Name + " : The field \"Deplacement Scene\" is empty !");
+		if (transitionPicture == null)
+			Debug.LogError (GetType ().Name + " : The field \"Transition Picture\" is empty !");
+		if (transitionFont == null)
+			Debug.LogError (GetType ().Name + " : The field \"Transition Font\" is empty !");
+
+		// Initialize text of the transitions.
+		transitionTextStyle = new GUIStyle ();
+		transitionTextStyle.font = transitionFont;
+		transitionTextStyle.fontSize = Screen.width / 13;
+		transitionTextStyle.normal.textColor = Color.black;
+		transitionTextStyle.alignment = TextAnchor.MiddleCenter;
+
+		// Keep the phase loader alive through scenes.
 		DontDestroyOnLoad (transform.gameObject);
 	}
 
@@ -193,7 +217,10 @@ public class PhaseLoader : MonoBehaviour {
 				transitionDisplayed = false;
 
 			if (transitionDisplayed) // Retest because it might have changed.
-				GUI.DrawTexture(new Rect(x, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+			{
+				GUI.DrawTexture (new Rect(x, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+				GUI.Label (new Rect(x, 0, Screen.width, Screen.height), nextPhaseType == Type.SHOOT ? "Visez l'écran !" : "Tablette à plat !", transitionTextStyle);
+			}
 		}
 	}
 }
