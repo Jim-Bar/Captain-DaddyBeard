@@ -32,6 +32,5 @@ public class FireBullet : MonoBehaviour {
 		bullet.rigidbody2D.velocity = bulletSpeed * (target.transform.position - transform.position).normalized;
 		bullet.rigidbody2D.angularVelocity = Random.Range (-360, 360);
 		RPCWrapper.RPC("InstanciateShoot", RPCMode.Others, target.transform.position);
-		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundShoot();
 	}
 }
