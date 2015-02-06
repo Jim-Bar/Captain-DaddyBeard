@@ -4,8 +4,6 @@ using System.Collections;
 
 public class Timer : MonoBehaviour {
 
-	#pragma strict
-
 	public float timer = 70;
 	public UnityEngine.UI.Text displayText;
 	private float oldTimer;
