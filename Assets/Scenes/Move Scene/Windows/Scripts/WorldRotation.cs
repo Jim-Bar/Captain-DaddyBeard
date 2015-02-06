@@ -23,9 +23,6 @@ public class WorldRotation : MonoBehaviour {
 	[Tooltip("Layer of the objects of the world (note that all world's objects must have this layer)")]
 	[SerializeField] private LayerMask worldLayer;
 
-	//rajout juste pour un test
-	[SerializeField] private GameObject testOk = null;
-	private GameObject test;
 
 	// Reference towards the player and the world object.
 	private GameObject player = null;
@@ -38,24 +35,9 @@ public class WorldRotation : MonoBehaviour {
 	void Start () {
 		RPCWrapper.RegisterMethod(UpdateRoll);
 		RPCWrapper.RegisterMethod(JumpPlayer);
-		//RPCWrapper.RegisterMethod(ComboTest);
 		
 		GetReferenceToPlayer ();
 		GetReferenceToWorld ();
-	}
-
-	//methode temporaire utilisé pour un test 
-	public void ComboTest (bool ok) {
-		if (ok) {
-
-			Vector3 pos = new Vector3(player.transform.position.x, player.transform.position.y+2, 0 );
-			test = Instantiate (testOk, pos, Quaternion.identity) as GameObject;
-
-			Destroy(test, 5.0f);
-
-		}
-
-
 	}
 
 	// Modify world rotation based on the device rotation.
@@ -83,33 +65,6 @@ public class WorldRotation : MonoBehaviour {
 			// Jump perpendicular to the direction of the ground.
 			player.rigidbody2D.AddForce(Quaternion.Euler(0, 0, roll) * Vector2.up * jumpForce, ForceMode2D.Force);
 			isGrounded = false; // The player jumps so he is not touching the ground anymore.
-
-			System.Random rnd = new System.Random();
-			int nb = rnd.Next(1, 4);
-			string arg;
-			switch (nb)
-			{
-			case 1:
-				arg = "ArrowUp";
-				break;
-			case 2:
-				arg = "ArrowDown";
-				break;
-			case 3:
-				arg = "ArrowLeft";
-				break;
-			case 4:
-				arg = "ArrowRight";
-				break;
-			default:
-				arg = "ArrowRight";
-				break;
-			}
-			//if (Network.connections.Length > 0) {
-				//Debug.Log("Combo"); 
-				//RPCWrapper.RPC ("ComboTask", RPCMode.Others, arg);
-			//}
-				
 		}		
 	}
 
