@@ -15,7 +15,7 @@ public class WorldRotation : MonoBehaviour {
 	[Tooltip("The step below which a jump attempt is detected")] [Range(0.001f, 0.01f)]
 	[SerializeField] private float jumpDetection = 0.0025f;
 	[Tooltip("A value of 1 is normal, 0.5 is half the normal sensibility, ...")] [Range(0.1f, 1)]
-	[SerializeField] private float rollSensibility = 0.5f;
+	[SerializeField] private float rollSensibility = 0.75f;
 	[Tooltip("When the angle is in the dead zone, the angle will be set to zero")] [Range(0, 5)]
 	[SerializeField] private int deadZone = 1;
 	[Tooltip("Strength of the low pass filter. Lower means a higher strength")] [Range(0.01f, 0.1f)]
