@@ -23,8 +23,7 @@ public class MoveForward : MonoBehaviour {
 	[SerializeField] private GameObject l5;
 	[SerializeField] private GameObject l6;
 
-	void Update () {
-		transform.Translate (atSpeed * Time.deltaTime, 0, 0);
+	void start () {
 		RPCWrapper.RegisterMethod (Restart);
 		RPCWrapper.RegisterMethod (GoHomeScene);
 		RPCWrapper.RegisterMethod (PauseButtonPressed);
@@ -33,32 +32,43 @@ public class MoveForward : MonoBehaviour {
 		RPCWrapper.RegisterMethod (LifeBonus);
 	}
 
+	void Update () {
+		transform.Translate (atSpeed * Time.deltaTime, 0, 0);
+
+		switch (Player.health.Get()) {
+		case 0:
+			Restart();
+			break;
+		case 1:
+			l2.SetActive(false);
+			break;
+		case 2:
+			l2.SetActive(true);
+			l3.SetActive(false);
+			break;
+		case 3:
+			l3.SetActive(true);
+			l4.SetActive(false);
+			break;
+		case 4:
+			l4.SetActive(true);
+			l5.SetActive(false);
+			break;
+		case 5:
+			l5.SetActive(true);
+			l6.SetActive(false);
+			break;
+		default:
+			l6.SetActive(true);
+			break;			
+		}
+	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag ("Enemy")) {
 			Destroy (other.gameObject);
 			Player.health.Subtract (1);
-
-			switch (Player.health.Get()) {
-			case 0:
-				Restart();
-				break;
-			case 1:
-				l2.SetActive(false);
-				break;
-			case 2:
-				l3.SetActive(false);
-				break;
-			case 3:
-				l4.SetActive(false);
-				break;
-			case 4:
-				l5.SetActive(false);
-				break;
-			default:
-				l6.SetActive(false);
-				break;			
-			}
 		}
 	}
 
