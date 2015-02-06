@@ -54,10 +54,9 @@ public class PhaseLoader : MonoBehaviour {
 	private static int currentPhase = 0; // The phase currently or lastly played.
 	private static Type currentPhaseType = Type.SHOOT; // The type of the phase currently or lastly played.
 
-	// Is the transition currently displayed ? (Note that these attributes could be static).
-	private bool transitionEndDisplayed = false;
-	private bool transitionStartDisplayed = false;
-	private float timeTransitionBegan = 0;
+	// Is the transition currently displayed ? 
+	private static bool transitionDisplayed = false;
+	private static float timeTransitionBegan = 0;
 
 	// Type of the phase to be loaded.
 	public enum Type {
@@ -101,9 +100,12 @@ public class PhaseLoader : MonoBehaviour {
 		CheckExist ();
 		loadPhaseNextSceneLoading = true;
 
-		// The load is made in OnGUI ().
-		instance.transitionStartDisplayed = true;
-		instance.timeTransitionBegan = Time.timeSinceLevelLoad;
+		// The transition is made in OnGUI ().
+		transitionDisplayed = true;
+		timeTransitionBegan = Time.realtimeSinceStartup;
+
+		// Wait for the transition to load next scene.
+		instance.Invoke ("ActualLoad", 1);
 	}
 
 	// Load the current level from the beginning.
@@ -121,7 +123,8 @@ public class PhaseLoader : MonoBehaviour {
 		Load (currentLevel + 1);
 	}
 
-	private static void ActualLoad () {
+	// Do the load. Note that this function is not static because it is called by Invoke ().
+	private void ActualLoad () {
 		if (nextPhaseType == Type.SHOOT)
 			Application.LoadLevel (instance.shootSceneName);
 		else
@@ -139,7 +142,6 @@ public class PhaseLoader : MonoBehaviour {
 		if (loadPhaseNextSceneLoading)
 		{
 			loadPhaseNextSceneLoading = false;
-			transitionEndDisplayed = true;
 			currentLevel = nextLevel;
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
@@ -173,39 +175,23 @@ public class PhaseLoader : MonoBehaviour {
 	}
 
 	private void OnGUI () {
-		float deltaTotal = Screen.width / 20;
-		if (transitionStartDisplayed) // Just before the phase scene is loaded.
+		if (transitionDisplayed)
 		{
+			float deltaTotal = Screen.width / 20;
 			const float transitionDuration = 2;
 			const float transitionArrivalDuration = 0.5f;
-			float timeSinceLevelLoad = Time.timeSinceLevelLoad;
-			if (timeSinceLevelLoad - timeTransitionBegan <= transitionArrivalDuration)
-			{
-				float deltaExpX = Mathf.Exp (30 * transitionArrivalDuration * (transitionArrivalDuration - timeSinceLevelLoad + timeTransitionBegan));
-				GUI.DrawTexture(new Rect(deltaExpX, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
-			}
-			else if (timeSinceLevelLoad - timeTransitionBegan <= transitionDuration + transitionArrivalDuration)
-			{
-				float deltaX = deltaTotal * (timeSinceLevelLoad - timeTransitionBegan - transitionDuration - transitionArrivalDuration) / transitionDuration;
-				GUI.DrawTexture(new Rect(- deltaX - deltaTotal, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
-			}
+			const float transitionLeavingDuration = transitionArrivalDuration;
+			float timeSinceStartup = Time.realtimeSinceStartup;
+			float x = 0;
+			if (timeSinceStartup - timeTransitionBegan <= transitionArrivalDuration)
+				x = Mathf.Exp (30 * transitionArrivalDuration * (transitionArrivalDuration - timeSinceStartup + timeTransitionBegan));
+			else if (timeSinceStartup - timeTransitionBegan <= transitionArrivalDuration + transitionDuration)
+				x = - deltaTotal * (timeSinceStartup - timeTransitionBegan - transitionDuration - transitionArrivalDuration) / transitionDuration - deltaTotal;
+			else if (timeSinceStartup - timeTransitionBegan <= transitionArrivalDuration + transitionDuration + transitionLeavingDuration)
+				x = - Mathf.Exp (30 * transitionLeavingDuration * (timeSinceStartup - timeTransitionBegan - transitionArrivalDuration - transitionDuration)) - deltaTotal;
 			else
-			{
-				transitionStartDisplayed = false;
-				ActualLoad ();
-			}
-		}
-		else if (transitionEndDisplayed) // Just after the phase scene is loaded.
-		{
-			const float transitionLeavingDuration = 0.5f;
-			float timeSinceLevelLoad = Time.timeSinceLevelLoad;
-			if (timeSinceLevelLoad <= transitionLeavingDuration)
-			{
-				float deltaExpX = Mathf.Exp (30 * transitionLeavingDuration * timeSinceLevelLoad);
-				GUI.DrawTexture(new Rect(- deltaExpX - deltaTotal, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
-			}
-			else
-				transitionEndDisplayed = false;
+				transitionDisplayed = false;
+			GUI.DrawTexture(new Rect(x, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
 		}
 	}
 }
