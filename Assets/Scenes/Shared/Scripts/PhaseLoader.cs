@@ -191,7 +191,9 @@ public class PhaseLoader : MonoBehaviour {
 				x = - Mathf.Exp (30 * transitionLeavingDuration * (timeSinceStartup - timeTransitionBegan - transitionArrivalDuration - transitionDuration)) - deltaTotal;
 			else
 				transitionDisplayed = false;
-			GUI.DrawTexture(new Rect(x, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
+
+			if (transitionDisplayed) // Retest because it might have changed.
+				GUI.DrawTexture(new Rect(x, 0, Screen.width + deltaTotal, Screen.height), transitionPicture, ScaleMode.ScaleAndCrop);
 		}
 	}
 }
