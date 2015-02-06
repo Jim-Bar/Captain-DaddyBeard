@@ -17,8 +17,8 @@ public class ObjectFollowCamera : MonoBehaviour {
 	[SerializeField] private float yOffset = 0;
 
 	void Update () {
-		float newX = followX ? Camera.main.transform.position.x + xOffset : transform.position.x;
-		float newY = followY ? Camera.main.transform.position.y + yOffset : transform.position.y;
-		transform.position = new Vector3 (newX, newY, transform.position.z);
+		float newX = followX ? Camera.main.transform.position.x + xOffset : transform.localPosition.x;
+		float newY = followY ? Camera.main.transform.position.y + yOffset : transform.localPosition.y;
+		transform.localPosition = new Vector3 (newX, newY, transform.localPosition.z);
 	}
 }
