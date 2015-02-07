@@ -23,7 +23,7 @@ public class MoveForward : MonoBehaviour {
 	[SerializeField] private GameObject l5;
 	[SerializeField] private GameObject l6;
 
-	void start () {
+	void Start () {
 		RPCWrapper.RegisterMethod (Restart);
 		RPCWrapper.RegisterMethod (GoHomeScene);
 		RPCWrapper.RegisterMethod (PauseButtonPressed);
@@ -102,15 +102,11 @@ public class MoveForward : MonoBehaviour {
 	}
 
 	public void EnergyBonus(int quantity){
-		Debug.Log ("energy : " + Player.energy1.Get ()); 
-		Player.energy1.Add (quantity);
-		Debug.Log ("energy : " + Player.energy1.Get ()); 
+		Player.energy1.Add (quantity);		 
 	}
 
 	public void LifeBonus(int quantity){
-		Debug.Log ("vie : " + Player.health.Get ()); 
 		Player.health.Add (quantity);
-		Debug.Log ("vie : " + Player.health.Get ()); 
 	}
 
 	#endif
