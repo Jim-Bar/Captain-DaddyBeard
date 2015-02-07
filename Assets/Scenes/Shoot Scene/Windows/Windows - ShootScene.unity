@@ -1068,6 +1068,7 @@ GameObject:
   - 212: {fileID: 2134930738}
   - 114: {fileID: 2134930744}
   - 114: {fileID: 2134930741}
+  - 114: {fileID: 2134930745}
   m_Layer: 0
   m_Name: Captain DaddyBeard
   m_TagString: Player
@@ -1183,3 +1184,14 @@ MonoBehaviour:
   l4: {fileID: 1489412459}
   l5: {fileID: 876859021}
   l6: {fileID: 1942811432}
+--- !u!114 &2134930745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2134930737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7194f4780f40424449729b03a5b4a0f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

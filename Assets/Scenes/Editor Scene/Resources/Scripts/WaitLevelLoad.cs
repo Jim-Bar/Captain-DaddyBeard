@@ -18,6 +18,7 @@ public class WaitLevelLoad : MonoBehaviour {
 		RPCWrapper.RegisterMethod (LoadNextPhase);
 		RPCWrapper.RegisterMethod (LoadScoreScene);
 		RPCWrapper.RegisterMethod (ReloadCurrentPhase);
+		RPCWrapper.RegisterMethod (ReloadLevel);
 	}
 	
 	private void LoadNextPhase (int nextPhaseType, int nextLevel, int nextPhase) {
@@ -33,6 +34,10 @@ public class WaitLevelLoad : MonoBehaviour {
 
 	private void ReloadCurrentPhase () {
 		PhaseLoader.ReloadPhase ();
+	}
+
+	private void ReloadLevel () {
+		PhaseLoader.Reload ();
 	}
 
 	#endif

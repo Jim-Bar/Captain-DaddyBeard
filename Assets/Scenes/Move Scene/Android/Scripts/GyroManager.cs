@@ -39,19 +39,21 @@ public class GyroManager : MonoBehaviour {
 				Calibrate ();
 		}
 
-		// Update the roll on the server side.
-		if (Network.connections.Length > 0)
-			RPCWrapper.RPC ("UpdateRoll", RPCMode.Others, roll);
+		if (Time.timeScale == 1) {
+						// Update the roll on the server side.
+						if (Network.connections.Length > 0)
+								RPCWrapper.RPC ("UpdateRoll", RPCMode.Others, roll);
 
-		// Get input by accelerometer.
-		Vector3 dir = Vector3.zero;
-		dir.y = -Input.acceleration.y;
-		if (dir.sqrMagnitude > 1)
-			dir.Normalize();
+						// Get input by accelerometer.
+						Vector3 dir = Vector3.zero;
+						dir.y = -Input.acceleration.y;
+						if (dir.sqrMagnitude > 1)
+								dir.Normalize ();
 		
-		dir *= Time.deltaTime;
-		if (Network.connections.Length > 0)
-			RPCWrapper.RPC ("JumpPlayer", RPCMode.Others, dir);
+						dir *= Time.deltaTime;
+						if (Network.connections.Length > 0)
+								RPCWrapper.RPC ("JumpPlayer", RPCMode.Others, dir);
+				}
 	}
 
 	// Calibrate only when the device is held parallel to the ground with the screen facing upwards.

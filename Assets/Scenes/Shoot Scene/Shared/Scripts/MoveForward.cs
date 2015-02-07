@@ -23,11 +23,7 @@ public class MoveForward : MonoBehaviour {
 	[SerializeField] private GameObject l5;
 	[SerializeField] private GameObject l6;
 
-	void Start () {
-		RPCWrapper.RegisterMethod (Restart);
-		RPCWrapper.RegisterMethod (GoHomeScene);
-		RPCWrapper.RegisterMethod (PauseButtonPressed);
-		RPCWrapper.RegisterMethod (ResumeButtonPressed);
+	void Start () {	
 		RPCWrapper.RegisterMethod (EnergyBonus);
 		RPCWrapper.RegisterMethod (LifeBonus);
 	}
@@ -42,24 +38,44 @@ public class MoveForward : MonoBehaviour {
 			break;
 		case 1:
 			l2.SetActive(false);
+			l3.SetActive(false);
+			l4.SetActive(false);
+			l5.SetActive(false);
+			l6.SetActive(false);
 			break;
 		case 2:
 			l2.SetActive(true);
 			l3.SetActive(false);
+			l4.SetActive(false);
+			l5.SetActive(false);
+			l6.SetActive(false);
 			break;
 		case 3:
+			l2.SetActive(true);
 			l3.SetActive(true);
 			l4.SetActive(false);
+			l5.SetActive(false);
+			l6.SetActive(false);
 			break;
 		case 4:
+			l2.SetActive(true);
+			l3.SetActive(true);
 			l4.SetActive(true);
 			l5.SetActive(false);
+			l6.SetActive(false);
 			break;
 		case 5:
+			l2.SetActive(true);
+			l3.SetActive(true);
+			l4.SetActive(true);
 			l5.SetActive(true);
 			l6.SetActive(false);
 			break;
 		default:
+			l2.SetActive(true);
+			l3.SetActive(true);
+			l4.SetActive(true);
+			l5.SetActive(true);
 			l6.SetActive(true);
 			break;			
 		}
@@ -75,31 +91,11 @@ public class MoveForward : MonoBehaviour {
 
 	public void Restart()
 	{
-		RPCWrapper.RPC ("ReloadCurrentPhase", RPCMode.Others);
-		PhaseLoader.ReloadPhase ();
+		PhaseLoader.Reload ();
+		RPCWrapper.RPC("ReloadLevel", RPCMode.Others);
 		Player.health.Add (6);
-		l2.SetActive (true);
-		l3.SetActive (true);
-		l4.SetActive (true);
-		l5.SetActive (true);
-		l6.SetActive (true);
 	}
 
-	public void PauseButtonPressed()
-	{
-		Time.timeScale = 0;
-	}
-
-	public void ResumeButtonPressed()
-	{
-		Time.timeScale = 1;
-	}
-
-	public void GoHomeScene()
-	{	
-		Time.timeScale = 1;
-		Application.LoadLevel ("Windows - HomeScene");
-	}
 
 	public void EnergyBonus(int quantity){
 		Player.energy1.Add (quantity);		 
