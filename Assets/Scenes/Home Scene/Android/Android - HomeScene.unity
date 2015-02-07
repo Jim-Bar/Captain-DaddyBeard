@@ -508,6 +508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysDisplayCamera: 0
   debugMode: 0
+  infoPanel: {fileID: 2800000, guid: 35c6f5dc72549e74ebd1a5decba74613, type: 3}
 --- !u!1 &1925263740
 GameObject:
   m_ObjectHideFlags: 0

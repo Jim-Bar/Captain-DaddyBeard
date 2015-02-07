@@ -13,9 +13,22 @@ public class AimingManager : MonoBehaviour {
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
 	[SerializeField] private bool debugMode = false; // If true, display calibration information on the screen.
+	[Tooltip("Area where to display information about calibration")]
+	[SerializeField] private Texture2D infoPanel = null; // The lower panel where to display "Aim at the upper left, ...".
+	[Tooltip("Shoot button picture")]
+	[SerializeField] private Texture2D buttonNormal = null;
+	[Tooltip("Shoot button picture when pressed")]
+	[SerializeField] private Texture2D buttonPressed = null;
+	[Tooltip("Picture of the target")]
+	[SerializeField] private Texture2D target = null;
+	[Tooltip("Font to use for the explanations about calibration")]
+	[SerializeField] private Font infoFont = null;
 
 	private WebCamTexture cameraStream = null; // Video stream from the device camera.
 	private bool calibrating = true;
+	private GUIStyle infoStyle;
+	private GUIStyle buttonStyle;
+	private int buttonSize = 0;
 
 	/*
 	 * Rotation pointing to the upper left corner, lower right corner, and center of the screen respectively.
@@ -47,6 +60,30 @@ public class AimingManager : MonoBehaviour {
 		cameraStream = new WebCamTexture ();
 		if (calibrating)
 			cameraStream.Play ();
+
+		// Check the fields.
+		if (infoPanel == null)
+			Debug.LogError (GetType ().Name + " : A texture is missing for the info panel (field empty)");
+		if (buttonNormal == null)
+			Debug.LogError (GetType ().Name + " : A texture is missing for the fire button (field empty)");
+		if (buttonPressed == null)
+			Debug.LogError (GetType ().Name + " : A texture is missing for the fire button (field empty)");
+		if (target == null)
+			Debug.LogError (GetType ().Name + " : A texture is missing for the target (field empty)");
+		if (infoFont == null)
+			Debug.LogError (GetType ().Name + " : A font is missing for the info panel (field empty)");
+
+		// Initialize styles and contents.
+		infoStyle = new GUIStyle ();
+		infoStyle.font = infoFont;
+		infoStyle.fontSize = Screen.width / 30;
+		infoStyle.normal.textColor = Color.black;
+		infoStyle.alignment = TextAnchor.LowerCenter;
+		buttonStyle = new GUIStyle (infoStyle);
+		buttonStyle.alignment = TextAnchor.MiddleCenter;
+		buttonStyle.normal.background = buttonNormal;
+		buttonStyle.active.background = buttonPressed;
+		buttonSize = Screen.width / 6;
 	}
 	
 	private void Update () {
@@ -74,19 +111,30 @@ public class AimingManager : MonoBehaviour {
 
 		if (calibrating) // Calibration buttons.
 		{
-			if (!upperLeftCalibrationDone && GUILayout.Button ("Upper left calibration", GUILayout.Height(150)))
+			// Draw the panel.
+			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), infoPanel, ScaleMode.StretchToFill);
+			string infoText = "Visez le coin " + (!upperLeftCalibrationDone ? "supérieur gauche" : "inférieur droit") +  " de l'écran et tirez";
+			GUI.Label (new Rect (0, 0, Screen.width, Screen.height), infoText, infoStyle);
+
+			// Draw the target.
+			GUI.DrawTexture(new Rect(Screen.width / 2 - buttonSize / 2, Screen.height / 2 - buttonSize / 2, buttonSize, buttonSize), target, ScaleMode.StretchToFill);
+
+			// Draw the button and calibrate.
+			if (GUI.Button (new Rect (Screen.width - buttonSize - 50, Screen.height / 2 - buttonSize / 2, buttonSize, buttonSize), "Feu !", buttonStyle))
 			{
-				upperLeftCalibration = Input.gyro.attitude;
-				upperLeftCalibrationDone = true;
-				if (lowerRightCalibrationDone)
+				if (!upperLeftCalibrationDone)
+				{
+					upperLeftCalibration = Input.gyro.attitude;
+					upperLeftCalibrationDone = true;
+				}
+				else if (!lowerRightCalibrationDone)
+				{
+					lowerRightCalibration = Input.gyro.attitude;
+					lowerRightCalibrationDone = true;
 					ComputeCenterCalibration ();
-			}
-			if (!lowerRightCalibrationDone && GUILayout.Button ("Lower right calibration", GUILayout.Height(150)))
-			{
-				lowerRightCalibration = Input.gyro.attitude;
-				lowerRightCalibrationDone = true;
-				if (upperLeftCalibrationDone)
-					ComputeCenterCalibration ();
+				}
+				else
+					Debug.LogError (GetType ().Name + " : Unexpected case in calibration encountered");
 			}
 		}
 		else // Recalibrate button.
