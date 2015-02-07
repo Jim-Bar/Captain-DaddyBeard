@@ -44,15 +44,12 @@ public class Explode : MonoBehaviour {
 	// Destroy the bullet when it touches something.
 	private void OnTriggerEnter2D (Collider2D other) {
 		// If the object is a monster, destroy it.
-		if (other.gameObject.CompareTag ("Enemy"))
-			Destroy (other.gameObject);
-
-		// If the object is not the player, destroy the bullet nor the arrival (and add explosion).
-		if (other.gameObject != player && other.gameObject != arrival && !other.gameObject.CompareTag ("Bonus"))
-		{
-			Destroy (gameObject);
-			Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity);
+		if (other.gameObject.CompareTag ("Enemy")) {
+				Destroy (other.gameObject);
+				Destroy (gameObject);
+				Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity);
 		}
+
 	}
 
 

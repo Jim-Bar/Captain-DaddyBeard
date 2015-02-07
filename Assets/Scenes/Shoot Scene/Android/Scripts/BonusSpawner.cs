@@ -27,12 +27,12 @@ public class BonusSpawner : MonoBehaviour {
 			if(hit.collider != null)
 			{
 				GameObject go = hit.collider.gameObject;
-				if(go.tag == "LifeBonus")
+				if(go.CompareTag("LifeBonus"))
 				{
 					RPCWrapper.RPC("LifeBonus", RPCMode.Server, 1);
 					Network.Destroy(go);
 				}
-				else if(go.tag == "EnergyBonus")
+				else if(go.CompareTag("EnergyBonus"))
 				{
 					RPCWrapper.RPC("EnergyBonus", RPCMode.Server, 200);
 					Network.Destroy(go);
@@ -60,7 +60,7 @@ public class BonusSpawner : MonoBehaviour {
 				}
 
 		go = Network.Instantiate (go, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(4,8), 2.5f), Quaternion.identity, 0) as GameObject;
-		if (Random.Range (0, 3) < 1)
+		if (Random.Range (0, 5) < 1)
 			Destroy (go.transform.GetChild (0).gameObject);
 		go.transform.parent = gameObject.transform;	
 
