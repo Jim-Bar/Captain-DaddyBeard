@@ -8,7 +8,6 @@ public class ComboRequest : MonoBehaviour {
 	//RPC function 
 	public void ComboAnswer (bool ok) {
 		PlatformElevator ct = currentPlatform.GetComponent<PlatformElevator>();
-		//ct.ValidateCombo (true);
 		ct.ValidateCombo (ok);
 	}
 

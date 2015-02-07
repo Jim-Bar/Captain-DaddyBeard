@@ -9,7 +9,7 @@ public class SwitchScanShoot : MonoBehaviour {
 	[SerializeField] private Sprite scan = null;
 	[SerializeField] private Sprite shoot = null;
 	[SerializeField] private GameObject bFire = null;
-	//[SerializeField] private GameObject filter = null;
+	[SerializeField] private GameObject filter = null;
 
 	// Use this for initialization
 	void Start () {
@@ -29,13 +29,13 @@ public class SwitchScanShoot : MonoBehaviour {
 		{
 			image.sprite = scan;
 			bFire.SetActive(true);
-			//filter.SetActive(false);
+			filter.SetActive(false);
 		} 
 		else
 		{
 			image.sprite = shoot;
 			bFire.SetActive(false);
-			//filter.SetActive(true);
+			filter.SetActive(true);
 		}
 	}
 

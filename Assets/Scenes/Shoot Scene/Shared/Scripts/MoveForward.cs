@@ -35,6 +35,7 @@ public class MoveForward : MonoBehaviour {
 	void Update () {
 		transform.Translate (atSpeed * Time.deltaTime, 0, 0);
 
+
 		switch (Player.health.Get()) {
 		case 0:
 			Restart();
@@ -101,11 +102,15 @@ public class MoveForward : MonoBehaviour {
 	}
 
 	public void EnergyBonus(int quantity){
+		Debug.Log ("energy : " + Player.energy1.Get ()); 
 		Player.energy1.Add (quantity);
+		Debug.Log ("energy : " + Player.energy1.Get ()); 
 	}
 
 	public void LifeBonus(int quantity){
+		Debug.Log ("vie : " + Player.health.Get ()); 
 		Player.health.Add (quantity);
+		Debug.Log ("vie : " + Player.health.Get ()); 
 	}
 
 	#endif
