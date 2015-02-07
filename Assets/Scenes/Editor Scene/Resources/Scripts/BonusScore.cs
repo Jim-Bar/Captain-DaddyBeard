@@ -6,6 +6,8 @@ public class BonusScore : MonoBehaviour {
 	// Reference towards the player and the world object.
 	private GameObject player = null;
 
+	public int scoreValue = 50;
+
 	// Use this for initialization
 	void Start () {
 		GetReferenceToPlayer ();
@@ -28,6 +30,7 @@ public class BonusScore : MonoBehaviour {
 		if (coll.gameObject.tag == "Player") {
 			Inventory inv = player.GetComponent<Inventory>();
 			inv.IncBonusScore();
+			Player.score1.Add(scoreValue);
 			Destroy(gameObject);
 		}
 

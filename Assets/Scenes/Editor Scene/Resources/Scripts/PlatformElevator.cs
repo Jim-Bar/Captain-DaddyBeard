@@ -35,7 +35,6 @@ public class PlatformElevator : MonoBehaviour {
 	
 	public void ValidateCombo (bool ok) {
 		if (ok) {
-			Debug.Log("Ok combo receive"); 
 			comboPerformed = true;
 
 		}
@@ -68,18 +67,16 @@ public class PlatformElevator : MonoBehaviour {
 
 			if(comboPerformed==true) {
 				if(movingDown) {
-					Debug.Log("moving Down");
 					float newDeltaY = speed * Time.deltaTime;
 					transform.Translate (0, -newDeltaY, 0);
 				}
 				else if(movingUp) {
-					Debug.Log("moving up");
 					float newDeltaY = speed * Time.deltaTime;
 					transform.Translate (0, newDeltaY, 0);
 				}
 			} 
 			if(limit()) {
-				Debug.Log("ok");
+				//Debug.Log("ok");
 				comboPerformed = false;
 				if (detectPlayer()) {
 					performCombo();
@@ -134,7 +131,7 @@ public class PlatformElevator : MonoBehaviour {
 
 	private bool detectPlayer() {
 
-		Debug.Log ("pos db : " + player.transform.position.x + " vs pos plat " + transform.localPosition.x);
+		//Debug.Log ("pos db : " + player.transform.position.x + " vs pos plat " + transform.localPosition.x);
 
 		if (player.transform.position.x >= transform.parent.parent.position.x + transform.localPosition.x - distancePlayer &&
 		    player.transform.position.x <= transform.parent.parent.position.x + transform.localPosition.x + distancePlayer) {
