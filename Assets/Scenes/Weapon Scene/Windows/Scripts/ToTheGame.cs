@@ -16,6 +16,8 @@ public class ToTheGame : MonoBehaviour {
 	// Launch the game if the play "button" is targetted when the user press the button on his tablet.
 	public void TryLaunchingGame () {
 		if (targetted){
+			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
+			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(PhaseLoader.CurrentLevel);
 			RPCWrapper.RPC ("ToTheGameAndroidFunc", RPCMode.Others);
 			PhaseLoader.Load ();
 		}
