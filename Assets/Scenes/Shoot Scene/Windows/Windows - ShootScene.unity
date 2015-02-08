@@ -148,7 +148,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 458880867}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: 5.39999962, y: -75.5}
@@ -326,7 +326,6 @@ RectTransform:
   - {fileID: 1489412460}
   - {fileID: 876859022}
   - {fileID: 1942811433}
-  - {fileID: 1654963774}
   - {fileID: 1737664276}
   - {fileID: 1909962879}
   - {fileID: 204009021}
@@ -582,7 +581,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c37884ffd5fca54db2b48fc381f24ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc05ee8aa70356948aac3a5507fb5e9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &945566631
 MonoBehaviour:
@@ -737,33 +736,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489412459}
---- !u!1 &1654963773
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1654963774}
-  m_Layer: 0
-  m_Name: lifeBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1654963774
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1654963773}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -73, y: 138.300003, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 458880867}
-  m_RootOrder: 6
 --- !u!1 &1737664273
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .751419902, g: 1, b: .580882311, a: 1}
+  m_Color: {r: .834280014, g: 1, b: .720588207, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -819,7 +791,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 458880867}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: -50}
@@ -958,7 +930,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 458880867}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: -50}
