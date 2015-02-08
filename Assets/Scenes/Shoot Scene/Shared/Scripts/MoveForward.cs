@@ -94,6 +94,7 @@ public class MoveForward : MonoBehaviour {
 		PhaseLoader.ReloadPhase ();
 		RPCWrapper.RPC("ReloadCurrentPhase", RPCMode.Others);
 		Player.health.Add (6);
+		Player.score1.Wipe ();
 	}
 
 

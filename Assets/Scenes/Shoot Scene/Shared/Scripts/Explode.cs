@@ -48,6 +48,7 @@ public class Explode : MonoBehaviour {
 				Destroy (other.gameObject);
 				Destroy (gameObject);
 				Instantiate (bulletExplosion, transform.position + 2 * Vector3.back, Quaternion.identity);
+				Player.score1.Add(50);
 		}
 
 	}
