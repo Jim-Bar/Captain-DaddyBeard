@@ -1333,6 +1333,7 @@ MonoBehaviour:
   flyingMonster: {fileID: 179700, guid: e7183f6a9dd53d34bb38f2a95581ff79, type: 2}
   jumpingMonster: {fileID: 169818, guid: 6ee8844cd19ecdd44af85eba15dcec7a, type: 2}
   slipingMonster: {fileID: 198022, guid: d6167dde35003dc4f9df0a0b3e5d9a3c, type: 2}
+  seekMonster: {fileID: 127514, guid: a9e3eb6d3d648e64593ff9f798b0ab91, type: 2}
 --- !u!1 &1486766177
 GameObject:
   m_ObjectHideFlags: 0

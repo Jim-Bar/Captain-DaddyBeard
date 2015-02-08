@@ -28,11 +28,14 @@ public class PauseGameWin : MonoBehaviour {
 		Time.timeScale = 1;
 		PhaseLoader.Reload ();
 		Player.health.Add (6);
+		Player.score1.Reset ();
 	}
 	
 	public void GoHomeScene()
 	{	
 		Time.timeScale = 1;
 		Application.LoadLevel ("Windows - HomeScene");
+		Player.health.Add (6);
+		Player.score1.Reset ();
 	}
 }
