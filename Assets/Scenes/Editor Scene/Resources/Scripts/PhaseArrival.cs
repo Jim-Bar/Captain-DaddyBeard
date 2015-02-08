@@ -4,6 +4,7 @@ using System.Collections;
 /*
  * Attached to a collider, check if a player enters the collider, and load next scene accordingly.
  * In shoot mode, add the score earned during the sequence to the total score.
+ * In deplacement mode, add the items earned during the sequence to the total score or player health.
  * 
  * Both Windows and Android (although it does nothing on Android).
  * Use this script only for the prefabs of phases.
@@ -50,9 +51,27 @@ public class PhaseArrival : MonoBehaviour {
 	}
 
 	private void LoadNextPhase () {
+		// Add the score and health to the total score and health.
+		if (PhaseLoader.CurrentPhaseType == PhaseLoader.Type.DEPLACEMENT)
+		{
+			Inventory inventory = players[0].GetComponent<Inventory> ();
+			if (inventory == null)
+				Debug.LogError (GetType ().Name + " : The player must have a inventory in deplacement mode !");
+			else
+			{
+				Player.health.Add (inventory.getLifeBonus ());
+				Player.score1.Add (inventory.getScoreBonus ());
+			}
+
+			Timer timer = players[0].GetComponent<Timer> ();
+			if (timer == null)
+				Debug.LogError (GetType ().Name + " : The player must have a timer in deplacement mode !");
+			else
+				Player.score1.Add (timer.getScore ());
+		}
+
 		// Add the score of the sequence to the total score.
-		if (PhaseLoader.CurrentPhaseType == PhaseLoader.Type.SHOOT)
-			Player.score1.Confirm ();
+		Player.score1.Commit ();
 
 		// Load the right scene.
 		if (!isFinalPhase)

@@ -17,7 +17,7 @@ public static class Player {
 		}
 
 		// Add the score earned during this phase to the general score.
-		public void Confirm () {
+		public void Commit () {
 			score += scorePhase;
 			scorePhase = 0;
 		}
