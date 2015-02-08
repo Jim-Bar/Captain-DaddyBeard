@@ -13,7 +13,7 @@ GameObject:
   - 58: {fileID: 5849248}
   m_Layer: 0
   m_Name: bonus1
-  m_TagString: LifeBonus
+  m_TagString: ScoreBonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d45e3feeda9d82b4d8633f6dd6cbf9a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95c7bcbe641ffe741b4c0952939f9c68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21249248
 SpriteRenderer:
