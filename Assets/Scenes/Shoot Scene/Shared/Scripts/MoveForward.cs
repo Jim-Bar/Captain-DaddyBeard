@@ -91,8 +91,8 @@ public class MoveForward : MonoBehaviour {
 
 	public void Restart()
 	{
-		PhaseLoader.Reload ();
-		RPCWrapper.RPC("ReloadLevel", RPCMode.Others);
+		PhaseLoader.ReloadPhase ();
+		RPCWrapper.RPC("ReloadCurrentPhase", RPCMode.Others);
 		Player.health.Add (6);
 	}
 
