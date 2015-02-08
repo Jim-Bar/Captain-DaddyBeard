@@ -30,6 +30,7 @@ public class ScoreDisplay : MonoBehaviour {
 			score1.text = iScore2.ToString();
 			totalScore.text = iTotalScore.ToString();
 		}
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
 	}
 
 	//Change it when we have more than one level
