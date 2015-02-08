@@ -115,6 +115,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysDisplayCamera: 0
   debugMode: 0
+  infoPanel: {fileID: 0}
+  buttonNormal: {fileID: 0}
+  buttonPressed: {fileID: 0}
+  target: {fileID: 0}
+  infoFont: {fileID: 0}
 --- !u!1 &323570466
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: dd1439185b99ad045a0bcc37acdaf65a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31e5711553b1f2b40a40c7043d781264, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
