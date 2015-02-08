@@ -57,6 +57,9 @@ public class PhaseLoader : MonoBehaviour {
 	private static int currentLevel = 0; // The level currently or lastly played.
 	private static int currentPhase = 0; // The phase currently or lastly played.
 	private static Type currentPhaseType = Type.SHOOT; // The type of the phase currently or lastly played.
+	public static Type CurrentPhaseType { // Getter (used by PhaseArrival).
+		get { return currentPhaseType; }
+	}
 
 	// Is the transition currently displayed ? 
 	private static bool transitionDisplayed = false;
