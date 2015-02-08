@@ -235,6 +235,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysDisplayCamera: 0
   debugMode: 0
+  infoPanel: {fileID: 0}
+  buttonNormal: {fileID: 0}
+  buttonPressed: {fileID: 0}
+  target: {fileID: 0}
+  infoFont: {fileID: 0}
 --- !u!4 &305682468
 Transform:
   m_ObjectHideFlags: 0
@@ -916,7 +921,7 @@ Transform:
   m_GameObject: {fileID: 1271223962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .75, y: .75, z: 1}
   m_Children: []
   m_Father: {fileID: 183788953}
   m_RootOrder: 0
