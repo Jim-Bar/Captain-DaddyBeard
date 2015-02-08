@@ -32,5 +32,6 @@ public class RotateWeapon : MonoBehaviour {
 
 		transform.RotateAround (transform.parent.position, Vector3.forward, angle - lastAngle);
 		lastAngle = angle;
+
 	}
 }
