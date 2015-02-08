@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme1();
-	public void SoundTheme1(){
+	/*public void SoundTheme1(){
 		theme1.audio.Play ();
 	}
 
@@ -75,5 +75,30 @@ public class SoundManager : MonoBehaviour {
 	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme3();
 	public void SoundTheme3(){
 		theme3.audio.Play ();
+	}*/
+
+	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(level);
+	public void PlayLevelTheme(int level){
+		switch (level){
+			case 2:
+				theme2.audio.Play ();
+				break;
+			case 3:
+				theme3.audio.Play ();
+				break;
+			default:
+				theme1.audio.Play ();
+				break;
+				
+		}
 	}
+
+	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
+	public void StopThemes(){
+		theme.audio.Stop ();
+		theme1.audio.Stop ();
+		theme2.audio.Stop ();
+		theme3.audio.Stop ();
+	}
+	
 }
