@@ -36,7 +36,7 @@ public class ScoreDisplay : MonoBehaviour {
 
 	//Change it when we have more than one level
 	public void NextLevelWin(){
-		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(PhaseLoader.CurrentLevel + 1);
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(PhaseLoader.NextLevel);
 		RPCWrapper.RPC ("NextLevelAnd", RPCMode.Others);
 		PhaseLoader.LoadNext ();
 	}

@@ -17,7 +17,7 @@ public class ToTheGame : MonoBehaviour {
 	public void TryLaunchingGame () {
 		if (targetted){
 			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
-			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(PhaseLoader.CurrentLevel);
+			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(PhaseLoader.NextLevel);
 			RPCWrapper.RPC ("ToTheGameAndroidFunc", RPCMode.Others);
 			PhaseLoader.Load ();
 		}

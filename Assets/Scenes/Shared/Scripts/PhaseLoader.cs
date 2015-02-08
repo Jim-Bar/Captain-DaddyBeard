@@ -59,8 +59,8 @@ public class PhaseLoader : MonoBehaviour {
 	private static Type currentPhaseType = Type.SHOOT; // The type of the phase currently or lastly played.
 
 	// Getters.
-	public static int CurrentLevel { // Used for the music.
-		get { return currentLevel; }
+	public static int NextLevel { // Used for the music.
+		get { return nextLevel; }
 	}
 	public static Type CurrentPhaseType { // Getter used by PhaseArrival.
 		get { return currentPhaseType; }
