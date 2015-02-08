@@ -3,6 +3,7 @@ using System.Collections;
 
 /*
  * Attached to a collider, check if a player enters the collider, and load next scene accordingly.
+ * In shoot mode, add the score earned during the sequence to the total score.
  * 
  * Both Windows and Android (although it does nothing on Android).
  * Use this script only for the prefabs of phases.
@@ -49,6 +50,11 @@ public class PhaseArrival : MonoBehaviour {
 	}
 
 	private void LoadNextPhase () {
+		// Add the score of the sequence to the total score.
+		if (PhaseLoader.CurrentPhaseType == PhaseLoader.Type.SHOOT)
+			Player.score1.Confirm ();
+
+		// Load the right scene.
 		if (!isFinalPhase)
 		{
 			RPCWrapper.RPC ("LoadNextPhase", RPCMode.Others, (int) nextPhaseType, nextLevel, nextPhase); // Tell the clients to load the next phase.
