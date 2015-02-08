@@ -45,6 +45,7 @@ public class ScoreDisplay : MonoBehaviour {
 	}
 
 	public void BacktoHomeWin(){
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme();
 		RPCWrapper.RPC ("BacktoHomeAnd", RPCMode.Others);
 		Application.LoadLevel ("Windows - HomeScene");
 	}
