@@ -62,6 +62,9 @@ public class PhaseLoader : MonoBehaviour {
 	public static int NextLevel { // Used for the music.
 		get { return nextLevel; }
 	}
+	public static int CurrentLevel { // Used for the music.
+		get { return currentLevel; }
+	}
 	public static Type CurrentPhaseType { // Getter used by PhaseArrival.
 		get { return currentPhaseType; }
 	}
