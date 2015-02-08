@@ -14,17 +14,19 @@ public class MonsterSpawner : MonoBehaviour {
 	[SerializeField] private GameObject flyingMonster;
 	[SerializeField] private GameObject jumpingMonster;
 	[SerializeField] private GameObject slipingMonster;
+	[SerializeField] private GameObject seekMonster;
 
 	void Update () {
-		SpawnMonster (flyingMonster,Random.Range (-2,3),1);
-		SpawnMonster (jumpingMonster,-4,2);
-		SpawnMonster (slipingMonster,-4,3);
+		SpawnMonster (flyingMonster,Random.Range (-2,3),15,1);
+		SpawnMonster (jumpingMonster,-4,15,2);
+		SpawnMonster (slipingMonster,-4,15,3);
+		SpawnMonster (seekMonster,10,Random.Range (5,12),3);
 	}
 
-	private void SpawnMonster (GameObject monsterPrefab, float height, int numPrefab) {
+	private void SpawnMonster (GameObject monsterPrefab, float height, float posX, int numPrefab) {
 		if (Random.Range (0, 500) < 1)
 		{
-			Vector3 pos = Camera.main.transform.position + new Vector3 (20, height, 10);
+			Vector3 pos = Camera.main.transform.position + new Vector3 (posX, height, 10);
 			GameObject monster = Instantiate (monsterPrefab, pos, Quaternion.identity) as GameObject;
 			monster.transform.parent = gameObject.transform;
 			RPCWrapper.RPC("InstanciateGO", RPCMode.Server, numPrefab, pos);

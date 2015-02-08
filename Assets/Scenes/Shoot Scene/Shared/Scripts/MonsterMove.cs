@@ -9,7 +9,7 @@ public class MonsterMove : MonoBehaviour {
 	}
 	
 	void Update () {
-		transform.Translate (-2f * Time.deltaTime, 0, 0);
+		transform.Translate (-3f * Time.deltaTime, 0, 0);
 	}
 
 

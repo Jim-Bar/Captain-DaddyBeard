@@ -6,6 +6,7 @@ public class MonsterSpawnerAndroid : MonoBehaviour {
 	[SerializeField] private GameObject flyingMonster;
 	[SerializeField] private GameObject jumpingMonster;
 	[SerializeField] private GameObject slipingMonster;
+	[SerializeField] private GameObject seekMonster;
 	private GameObject monster;
 
 	void Start () {
@@ -23,6 +24,9 @@ public class MonsterSpawnerAndroid : MonoBehaviour {
 						break;
 				case 3:
 						monster = Instantiate (slipingMonster, pos, Quaternion.identity) as GameObject;
+						break;
+				default:
+						monster = Instantiate (seekMonster, pos, Quaternion.identity) as GameObject;
 						break;
 				}
 
