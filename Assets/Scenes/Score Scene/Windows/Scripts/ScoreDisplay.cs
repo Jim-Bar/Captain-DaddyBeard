@@ -42,6 +42,7 @@ public class ScoreDisplay : MonoBehaviour {
 	}
 
 	public void ReloadGameWin(){
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme (PhaseLoader.CurrentLevel);
 		RPCWrapper.RPC ("ReloadGameAnd", RPCMode.Others);
 		PhaseLoader.Reload ();
 	}
