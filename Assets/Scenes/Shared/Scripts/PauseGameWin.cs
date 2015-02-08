@@ -29,6 +29,7 @@ public class PauseGameWin : MonoBehaviour {
 		PhaseLoader.Reload ();
 		Player.health.Add (6);
 		Player.score1.Reset ();
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme (PhaseLoader.CurrentLevel);
 	}
 	
 	public void GoHomeScene()
@@ -37,5 +38,6 @@ public class PauseGameWin : MonoBehaviour {
 		Application.LoadLevel ("Windows - HomeScene");
 		Player.health.Add (6);
 		Player.score1.Reset ();
+		GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
 	}
 }

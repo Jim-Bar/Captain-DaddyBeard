@@ -106,5 +106,9 @@ public class MoveForward : MonoBehaviour {
 		Player.health.Add (quantity);
 	}
 
+	public void ScoreBonus(int quantity){
+		Player.score1.Add (quantity);
+	}
+
 	#endif
 }
