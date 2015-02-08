@@ -4,7 +4,9 @@ using System.Collections;
 public class Inventory : MonoBehaviour {
 
 	private int nbBonusScore = 0;
+	private int nbBonusLife = 0;
 	public UnityEngine.UI.Text displayText;
+	public int scoreValue = 150;
 
 	// Use this for initialization
 	void Start () {
@@ -23,8 +25,21 @@ public class Inventory : MonoBehaviour {
 	
 	}
 
+	public int getScoreBonus() {
+		return nbBonusScore * scoreValue;
+	}
+
+	public int getLifeBonus() {
+		return nbBonusLife;
+	}
+
 	//incremente le nombre de bonus score
 	public void IncBonusScore() {
 		nbBonusScore++;
+	}
+
+	//incremente le nombre de bonus score
+	public void IncBonusLife() {
+		nbBonusLife++;
 	}
 }

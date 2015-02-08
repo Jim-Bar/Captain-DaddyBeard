@@ -32,6 +32,7 @@ public class PlatformElevator : MonoBehaviour {
 	//private bool goingUp = true;
 
 	private bool comboPerformed = false;
+	private bool comboLocked = false;
 	
 	public void ValidateCombo (bool ok) {
 		if (ok) {
@@ -74,42 +75,32 @@ public class PlatformElevator : MonoBehaviour {
 					float newDeltaY = speed * Time.deltaTime;
 					transform.Translate (0, newDeltaY, 0);
 				}
-			} 
-			if(limit()) {
-				//Debug.Log("ok");
-				comboPerformed = false;
-				if (detectPlayer()) {
-					performCombo();
+				if(limit()) {
+					comboPerformed=false;
+				comboLocked = false; 
 				}
-				
+			} else {
+				if(limit()) {
+					//Debug.Log("ok");
+					if (detectPlayer() && !comboLocked) {
+						performCombo();
+					}
+				}
 			}
-	
 	}
 	
 	private void performCombo() {
-		System.Random rnd = new System.Random();
-		int nb = rnd.Next(1, 4);
 		string arg;
-		switch (nb)
-		{
-		case 1:
+		if (movingUp) {
 			arg = "ArrowUp";
-			break;
-		case 2:
-			arg = "ArrowDown";
-			break;
-		case 3:
-			arg = "ArrowLeft";
-			break;
-		case 4:
-			arg = "ArrowRight";
-			break;
-		default:
-			arg = "ArrowRight";
-			break;
 		}
+		else {
+			arg = "ArrowDown";
+		}
+
 		ComboRequest ct = cr.GetComponent<ComboRequest>();
 		ct.AskCombo (this.gameObject, arg);
+		comboLocked = true;
 
 	}
 
