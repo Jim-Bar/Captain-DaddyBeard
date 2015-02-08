@@ -11,6 +11,12 @@ public static class Player {
 			score += quantity;
 		}
 
+		public void Subtract (int quantity) {
+			score -= quantity;
+			if (score < 0)
+				score = 0;
+		}
+
 		public void Reset () {
 			score = 0;
 		}
