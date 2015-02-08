@@ -174,13 +174,20 @@ public class PhaseLoader : MonoBehaviour {
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
 
-			// Load the phase and music.
+			// Load the phase and music, reset the score.
 			#if UNITY_STANDALONE_WIN
 			LoadPhase ();
 
 			// Switch music.
 			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
 			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(currentLevel);
+
+			// Reset the score at the beginning of a new level.
+			if (currentPhase == 1)
+			{
+				Player.score1.Reset ();
+				Player.score2.Reset ();
+			}
 			#elif UNITY_ANDROID
 			// Do not load the phase on Android when the phase is deplacement.
 			if (nextPhaseType != Type.DEPLACEMENT)

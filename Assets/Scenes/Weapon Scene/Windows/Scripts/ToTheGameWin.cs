@@ -36,7 +36,7 @@ public class ToTheGameWin : MonoBehaviour {
 	}
 
 	public void AddWeapon(int player, int weapon){
-		Debug.Log ("the function is called");
+		Debug.Log (GetType ().Name + " : Weapon selected : " + weapon);
 		switch(player){
 			case 2:
 				if(!ready2){
