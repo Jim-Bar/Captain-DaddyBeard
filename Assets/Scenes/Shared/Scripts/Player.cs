@@ -5,20 +5,29 @@ public static class Player {
 
 	public class Score {
 		private int score = 0;
-		public int Get () { return score; }
+		private int scorePhase = 0;
+		public int Get () { return score + scorePhase; }
 
 		public void Add (int quantity) {
-			score += quantity;
-		}
-
-		public void Subtract (int quantity) {
-			score -= quantity;
-			if (score < 0)
-				score = 0;
+			scorePhase += quantity;
 		}
 
 		public void Reset () {
 			score = 0;
+		}
+
+		// Add the score earned during this phase to the general score.
+		public void Confirm () {
+			score += scorePhase;
+			scorePhase = 0;
+		}
+
+		// Reset the score earned during this phase and subtract a malus.
+		public void Wipe () {
+			scorePhase = 0;
+			score -= 500;
+			if (score < 0)
+				score = 0;
 		}
 	}
 

@@ -70,7 +70,7 @@ public class PhaseLoader : MonoBehaviour {
 	};
 
 	private void Awake () {
-		// Check taht tehre is only one instance.
+		// Check taht there is only one instance.
 		if (instance == null)
 			instance = this;
 		else
@@ -165,15 +165,21 @@ public class PhaseLoader : MonoBehaviour {
 	private void OnLevelWasLoaded (int level) {
 		if (loadPhaseNextSceneLoading)
 		{
+			// Update state.
 			loadPhaseNextSceneLoading = false;
 			currentLevel = nextLevel;
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
 
-			// Do not load the phase on Android when the phase is deplacement.
+			// Load the phase and music.
 			#if UNITY_STANDALONE_WIN
 			LoadPhase ();
+
+			// Switch music.
+			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
+			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(currentLevel);
 			#elif UNITY_ANDROID
+			// Do not load the phase on Android when the phase is deplacement.
 			if (nextPhaseType != Type.DEPLACEMENT)
 				LoadPhase ();
 
