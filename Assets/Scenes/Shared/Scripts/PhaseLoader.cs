@@ -50,12 +50,12 @@ public class PhaseLoader : MonoBehaviour {
 
 	private static PhaseLoader instance = null; // Reference towards the instance of this class.
 	private static string phaseName = null; // Name of the next phase to load.
-	private static int nextLevel = 0; // The next level to load.
-	private static int nextPhase = 0; // The next phase to load.
+	private static int nextLevel = 1; // The next level to load.
+	private static int nextPhase = 1; // The next phase to load.
 	private static Type nextPhaseType = Type.SHOOT; // Type of the next phase to load.
 	private static bool loadPhaseNextSceneLoading = false; // Will the phase loader load a phase on the next scene loading ?
-	private static int currentLevel = 0; // The level currently or lastly played.
-	private static int currentPhase = 0; // The phase currently or lastly played.
+	private static int currentLevel = 1; // The level currently or lastly played.
+	private static int currentPhase = 1; // The phase currently or lastly played.
 	private static Type currentPhaseType = Type.SHOOT; // The type of the phase currently or lastly played.
 
 	// Getters.
