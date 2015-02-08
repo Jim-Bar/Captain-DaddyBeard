@@ -235,11 +235,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysDisplayCamera: 0
   debugMode: 0
-  infoPanel: {fileID: 0}
-  buttonNormal: {fileID: 0}
-  buttonPressed: {fileID: 0}
-  target: {fileID: 0}
-  infoFont: {fileID: 0}
+  infoPanel: {fileID: 2800000, guid: 35c6f5dc72549e74ebd1a5decba74613, type: 3}
+  buttonNormal: {fileID: 2800000, guid: 95016e7ed1bd24749bc13f2040972951, type: 3}
+  buttonPressed: {fileID: 2800000, guid: c4abcc0722f70ce44b2eaf0f4af7cef1, type: 3}
+  target: {fileID: 2800000, guid: 4759b8295dfe954418d91cc85bced1dc, type: 3}
+  infoFont: {fileID: 12800000, guid: aca5c6f7996c89f40bba41e7eab8396f, type: 3}
 --- !u!4 &305682468
 Transform:
   m_ObjectHideFlags: 0
