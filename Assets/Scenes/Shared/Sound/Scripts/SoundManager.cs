@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour {
 	[SerializeField] public GameObject theme1;
 	[SerializeField] public GameObject theme2;
 	[SerializeField] public GameObject theme3;
+	[SerializeField] public GameObject win;
 	
 	// Use this for initialization
 	void Start () {
@@ -60,6 +61,11 @@ public class SoundManager : MonoBehaviour {
 	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme();
 	public void SoundTheme(){
 		theme.audio.Play ();
+	}
+
+	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundWin();
+	public void SoundWin(){
+		win.audio.Play ();
 	}
 
 	//GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundTheme1();
