@@ -19,7 +19,6 @@ public class Timer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("score : "+Player.score1.Get ());
 		ScoredisplayText.text = Player.score1.Get().ToString();
 		if (!isFinishedLevel) {
 			timer -= Time.deltaTime;
