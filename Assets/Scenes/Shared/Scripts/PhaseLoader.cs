@@ -174,13 +174,9 @@ public class PhaseLoader : MonoBehaviour {
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
 
-			// Load the phase and music, reset the score.
+			// Load the phase, reset the score.
 			#if UNITY_STANDALONE_WIN
 			LoadPhase ();
-
-			// Switch music.
-			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().StopThemes();
-			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().PlayLevelTheme(currentLevel);
 
 			// Reset the score at the beginning of a new level.
 			if (currentPhase == 1)
