@@ -414,9 +414,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nochoice: {fileID: 21300000, guid: 817ab09b662af2d45b656325d78563e7, type: 3}
-  weapon1: {fileID: 21300000, guid: ec13f174833d21540906b07814b54d2a, type: 3}
-  weapon2: {fileID: 21300000, guid: 31e5711553b1f2b40a40c7043d781264, type: 3}
-  weapon3: {fileID: 21300000, guid: cb85d07820dccc141960f8830b5999ad, type: 3}
+  weapon1: {fileID: 21300000, guid: 954e23e6db749744c8f63a56a8e515ce, type: 3}
+  weapon2: {fileID: 21300000, guid: acd46023fb462cd4fb2087113cf0e7b7, type: 3}
+  weapon3: {fileID: 21300000, guid: 373943b5a9003c449a0eec916fa5e5e2, type: 3}
 --- !u!1 &606507358
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,9 +665,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nochoice: {fileID: 21300000, guid: 95016e7ed1bd24749bc13f2040972951, type: 3}
-  weapon1: {fileID: 21300000, guid: dc05ee8aa70356948aac3a5507fb5e9b, type: 3}
-  weapon2: {fileID: 21300000, guid: 31e5711553b1f2b40a40c7043d781264, type: 3}
-  weapon3: {fileID: 21300000, guid: cb85d07820dccc141960f8830b5999ad, type: 3}
+  weapon1: {fileID: 21300000, guid: 954e23e6db749744c8f63a56a8e515ce, type: 3}
+  weapon2: {fileID: 21300000, guid: acd46023fb462cd4fb2087113cf0e7b7, type: 3}
+  weapon3: {fileID: 21300000, guid: 373943b5a9003c449a0eec916fa5e5e2, type: 3}
 --- !u!1001 &1223185153
 Prefab:
   m_ObjectHideFlags: 0
