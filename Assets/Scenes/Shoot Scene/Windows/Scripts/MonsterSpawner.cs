@@ -24,7 +24,7 @@ public class MonsterSpawner : MonoBehaviour {
 	}
 
 	private void SpawnMonster (GameObject monsterPrefab, float height, float posX, int numPrefab) {
-		if (Random.Range (0, 500) < 1)
+		if (Random.Range (0, 300) < 1)
 		{
 			Vector3 pos = Camera.main.transform.position + new Vector3 (posX, height, 10);
 			GameObject monster = Instantiate (monsterPrefab, pos, Quaternion.identity) as GameObject;

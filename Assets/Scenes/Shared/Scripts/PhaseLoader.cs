@@ -137,7 +137,7 @@ public class PhaseLoader : MonoBehaviour {
 
 		// The transition is made in OnGUI ().
 		transitionDisplayed = true;
-		timeTransitionBegan = Time.realtimeSinceStartup;
+		timeTransitionBegan = Time.unscaledTime;
 
 		// Wait for the transition to load next scene.
 		instance.Invoke ("ActualLoad", 1);
@@ -178,6 +178,7 @@ public class PhaseLoader : MonoBehaviour {
 		{
 			// Update state.
 			loadPhaseNextSceneLoading = false;
+			Time.timeScale = 0;
 			currentLevel = nextLevel;
 			currentPhase = nextPhase;
 			currentPhaseType = nextPhaseType;
@@ -225,7 +226,7 @@ public class PhaseLoader : MonoBehaviour {
 			const float transitionDuration = 2;
 			const float transitionArrivalDuration = 0.5f;
 			const float transitionLeavingDuration = transitionArrivalDuration;
-			float timeSinceStartup = Time.realtimeSinceStartup;
+			float timeSinceStartup = Time.unscaledTime;
 			float x = 0;
 			if (timeSinceStartup - timeTransitionBegan <= transitionArrivalDuration)
 				x = Mathf.Exp (30 * transitionArrivalDuration * (transitionArrivalDuration - timeSinceStartup + timeTransitionBegan));
@@ -234,7 +235,10 @@ public class PhaseLoader : MonoBehaviour {
 			else if (timeSinceStartup - timeTransitionBegan <= transitionArrivalDuration + transitionDuration + transitionLeavingDuration)
 				x = - Mathf.Exp (30 * transitionLeavingDuration * (timeSinceStartup - timeTransitionBegan - transitionArrivalDuration - transitionDuration)) - deltaTotal;
 			else
+			{
 				transitionDisplayed = false;
+				Time.timeScale = 1;
+			}
 
 			if (transitionDisplayed) // Retest because it might have changed.
 			{

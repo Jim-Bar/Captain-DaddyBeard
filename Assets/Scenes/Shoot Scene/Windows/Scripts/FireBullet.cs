@@ -28,8 +28,8 @@ public class FireBullet : MonoBehaviour {
 	}
 	
 	private void ShootPressed () {
-		if (Player.energy1.Get () > 300) {
-			Player.energy1.Burn (300);
+		if (Player.energy1.Get () > 100) {
+			Player.energy1.Burn (100);
 			GameObject bullet = Instantiate (bulletPrefab, transform.position + 0.1f * Vector3.forward, Quaternion.identity) as GameObject;
 			bullet.rigidbody2D.velocity = bulletSpeed * (target.transform.position - transform.position).normalized;
 			bullet.rigidbody2D.angularVelocity = Random.Range (-360, 360);
