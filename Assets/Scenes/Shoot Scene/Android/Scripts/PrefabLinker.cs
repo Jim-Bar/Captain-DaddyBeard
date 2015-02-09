@@ -15,6 +15,7 @@ public class PrefabLinker : MonoBehaviour {
 	[SerializeField] private GameObject flyingMonster;
 	[SerializeField] private GameObject jumpingMonster;
 	[SerializeField] private GameObject slipingMonster;
+	[SerializeField] private GameObject seekMonster;
 	[SerializeField] private Rigidbody2D bullet;
 	
 	void Start () {
@@ -24,6 +25,8 @@ public class PrefabLinker : MonoBehaviour {
 			Debug.LogError (GetType ().Name + " : The field 'walkingMonster' is empty");
 		if (slipingMonster == null)
 			Debug.LogError (GetType ().Name + " : The field 'slipingMonster' is empty");
+		if (seekMonster == null)
+			Debug.LogError (GetType ().Name + " : The field 'seekMonster' is empty");
 		if (bullet == null)
 			Debug.LogError (GetType ().Name + " : The field 'bullet' is empty");
 

@@ -34,7 +34,7 @@ public class BonusSpawner : MonoBehaviour {
 				}
 				else if(go.CompareTag("EnergyBonus"))
 				{
-					RPCWrapper.RPC("EnergyBonus", RPCMode.Server, 200);
+					RPCWrapper.RPC("EnergyBonus", RPCMode.Server, 300);
 					Network.Destroy(go);
 				}
 				else if(go.CompareTag("ScoreBonus"))

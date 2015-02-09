@@ -20,7 +20,7 @@ public class MonsterSpawner : MonoBehaviour {
 		SpawnMonster (flyingMonster,Random.Range (-2,3),15,1);
 		SpawnMonster (jumpingMonster,-4,15,2);
 		SpawnMonster (slipingMonster,-4,15,3);
-		SpawnMonster (seekMonster,10,Random.Range (5,12),3);
+		SpawnMonster (seekMonster,10,Random.Range (5,12),4);
 	}
 
 	private void SpawnMonster (GameObject monsterPrefab, float height, float posX, int numPrefab) {
