@@ -74,6 +74,12 @@ public static class Player {
 		}
 	}
 
+	public class Weapon {
+		private int weapon = 1;
+		public int Get () { return weapon; }
+		public int Set (int newWeapon) { weapon = newWeapon; }
+	}
+
 	// Identifier, can only modify it on Android.
 	public class Identifier {
 		private int id = 0;
@@ -100,6 +106,10 @@ public static class Player {
 	// Energy of player 1 and player 2.
 	public static Energy energy1 = new Energy ();
 	public static Energy energy2 = new Energy ();
+
+	// Weapon of player 1 and player 2.
+	public static Weapon weapon1 = new Weapon ();
+	public static Weapon weapon2 = new Weapon ();
 
 	// Player identifier. 0 means server, 1 player 1, 2 player 2.
 	public static Identifier id = new Identifier ();
