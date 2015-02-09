@@ -729,6 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 183788948}
+  angle: 0
 --- !u!212 &791632386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -863,7 +864,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -1205,7 +1205,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -1987,7 +1986,7 @@ GameObject:
   - 212: {fileID: 1885183600}
   - 114: {fileID: 1885183599}
   - 50: {fileID: 1885183603}
-  - 58: {fileID: 1885183604}
+  - 61: {fileID: 1885183604}
   m_Layer: 0
   m_Name: Captain DaddyBeard
   m_TagString: Player
@@ -2077,8 +2076,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &1885183604
-CircleCollider2D:
+--- !u!61 &1885183604
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -2086,7 +2085,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Radius: .5
+  m_Size: {x: 1, y: 2}
   m_Center: {x: 0, y: 0}
 --- !u!1 &1928344119
 GameObject:
