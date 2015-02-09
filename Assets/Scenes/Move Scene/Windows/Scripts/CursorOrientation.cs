@@ -2,38 +2,29 @@
 using System.Collections;
 
 public class CursorOrientation : MonoBehaviour {
-
+	
 	// Reference towards the player and the world object.
 	private GameObject player = null;
 	private GameObject arrival = null;
-	public RectTransform rec = null;
-	public UnityEngine.UI.Text displayText;
-
+	private float angle = 0;
+	
 	// Use this for initialization
 	void Start () {
-
 		GetReferenceToPlayer ();
 		GetReferenceArrival ();
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float angle = Vector2.Angle (player.transform.position, arrival.transform.position);
-		Debug.Log ("angle1 : " + angle);
-		if (arrival.transform.position.y < player.transform.position.y) {
+		Vector2 direction = arrival.transform.position - player.transform.position;
+		angle = Vector2.Angle (Vector2.right, direction);
+		
+		if (direction.y < 0)
 			angle = 360 - angle;
-		}
-		Debug.Log ("angle2 : " + angle);
-		//transform.rotation = Quaternion.Euler (0, 0, angle);
-		//GetComponent<RectTransform>().rotation = Quaternion.Euler (0, 0, angle);
-		rec.rotation = Quaternion.Euler (0, 0, angle);
-
-		float dist = Vector3.Distance(arrival.transform.position, player.transform.position);
-		displayText.text = ((int) dist).ToString () + "m";
-
+		
+		transform.rotation = Quaternion.Euler (0, 0, angle);
 	}
-
+	
 	// Get a reference to the player. The player must have the tag "Player". Only works for one player.
 	private void GetReferenceToPlayer () {
 		string playerTag = "Player";
