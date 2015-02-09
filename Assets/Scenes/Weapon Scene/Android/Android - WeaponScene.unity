@@ -74,6 +74,72 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &223901261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 223901262}
+  - 222: {fileID: 223901264}
+  - 114: {fileID: 223901263}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &223901262
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223901261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1107850364}
+  m_RootOrder: 7
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: -216}
+  m_SizeDelta: {x: 400, y: 30}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &223901263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223901261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .713235259, g: .0629325435, b: .0629325435, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: aca5c6f7996c89f40bba41e7eab8396f, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Glisser une arme pour la s\xE9lectionner"
+--- !u!222 &223901264
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223901261}
 --- !u!1 &317963670
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +267,6 @@ CanvasGroup:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 323570466}
-  m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -312,7 +377,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 7b497aa169d43f94ca0b6d30bfa8cef3, type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ec13f174833d21540906b07814b54d2a,
+      objectReference: {fileID: 21300000, guid: dc05ee8aa70356948aac3a5507fb5e9b,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b497aa169d43f94ca0b6d30bfa8cef3, type: 2}
@@ -568,7 +633,6 @@ CanvasGroup:
     type: 2}
   m_PrefabInternal: {fileID: 359465036}
   m_GameObject: {fileID: 528750168}
-  m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -587,7 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: ec13f174833d21540906b07814b54d2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc05ee8aa70356948aac3a5507fb5e9b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -646,10 +710,10 @@ RectTransform:
   - {fileID: 621572101}
   m_Father: {fileID: 1107850364}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 487, y: 109}
-  m_SizeDelta: {x: 200, y: 115}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 375, y: 0}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &603157892
 MonoBehaviour:
@@ -717,7 +781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 5d743f90aac337648bf306a1326966d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4abcc0722f70ce44b2eaf0f4af7cef1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -889,7 +953,6 @@ CanvasGroup:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 901147658}
-  m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -1150,6 +1213,7 @@ RectTransform:
   - {fileID: 1463741311}
   - {fileID: 2099260497}
   - {fileID: 1446765758}
+  - {fileID: 223901262}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -1168,6 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -1351,8 +1416,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Chevrotines\nCo\xFBt en \xE9nergie important\nTirez en c\xF4ne pour ne
-    pas manquer vos adversaires !"
+  m_Text: 'Fusil
+
+    C''est psychologiquement plus puissant !'
 --- !u!222 &1446765757
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1373,7 +1439,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 695, y: -388}
+  m_AnchoredPosition: {x: 695, y: -394}
   m_SizeDelta: {x: 180, y: 131}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1463741310
@@ -1407,8 +1473,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -371.899994}
-  m_SizeDelta: {x: 180, y: 100}
+  m_AnchoredPosition: {x: 270, y: -385}
+  m_SizeDelta: {x: 180, y: 120}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1463741312
 MonoBehaviour:
@@ -1435,8 +1501,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Lance-patate\nCo\xFBt en \xE9nergie faible\nEnvoyez des patates sur vos
-    adeversaires !"
+  m_Text: 'Lance-patate
+
+    Envoyez des patates sur vos adversaires !
+
+    Bah oui pourquoi pas des patates ?'
 --- !u!222 &1463741313
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1999,7 +2068,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479, y: -377.700012}
+  m_AnchoredPosition: {x: 479, y: -383}
   m_SizeDelta: {x: 180, y: 111.599998}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2099260498
@@ -2027,8 +2096,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Arbal\xE8te\nCo\xFBt en \xE9nergie moyen\nLes carreaux transpercent vos
-    adversaires !"
+  m_Text: "Arbal\xE8te\nLa bonne vieille arbal\xE8te, pour ceux qui sont oldschool
+    !"
 --- !u!222 &2099260499
 CanvasRenderer:
   m_ObjectHideFlags: 0
