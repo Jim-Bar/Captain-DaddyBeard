@@ -77,7 +77,7 @@ public static class Player {
 	public class Weapon {
 		private int weapon = 1;
 		public int Get () { return weapon; }
-		public int Set (int newWeapon) { weapon = newWeapon; }
+		public void Set (int newWeapon) { weapon = newWeapon; }
 	}
 
 	// Identifier, can only modify it on Android.
