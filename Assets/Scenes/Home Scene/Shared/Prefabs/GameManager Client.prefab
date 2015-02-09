@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6e6b84181f5d14fa7956b72e1de8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createWifiHotspot: 1
+  createWifiHotspot: 0
 --- !u!114 &11433970
 MonoBehaviour:
   m_ObjectHideFlags: 1

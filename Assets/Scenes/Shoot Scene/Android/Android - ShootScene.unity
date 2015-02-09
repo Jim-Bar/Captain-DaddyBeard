@@ -305,7 +305,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 50
+    m_MaxSize: 55
     m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -2000,11 +2000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atSpeed: 2
-  l2: {fileID: 0}
-  l3: {fileID: 0}
-  l4: {fileID: 0}
-  l5: {fileID: 0}
-  l6: {fileID: 0}
 --- !u!212 &1885183600
 SpriteRenderer:
   m_ObjectHideFlags: 0

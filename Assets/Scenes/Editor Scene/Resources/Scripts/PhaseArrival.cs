@@ -38,6 +38,9 @@ public class PhaseArrival : MonoBehaviour {
 		players = GameObject.FindGameObjectsWithTag (playerTag);
 		if (players.Length == 0)
 			Debug.LogError (GetType ().Name + " : No player found. The player must have the tag \"" + playerTag + "\".");
+
+		// Hide the flag.
+		GetComponent<SpriteRenderer> ().enabled = false;
 	}
 
 	// Only load next phase when we are the server. Otherwise we wait for an RPC to notify us.
