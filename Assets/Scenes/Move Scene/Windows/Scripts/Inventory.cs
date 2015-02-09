@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour {
 	private int nbBonusScore = 0;
 	private int nbBonusLife = 0;
 	public UnityEngine.UI.Text displayText;
+	public UnityEngine.UI.Text lifeText;
 	public int scoreValue = 150;
 
 	// Use this for initialization
@@ -21,6 +22,13 @@ public class Inventory : MonoBehaviour {
 		} 
 		else {
 			displayText.text = "X 0" + nbBonusScore.ToString();
+		}
+		if (nbBonusLife >= 10) {
+			lifeText.text = "X " + nbBonusLife.ToString();
+			
+		} 
+		else {
+			lifeText.text = "X 0" + nbBonusLife.ToString();
 		}
 	
 	}

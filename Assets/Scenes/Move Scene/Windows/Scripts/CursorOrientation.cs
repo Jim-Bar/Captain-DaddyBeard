@@ -18,7 +18,7 @@ public class CursorOrientation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float angle = Vector3.Angle (player.transform.position, arrival.transform.position);
+		float angle = Vector2.Angle (player.transform.position, arrival.transform.position);
 		Debug.Log ("angle1 : " + angle);
 		if (arrival.transform.position.y < player.transform.position.y) {
 			angle = 360 - angle;
