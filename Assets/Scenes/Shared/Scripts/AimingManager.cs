@@ -9,6 +9,8 @@ using System.Collections;
  */
 public class AimingManager : MonoBehaviour {
 	
+	[Tooltip("Picture of the calibration nutton")]
+	[SerializeField] private Texture2D buttonCalibration = null;
 	[Tooltip("Always display camera, not only when calibrating")]
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
@@ -62,6 +64,8 @@ public class AimingManager : MonoBehaviour {
 			cameraStream.Play ();
 
 		// Check the fields.
+		if (buttonCalibration == null)
+			Debug.LogError (GetType ().Name + " : A texture is missing for the calibration button (field empty)");
 		if (infoPanel == null)
 			Debug.LogError (GetType ().Name + " : A texture is missing for the info panel (field empty)");
 		if (buttonNormal == null)
@@ -138,7 +142,7 @@ public class AimingManager : MonoBehaviour {
 			}
 		}
 		else // Recalibrate button.
-			if (GUILayout.Button ("Recalibrate", GUILayout.Height(150)))
+			if (GUILayout.Button (buttonCalibration))
 			{
 				upperLeftCalibrationDone = false;
 				lowerRightCalibrationDone = false;
