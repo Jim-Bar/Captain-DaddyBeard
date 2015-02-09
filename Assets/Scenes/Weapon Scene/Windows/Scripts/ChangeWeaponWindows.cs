@@ -20,15 +20,19 @@ public class ChangeWeaponWindows : MonoBehaviour {
 	public void UpdateWeaponWin (int weapon){
 		switch (weapon) {
 			case 1:
+				Player.weapon1.Set (1);
 				image.sprite = weapon1;
 				break;
 			case 2:
+				Player.weapon1.Set (2);
 				image.sprite = weapon2;
 				break;
 			case 3:
+				Player.weapon1.Set (3);
 				image.sprite = weapon3;
 				break;
 			default:
+				Player.weapon1.Set (1);
 				image.sprite = nochoice;
 				break;
 		}
