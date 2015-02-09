@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysDisplayCamera: 0
   debugMode: 0
+  showOnlyWhenPaused: 1
   buttonCalibration: {fileID: 2800000, guid: 6d053003c2032bb448d7de85ec38793f, type: 3}
   infoPanel: {fileID: 2800000, guid: 35c6f5dc72549e74ebd1a5decba74613, type: 3}
   buttonNormal: {fileID: 2800000, guid: 95016e7ed1bd24749bc13f2040972951, type: 3}

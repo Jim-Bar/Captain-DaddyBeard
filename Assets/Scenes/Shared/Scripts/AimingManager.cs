@@ -13,6 +13,8 @@ public class AimingManager : MonoBehaviour {
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
 	[SerializeField] private bool debugMode = false; // If true, display calibration information on the screen.
+	[Tooltip("Show the calibration button only when paused")]
+	[SerializeField] private bool showOnlyWhenPaused = false; // If true, only show the calibration button when time scale equals 0.
 	[Tooltip("Picture of the calibration nutton")]
 	[SerializeField] private Texture2D buttonCalibration = null;
 	[Tooltip("Area where to display information about calibration")]
@@ -141,7 +143,7 @@ public class AimingManager : MonoBehaviour {
 					Debug.LogError (GetType ().Name + " : Unexpected case in calibration encountered");
 			}
 		}
-		else // Recalibrate button.
+		else if (!showOnlyWhenPaused || (showOnlyWhenPaused && Time.timeScale == 0)) // Recalibrate button (in game, only when pause, i.e when time scale equals 0).
 			if (GUI.Button (new Rect (0, 0, 200, 200), buttonCalibration, GUIStyle.none))
 			{
 				upperLeftCalibrationDone = false;
