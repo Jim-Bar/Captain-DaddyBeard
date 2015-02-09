@@ -28,6 +28,7 @@ public class FireBullet : MonoBehaviour {
 	[SerializeField] private GameObject prefab3 = null;
 
 	private void Start () {
+		image = gameObject.GetComponent<Image>();
 		switch(Player.weapon1.Get()){
 			case 2:
 				image.sprite = weapon2;
