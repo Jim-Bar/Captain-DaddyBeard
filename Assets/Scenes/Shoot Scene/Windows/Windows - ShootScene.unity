@@ -1201,6 +1201,8 @@ MonoBehaviour:
   followY: 1
   xOffset: 8
   yOffset: 3.79999995
+  adjustWithScreenX: 1
+  adjustWithScreenY: 0
 --- !u!58 &2134930742
 CircleCollider2D:
   m_ObjectHideFlags: 0
