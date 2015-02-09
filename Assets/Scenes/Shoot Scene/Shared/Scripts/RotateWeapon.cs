@@ -8,7 +8,7 @@ public class RotateWeapon : MonoBehaviour {
 
 	private GameObject player = null;
 	private float lastAngle = 0;
-
+	public float angle;
 	private void Start () {
 		if (target == null)
 			Debug.LogError (GetType ().Name + " : Field target is empty");
@@ -24,7 +24,7 @@ public class RotateWeapon : MonoBehaviour {
 	private void Update () {
 		// We use Vector2 because we do not care about z position (and it would introduce errors to consider it).
 		Vector2 lineOfSight = target.transform.position - player.transform.position;
-		float angle = Vector2.Angle (Vector2.right, lineOfSight);
+		angle = Vector2.Angle (Vector2.right, lineOfSight);
 
 		// Vector2.Angle() return the acute angle ([0, 180]), so we computed the real angle.
 		if (lineOfSight.y < 0)

@@ -31,10 +31,12 @@ public class FireBullet : MonoBehaviour {
 		image = gameObject.GetComponent<SpriteRenderer>();
 		switch(Player.weapon1.Get()){
 			case 2:
+				transform.localScale += new Vector3(0.25F, 0.25F, 0);
 				image.sprite = weapon2;
 				bulletPrefab = prefab2;
 				break;
 			case 3:
+				transform.localScale += new Vector3(0.75F, 0.75F, 0);
 				image.sprite = weapon3;
 				bulletPrefab = prefab3;
 				break;
@@ -57,6 +59,7 @@ public class FireBullet : MonoBehaviour {
 			Player.energy1.Burn (100);
 			GameObject bullet = Instantiate (bulletPrefab, transform.position + 0.1f * Vector3.forward, Quaternion.identity) as GameObject;
 			bullet.rigidbody2D.velocity = bulletSpeed * (target.transform.position - transform.position).normalized;
+			bullet.transform.Rotate(0, 0, GameObject.Find ("WeaponSlot").GetComponent<RotateWeapon> ().angle);
 			if(Player.weapon1.Get() == 1){
 				bullet.rigidbody2D.angularVelocity = Random.Range (-360, 360);
 			}
