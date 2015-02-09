@@ -106,7 +106,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -216}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 550, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &223901263
 MonoBehaviour:
@@ -133,7 +133,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Glisser une arme pour la s\xE9lectionner"
+  m_Text: "Glisser une arme vers le haut pour la s\xE9lectionner"
 --- !u!222 &223901264
 CanvasRenderer:
   m_ObjectHideFlags: 0
