@@ -7,7 +7,7 @@ public class FlyMove : MonoBehaviour {
 	private int moveSpeed = 3;
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("Captain DaddyBeard").transform;
+		player = GameObject.Find ("WeaponSlot").transform;
 	}
 	
 	// Update is called once per frame
