@@ -12,7 +12,7 @@ public class FireBulletAndroid : MonoBehaviour {
 	[Tooltip("Speed of the bullet")]
 	[SerializeField] private float bulletSpeed = 1;
 
-	private Image image;
+	private SpriteRenderer image;
 	[SerializeField] private Sprite weapon1 = null;
 	[SerializeField] private Sprite weapon2 = null;
 	[SerializeField] private Sprite weapon3 = null;
@@ -23,6 +23,7 @@ public class FireBulletAndroid : MonoBehaviour {
 	private SoundManager soundManager = null;
 	
 	private void Start () {
+		image = gameObject.GetComponent<SpriteRenderer>();
 		switch(Player.weapon1.Get()){
 		case 2:
 			image.sprite = weapon2;
