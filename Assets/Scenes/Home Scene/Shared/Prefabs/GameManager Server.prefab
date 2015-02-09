@@ -1023,12 +1023,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98e1c5b39e4c2c644a84c4241f26ef3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSounds: 1
+  disableSounds: 0
   jump: {fileID: 176744}
   validate: {fileID: 176754}
   theme: {fileID: 176750}

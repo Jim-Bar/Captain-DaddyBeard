@@ -76,7 +76,8 @@ public class ComboManager : MonoBehaviour {
 								Arrow = Instantiate (ArrowRight, pos, Quaternion.identity) as GameObject;
 			
 						}
-				}
+			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundCombo();
+		}
 
 	}
 	
