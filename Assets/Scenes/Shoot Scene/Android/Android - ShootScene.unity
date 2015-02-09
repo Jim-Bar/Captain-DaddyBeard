@@ -762,8 +762,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc6488f74514134baf54a573e06e0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 150540, guid: c8d1aae2e65c0d94ab79d1b403cd5d49, type: 2}
   bulletSpeed: 20
+  weapon1: {fileID: 21300000, guid: dc05ee8aa70356948aac3a5507fb5e9b, type: 3}
+  weapon2: {fileID: 21300000, guid: 31e5711553b1f2b40a40c7043d781264, type: 3}
+  weapon3: {fileID: 21300000, guid: cb85d07820dccc141960f8830b5999ad, type: 3}
+  prefab1: {fileID: 150540, guid: c8d1aae2e65c0d94ab79d1b403cd5d49, type: 2}
+  prefab2: {fileID: 100000, guid: ef494382b8004054f9cfdf698fd21c6c, type: 2}
+  prefab3: {fileID: 100000, guid: b87e022015b76ea47a3e21853abf2423, type: 2}
 --- !u!1 &800994518
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -1199,6 +1205,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -2000,6 +2007,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atSpeed: 2
+  l2: {fileID: 0}
+  l3: {fileID: 0}
+  l4: {fileID: 0}
+  l5: {fileID: 0}
+  l6: {fileID: 0}
 --- !u!212 &1885183600
 SpriteRenderer:
   m_ObjectHideFlags: 0
