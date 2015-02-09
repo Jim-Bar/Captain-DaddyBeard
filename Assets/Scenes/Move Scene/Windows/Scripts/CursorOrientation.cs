@@ -7,6 +7,7 @@ public class CursorOrientation : MonoBehaviour {
 	private GameObject player = null;
 	private GameObject arrival = null;
 	public RectTransform rec = null;
+	public UnityEngine.UI.Text displayText;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,10 @@ public class CursorOrientation : MonoBehaviour {
 		//transform.rotation = Quaternion.Euler (0, 0, angle);
 		//GetComponent<RectTransform>().rotation = Quaternion.Euler (0, 0, angle);
 		rec.rotation = Quaternion.Euler (0, 0, angle);
+
+		float dist = Vector3.Distance(arrival.transform.position, player.transform.position);
+		displayText.text = ((int) dist).ToString () + "m";
+
 	}
 
 	// Get a reference to the player. The player must have the tag "Player". Only works for one player.
