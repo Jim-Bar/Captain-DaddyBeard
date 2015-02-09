@@ -69,6 +69,9 @@ public class PhaseLoader : MonoBehaviour {
 		get { return currentPhaseType; }
 	}
 
+	// Lock the phase loader when already loading a new phase.
+	private static bool isLoading = false;
+
 	// Is the transition currently displayed ? 
 	private static bool transitionDisplayed = false;
 	private static float timeTransitionBegan = 0;
@@ -123,24 +126,32 @@ public class PhaseLoader : MonoBehaviour {
 	// Register phase data before loading it with Load ().
 	public static void Prepare (int level) { Prepare (level, 1, instance.firstPhasesTypes[level - 1]); }
 	public static void Prepare (int level, int phase, Type type) {
-		CheckExist ();
-		nextLevel = level;
-		nextPhase = phase;
-		nextPhaseType = type;
-		phaseName = "World " + level.ToString("D2") + " " + phase.ToString("D2");
+		if (!isLoading)
+		{
+			CheckExist ();
+			nextLevel = level;
+			nextPhase = phase;
+			nextPhaseType = type;
+			phaseName = "World " + level.ToString("D2") + " " + phase.ToString("D2");
+		}
 	}
 
 	// Load a phase based on the data set by Prepare ().
 	public static void Load () {
-		CheckExist ();
-		loadPhaseNextSceneLoading = true;
+		if (!isLoading)
+		{
+			isLoading = true; // Lock the loader.
 
-		// The transition is made in OnGUI ().
-		transitionDisplayed = true;
-		timeTransitionBegan = Time.unscaledTime;
+			CheckExist ();
+			loadPhaseNextSceneLoading = true;
 
-		// Wait for the transition to load next scene.
-		instance.Invoke ("ActualLoad", 1);
+			// The transition is made in OnGUI ().
+			transitionDisplayed = true;
+			timeTransitionBegan = Time.unscaledTime;
+
+			// Wait for the transition to load next scene.
+			instance.Invoke ("ActualLoad", 1);
+		}
 	}
 
 	// Load the current level from the beginning.
@@ -176,6 +187,8 @@ public class PhaseLoader : MonoBehaviour {
 	private void OnLevelWasLoaded (int level) {
 		if (loadPhaseNextSceneLoading)
 		{
+			isLoading = false; // Unlock the loader.
+
 			// Update state.
 			loadPhaseNextSceneLoading = false;
 			Time.timeScale = 0;
