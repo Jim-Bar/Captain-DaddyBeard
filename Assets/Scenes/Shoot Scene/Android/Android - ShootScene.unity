@@ -1000,7 +1000,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -175, y: -125}
-  m_SizeDelta: {x: 347.25, y: 126}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1213072840
 MonoBehaviour:
@@ -1014,8 +1014,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isShoot: 1
-  scan: {fileID: 21300000, guid: bbfd90d34738b0e49987181194f263f6, type: 3}
-  shoot: {fileID: 21300000, guid: e89abd79d8ab035459cd43cb7a4d9908, type: 3}
+  scan: {fileID: 21300000, guid: 724f9bbffa219064b988abfda1a36d27, type: 3}
+  shoot: {fileID: 21300000, guid: 0704090aa333edc4194d77b30035fcaf, type: 3}
   bFire: {fileID: 638174368}
   filter: {fileID: 1372228900}
 --- !u!114 &1213072841
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: bbfd90d34738b0e49987181194f263f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 724f9bbffa219064b988abfda1a36d27, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1999,11 +1999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atSpeed: 2
-  l2: {fileID: 0}
-  l3: {fileID: 0}
-  l4: {fileID: 0}
-  l5: {fileID: 0}
-  l6: {fileID: 0}
 --- !u!212 &1885183600
 SpriteRenderer:
   m_ObjectHideFlags: 0
