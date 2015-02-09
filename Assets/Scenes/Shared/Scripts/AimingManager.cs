@@ -8,13 +8,13 @@ using System.Collections;
  * Android only.
  */
 public class AimingManager : MonoBehaviour {
-	
-	[Tooltip("Picture of the calibration nutton")]
-	[SerializeField] private Texture2D buttonCalibration = null;
+
 	[Tooltip("Always display camera, not only when calibrating")]
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
 	[SerializeField] private bool debugMode = false; // If true, display calibration information on the screen.
+	[Tooltip("Picture of the calibration nutton")]
+	[SerializeField] private Texture2D buttonCalibration = null;
 	[Tooltip("Area where to display information about calibration")]
 	[SerializeField] private Texture2D infoPanel = null; // The lower panel where to display "Aim at the upper left, ...".
 	[Tooltip("Shoot button picture")]
@@ -142,7 +142,7 @@ public class AimingManager : MonoBehaviour {
 			}
 		}
 		else // Recalibrate button.
-			if (GUILayout.Button (buttonCalibration))
+			if (GUI.Button (new Rect (0, 0, 200, 200), buttonCalibration, GUIStyle.none))
 			{
 				upperLeftCalibrationDone = false;
 				lowerRightCalibrationDone = false;

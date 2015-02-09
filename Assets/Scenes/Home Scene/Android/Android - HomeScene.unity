@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -509,6 +508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysDisplayCamera: 0
   debugMode: 0
+  buttonCalibration: {fileID: 2800000, guid: 6d053003c2032bb448d7de85ec38793f, type: 3}
   infoPanel: {fileID: 2800000, guid: 35c6f5dc72549e74ebd1a5decba74613, type: 3}
   buttonNormal: {fileID: 2800000, guid: 95016e7ed1bd24749bc13f2040972951, type: 3}
   buttonPressed: {fileID: 2800000, guid: c4abcc0722f70ce44b2eaf0f4af7cef1, type: 3}

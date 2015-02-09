@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  maxDelta: 5
+  maxDelta: 10
   distancePlayer: 4
 --- !u!114 &11410778
 MonoBehaviour:
