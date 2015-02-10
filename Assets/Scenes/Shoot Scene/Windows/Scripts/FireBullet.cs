@@ -31,12 +31,12 @@ public class FireBullet : MonoBehaviour {
 		image = gameObject.GetComponent<SpriteRenderer>();
 		switch(Player.weapon1.Get()){
 			case 2:
-				transform.localScale += new Vector3(0.25F, 0.25F, 0);
+				transform.localScale = new Vector3(1.25f, 1.25f, 1);
 				image.sprite = weapon2;
 				bulletPrefab = prefab2;
 				break;
 			case 3:
-				transform.localScale += new Vector3(0.75F, 0.75F, 0);
+				transform.localScale = new Vector3(0.35f, 0.35f, 1);
 				image.sprite = weapon3;
 				bulletPrefab = prefab3;
 				break;
