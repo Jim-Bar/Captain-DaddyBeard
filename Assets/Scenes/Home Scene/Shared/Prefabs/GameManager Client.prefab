@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootSceneName: Android - ShootScene
   deplacementSceneName: Android - MoveScene
-  firstPhasesTypes: 010000000000000001000000000000000000000000000000
+  firstPhasesTypes: 010000000100000001000000000000000000000000000000
   transitionPicture: {fileID: 2800000, guid: 70ed43dfece0647409f81d3fcad87a17, type: 3}
   transitionFont: {fileID: 12800000, guid: aca5c6f7996c89f40bba41e7eab8396f, type: 3}
 --- !u!148 &14833968

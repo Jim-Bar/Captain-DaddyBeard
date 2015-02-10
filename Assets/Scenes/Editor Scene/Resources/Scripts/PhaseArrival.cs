@@ -45,6 +45,12 @@ public class PhaseArrival : MonoBehaviour {
 			Debug.LogError (GetType ().Name + " : No player found. The player must have the tag \"" + playerTag + "\".");
 	}
 
+	// The only purpose of Update () is to skip phases with enter.
+	private void Update () {
+		if(Input.GetKeyUp(KeyCode.Return))
+			LoadNextPhase ();
+	}
+
 	// Only load next phase when we are the server. Otherwise we wait for an RPC to notify us.
 	private void OnTriggerEnter2D (Collider2D other) {
 		foreach (GameObject player in players) // For all players...

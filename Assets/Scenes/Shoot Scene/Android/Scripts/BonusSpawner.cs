@@ -10,7 +10,13 @@ public class BonusSpawner : MonoBehaviour {
 	[SerializeField] private GameObject cloud3;
 	[SerializeField] private GameObject cloud4;
 
+	private GameObject player = null;
+
 	private int compteur = 0;
+
+	private void Start () {
+		GetReferenceToPlayer ();
+	}
 
 	void Update () {
 		compteur ++;
@@ -19,7 +25,6 @@ public class BonusSpawner : MonoBehaviour {
 			SpawnBonus ();
 			compteur = 0;
 		}
-		
 
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
 		{
@@ -50,25 +55,32 @@ public class BonusSpawner : MonoBehaviour {
 
 		GameObject go;
 		switch (Random.Range (1, 4)) {
-				case 1:
-					go = cloud1;
-					break;
-				case 2:
-					go = cloud2;
-					break;
-				case 3:
-					go = cloud3;
-					break;
-				default:
-					go = cloud4;
-					break;
-				}
+			case 1:
+				go = cloud1;
+				break;
+			case 2:
+				go = cloud2;
+				break;
+			case 3:
+				go = cloud3;
+				break;
+			default:
+				go = cloud4;
+				break;
+			}
 
-		go = Network.Instantiate (go, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(6,10), 7), Quaternion.identity, 0) as GameObject;
+		go = Network.Instantiate (go, new Vector3 (player.transform.position.x + 20, player.transform.position.y + Random.Range(5,10), 7), Quaternion.identity, 0) as GameObject;
+
 		if (Random.Range (0, 5) < 1)
 			Destroy (go.transform.GetChild (0).gameObject);
-		go.transform.parent = gameObject.transform;	
-
+		go.transform.parent = gameObject.transform;
 	}
 
+	// Get a reference to the player. The player must have the tag "Player". Only works for one player.
+	private void GetReferenceToPlayer () {
+		string playerTag = "Player";
+		player = GameObject.FindGameObjectWithTag (playerTag);
+		if (player == null)
+			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + playerTag + "\".");
+	}
 }
