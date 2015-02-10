@@ -31,7 +31,6 @@ public class MoveForward : MonoBehaviour {
 	void Update () {
 		transform.Translate (atSpeed * Time.deltaTime, 0, 0);
 
-
 		switch (Player.health.Get()) {
 		case 0:
 			Restart();
@@ -91,12 +90,12 @@ public class MoveForward : MonoBehaviour {
 
 	public void Restart()
 	{
+		Player.health.FillUp ();
+		Player.energy1.FillUp ();
+		Player.score1.Wipe ();
 		PhaseLoader.ReloadPhase ();
 		RPCWrapper.RPC("ReloadCurrentPhase", RPCMode.Others);
-		Player.health.Add (6);
-		Player.score1.Wipe ();
 	}
-
 
 	public void EnergyBonus(int quantity){
 		Player.energy1.Add (quantity);		 
