@@ -11,15 +11,12 @@ public class SwitchScanShoot : MonoBehaviour {
 	[SerializeField] private GameObject bFire = null;
 	[SerializeField] private GameObject filter = null;
 
-	// Use this for initialization
 	void Start () {
 		image = gameObject.GetComponent<Image>();
 		isShoot = true;
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
+		// Register so that when there is no more energy, the server can call this function to disable the scan.
+		RPCWrapper.RegisterMethod (DisableScan);
 	}
 
 	public void SwitchButtonPressed() {
@@ -39,5 +36,10 @@ public class SwitchScanShoot : MonoBehaviour {
 		}
 	}
 
-
+	private void DisableScan () {
+		isShoot = true;
+		image.sprite = scan;
+		bFire.SetActive(true);
+		filter.SetActive(false);
+	}
 }
