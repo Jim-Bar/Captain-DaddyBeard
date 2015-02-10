@@ -15,6 +15,11 @@ public class GyroManager : MonoBehaviour {
 	private int roll = 0;
 	private const int marginToRecalibrate = 120; // Variation in degrees beyong which a calibration is made.
 
+	// Called by the aiming manager when a recalibration is made.
+	public static void Recalibrate () {
+		firstCalibrationDone = false;
+	}
+
 	void Start () {
 		Input.gyro.enabled = true;
 	}

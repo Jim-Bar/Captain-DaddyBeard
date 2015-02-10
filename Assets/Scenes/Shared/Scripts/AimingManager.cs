@@ -152,6 +152,9 @@ public class AimingManager : MonoBehaviour {
 				RPCWrapper.RPC ("SetVisible", RPCMode.Server, !calibrating);
 				if (!cameraStream.isPlaying) // If the camera is not already playing and we want to recalibrate.
 				    cameraStream.Play ();
+
+				// Plan a recalibration for the movement scene too.
+				GyroManager.Recalibrate ();
 			}
 
 		if (debugMode)
