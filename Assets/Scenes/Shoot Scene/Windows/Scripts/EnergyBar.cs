@@ -11,21 +11,22 @@ public class EnergyBar : MonoBehaviour {
 	}
 
 	void Update () {
-		// Disable scan if there is no more energy.
-		if (Player.energy1.Get () == 0)
+		if (Time.timeScale > 0) // If the game is not paused
 		{
-			RPCWrapper.RPC ("DisableScan", RPCMode.Others);
-			isScan = false;
+			// Disable scan if there is no more energy.
+			if (Player.energy1.Get () == 0)
+			{
+				RPCWrapper.RPC ("DisableScan", RPCMode.Others);
+				isScan = false;
+			}
+
+			if (isScan)
+				Player.energy1.Burn (1);
+			else
+				Player.energy1.Add (1);
+
+			gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (Player.energy1.Get () / 5, 30);
 		}
-
-		if (isScan)
-			Player.energy1.Burn (1);
-		else
-			Player.energy1.Add (1);
-
-		gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (Player.energy1.Get () / 5, 30);
-
-
 	}
 
 	void SetBoolEnergyBar()

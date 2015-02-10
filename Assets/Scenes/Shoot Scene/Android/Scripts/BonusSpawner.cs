@@ -14,7 +14,7 @@ public class BonusSpawner : MonoBehaviour {
 
 	void Update () {
 		compteur ++;
-		if (compteur >= 800 && Time.timeScale == 1)
+		if (compteur >= 800 && Time.timeScale > 0)
 		{
 			SpawnBonus ();
 			compteur = 0;
