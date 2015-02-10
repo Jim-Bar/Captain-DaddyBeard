@@ -18,6 +18,7 @@ public class ChangeWeaponWindows : MonoBehaviour {
 	}
 
 	public void UpdateWeaponWin (int weapon){
+		image.color = Color.white;
 		switch (weapon) {
 			case 1:
 				Player.weapon1.Set (1);

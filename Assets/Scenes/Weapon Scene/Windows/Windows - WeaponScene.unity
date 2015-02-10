@@ -700,8 +700,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 95016e7ed1bd24749bc13f2040972951, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c136ab1e677fd94f889b6ca2239b2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nochoice: {fileID: 21300000, guid: 95016e7ed1bd24749bc13f2040972951, type: 3}
+  nochoice: {fileID: 0}
   weapon1: {fileID: 21300000, guid: 954e23e6db749744c8f63a56a8e515ce, type: 3}
   weapon2: {fileID: 21300000, guid: acd46023fb462cd4fb2087113cf0e7b7, type: 3}
   weapon3: {fileID: 21300000, guid: 373943b5a9003c449a0eec916fa5e5e2, type: 3}
