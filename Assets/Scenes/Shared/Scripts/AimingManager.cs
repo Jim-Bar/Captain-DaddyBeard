@@ -8,11 +8,15 @@ using System.Collections;
  * Android only.
  */
 public class AimingManager : MonoBehaviour {
-	
+
 	[Tooltip("Always display camera, not only when calibrating")]
 	[SerializeField] private bool alwaysDisplayCamera = false; // If false, only display camera when calibrating.
 	[Tooltip("Display debugging information")]
 	[SerializeField] private bool debugMode = false; // If true, display calibration information on the screen.
+	[Tooltip("Show the calibration button only when paused")]
+	[SerializeField] private bool showOnlyWhenPaused = false; // If true, only show the calibration button when time scale equals 0.
+	[Tooltip("Picture of the calibration nutton")]
+	[SerializeField] private Texture2D buttonCalibration = null;
 	[Tooltip("Area where to display information about calibration")]
 	[SerializeField] private Texture2D infoPanel = null; // The lower panel where to display "Aim at the upper left, ...".
 	[Tooltip("Shoot button picture")]
@@ -62,6 +66,8 @@ public class AimingManager : MonoBehaviour {
 			cameraStream.Play ();
 
 		// Check the fields.
+		if (buttonCalibration == null)
+			Debug.LogError (GetType ().Name + " : A texture is missing for the calibration button (field empty)");
 		if (infoPanel == null)
 			Debug.LogError (GetType ().Name + " : A texture is missing for the info panel (field empty)");
 		if (buttonNormal == null)
@@ -137,8 +143,8 @@ public class AimingManager : MonoBehaviour {
 					Debug.LogError (GetType ().Name + " : Unexpected case in calibration encountered");
 			}
 		}
-		else // Recalibrate button.
-			if (GUILayout.Button ("Recalibrate", GUILayout.Height(150)))
+		else if (!showOnlyWhenPaused || (showOnlyWhenPaused && Time.timeScale == 0)) // Recalibrate button (in game, only when pause, i.e when time scale equals 0).
+			if (GUI.Button (new Rect (0, 0, 200, 200), buttonCalibration, GUIStyle.none))
 			{
 				upperLeftCalibrationDone = false;
 				lowerRightCalibrationDone = false;

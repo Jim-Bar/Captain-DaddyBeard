@@ -65,6 +65,7 @@ public class WorldRotation : MonoBehaviour {
 			// Jump perpendicular to the direction of the ground.
 			player.rigidbody2D.AddForce(Quaternion.Euler(0, 0, roll) * Vector2.up * jumpForce, ForceMode2D.Force);
 			isGrounded = false; // The player jumps so he is not touching the ground anymore.
+			GameObject.Find ("SoundManager").GetComponent<SoundManager> ().SoundJump();
 		}		
 	}
 

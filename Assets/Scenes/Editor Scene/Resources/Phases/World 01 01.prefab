@@ -1150,8 +1150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  maxDelta: 5
-  distancePlayer: 4
+  maxDelta: 10
+  distancePlayer: 20
 --- !u!114 &11410778
 MonoBehaviour:
   m_ObjectHideFlags: 1

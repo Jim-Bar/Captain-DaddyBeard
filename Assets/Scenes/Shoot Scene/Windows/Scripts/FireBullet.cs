@@ -55,8 +55,8 @@ public class FireBullet : MonoBehaviour {
 	}
 	
 	private void ShootPressed () {
-		if (Player.energy1.Get () > 100) {
-			Player.energy1.Burn (100);
+		if (Player.energy1.Get () > 75) {
+			Player.energy1.Burn (75);
 			GameObject bullet = Instantiate (bulletPrefab, transform.position + 0.1f * Vector3.forward, Quaternion.identity) as GameObject;
 			bullet.rigidbody2D.velocity = bulletSpeed * (target.transform.position - transform.position).normalized;
 			bullet.transform.Rotate(0, 0, GameObject.Find ("WeaponSlot").GetComponent<RotateWeapon> ().angle);

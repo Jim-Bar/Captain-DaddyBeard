@@ -5,39 +5,28 @@ public class PlatformElevator : MonoBehaviour {
 
 	[Range(0, 10)]
 	[SerializeField] private float speed = 1;
-	//[Tooltip("Will the platform move horizontally ?")]
-	//[SerializeField] private bool alongX = true;
-	//[Tooltip("The platform goes first to the right")]
-	//[SerializeField] private bool beginRight = true;
-	//[Tooltip("Will the platform move vertically ?")]
-	//[SerializeField] private bool alongY = false;
-	//[Tooltip("The platform goes first up")]
-	//[SerializeField] private bool beginUp = true;
-	//[Range(-1000, 0)]
-	//[SerializeField] private float minDelta = -5;
 	[Range(0, 1000)]
 	[SerializeField] private float maxDelta = 5;
-	[SerializeField] private float distancePlayer = 4;
+	[SerializeField] private float distancePlayer = 15;
 
 	// Reference towards the player and the world object.
 	private GameObject player = null;
-
+	
 	private GameObject cr = null;
 
 	private bool movingUp = false;
 	private bool movingDown = false;
 	
 	private Vector3 initialPosition;
-	//private bool goingRight = true;
-	//private bool goingUp = true;
-
+	
 	private bool comboPerformed = false;
 	private bool comboLocked = false;
+
+	private float coef = 0.9f;
 	
 	public void ValidateCombo (bool ok) {
 		if (ok) {
 			comboPerformed = true;
-
 		}
 	}
 
@@ -59,29 +48,30 @@ public class PlatformElevator : MonoBehaviour {
 		cr = GameObject.Find("ComboCenter");
 		GetReferenceToPlayer ();
 
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
 			if(comboPerformed==true) {
 				if(movingDown) {
+					if (transform.localPosition.y <= initialPosition.y + coef) {
+						comboPerformed = false;
+						comboLocked = false; 
+					}
 					float newDeltaY = speed * Time.deltaTime;
 					transform.Translate (0, -newDeltaY, 0);
-				}
+			}
 				else if(movingUp) {
-					float newDeltaY = speed * Time.deltaTime;
+					if (transform.localPosition.y - (initialPosition.y) >= maxDelta - coef) {
+						comboPerformed = false;
+						comboLocked = false; 
+					}
+				float newDeltaY = speed * Time.deltaTime;
 					transform.Translate (0, newDeltaY, 0);
-				}
-				if(limit()) {
-					comboPerformed=false;
-				comboLocked = false; 
 				}
 			} else {
 				if(limit()) {
-					//Debug.Log("ok");
 					if (detectPlayer() && !comboLocked) {
 						performCombo();
 					}
@@ -106,32 +96,30 @@ public class PlatformElevator : MonoBehaviour {
 
 	private bool limit() {
 		bool ok = false;
-		if (transform.localPosition.y - initialPosition.y >= maxDelta) {
+		//float wd = world.transform.position.y - worldInitialPosition.y;
+		if (transform.localPosition.y - (initialPosition.y) >= maxDelta - coef) {
 			ok = true;
 			movingDown = true;
 			movingUp = false;
 
-		} else if(transform.localPosition.y <= initialPosition.y) {
+		} else if(transform.localPosition.y <= initialPosition.y + coef) {
 			ok = true;
 			movingUp = true;
 			movingDown = false;
 
-		}	
+		}
 		return ok;
 	}
 
 	private bool detectPlayer() {
 
-		//Debug.Log ("pos db : " + player.transform.position.x + " vs pos plat " + transform.localPosition.x);
-
-		if (player.transform.position.x >= transform.parent.parent.position.x + transform.localPosition.x - distancePlayer &&
-		    player.transform.position.x <= transform.parent.parent.position.x + transform.localPosition.x + distancePlayer) {
-
+		float dist = Vector3.Distance(transform.localPosition, player.transform.position);
+		if (dist <= distancePlayer) {
 			return true;
-		} else {
+		}
+		else {
 			return false;
 		}
-
 
 	}
 
@@ -142,4 +130,5 @@ public class PlatformElevator : MonoBehaviour {
 		if (player == null)
 			Debug.LogError (GetType ().Name + " : Cannot find object with tag \"" + playerTag + "\".");
 	}
+	
 }

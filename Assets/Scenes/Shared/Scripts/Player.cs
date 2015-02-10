@@ -54,12 +54,20 @@ public static class Player {
 			if (health > maxHealth)
 				health = maxHealth;
 		}
+
+		public void FillUp () {
+			health = maxHealth;
+		}
 	}
 
 	public class Energy {
 		private const int maxEnergy = 1000;
 		private int energy = maxEnergy;
 		public int Get () { return energy;	}
+
+		public void FillUp () {
+			energy = maxEnergy;
+		}
 
 		public void Add (int quantity) {
 			energy += quantity;
