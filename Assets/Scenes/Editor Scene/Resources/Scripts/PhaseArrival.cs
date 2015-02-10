@@ -6,7 +6,7 @@ using System.Collections;
  * In shoot mode, add the score earned during the sequence to the total score.
  * In deplacement mode, add the items earned during the sequence to the total score or player health.
  * 
- * Both Windows and Android (although it does nothing on Android).
+ * Both Windows and Android (although it does nothing on Android excepted hiding itself).
  * Use this script only for the prefabs of phases.
  * 
  * The player(s) must have the tag "Player".
@@ -25,6 +25,11 @@ public class PhaseArrival : MonoBehaviour {
 	[Tooltip("Type of the next phase")]
 	[SerializeField] private PhaseLoader.Type nextPhaseType = PhaseLoader.Type.SHOOT;
 
+	private void Awake () {
+		// Hide the flag.
+		GetComponent<SpriteRenderer> ().enabled = false;
+	}
+
 	/* 
 	 * Do NOT move this line further up (if you do, the settings in the editor for the fields
 	 * above will be lost when switching from Windows to Android in the Unity build settings).
@@ -38,9 +43,6 @@ public class PhaseArrival : MonoBehaviour {
 		players = GameObject.FindGameObjectsWithTag (playerTag);
 		if (players.Length == 0)
 			Debug.LogError (GetType ().Name + " : No player found. The player must have the tag \"" + playerTag + "\".");
-
-		// Hide the flag.
-		GetComponent<SpriteRenderer> ().enabled = false;
 	}
 
 	// Only load next phase when we are the server. Otherwise we wait for an RPC to notify us.

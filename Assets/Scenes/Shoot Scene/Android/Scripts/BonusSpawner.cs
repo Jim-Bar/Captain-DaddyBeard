@@ -64,7 +64,7 @@ public class BonusSpawner : MonoBehaviour {
 					break;
 				}
 
-		go = Network.Instantiate (go, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(6,10), 2.5f), Quaternion.identity, 0) as GameObject;
+		go = Network.Instantiate (go, new Vector3 (Camera.main.transform.position.x + 20, Random.Range(6,10), 7), Quaternion.identity, 0) as GameObject;
 		if (Random.Range (0, 5) < 1)
 			Destroy (go.transform.GetChild (0).gameObject);
 		go.transform.parent = gameObject.transform;	
