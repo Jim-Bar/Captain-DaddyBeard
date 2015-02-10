@@ -19,7 +19,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		startPosition = transform.position;
 		//startParent = transform.parent;
 		GetComponent<CanvasGroup> ().blocksRaycasts = false;
-		GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().ShowText(weaponNumber);
+		//GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().ShowText(weaponNumber);
 	}
 
 	#region IDragHandler implementation
@@ -46,7 +46,7 @@ public class DragAndSend : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		Player.weapon1.Set (weaponNumber);
 		RPCWrapper.RPC ("AddWeapon", RPCMode.Server, Player.id.Get (), weaponNumber);
 		transform.position = startPosition;
-		GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().HideText();
+		//GameObject.Find ("Canvas").GetComponent<ToTheGameAndroid> ().HideText();
 	}
 	
 	#endregion
