@@ -49,14 +49,20 @@ public class WorldRotation : MonoBehaviour {
 		if (Mathf.Abs (roll) < deadZone)
 			roll = 0;
 
+		// Limit the roll in an acceptable range.
+		if (roll > 55)
+			roll = 55;
+		else if (roll < -55)
+			roll = -55;
+
 		// Find the point on the ground below the player.
 		RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector3.down, Mathf.Infinity, worldLayer);
+		roll = LowPassFilter (roll, lastRoll);
 		if (hit.collider != null)
-		{
-			roll = LowPassFilter (roll, lastRoll);
 			ground.transform.RotateAround(hit.point, Vector3.forward, roll - lastRoll);
-			lastRoll = roll;
-		}
+		else // If no point hit, takethe player as the center of rotation.
+			ground.transform.RotateAround(player.transform.position, Vector3.forward, roll - lastRoll);;
+		lastRoll = roll;
 	}
 
 	// Have the character jump if the player gave an impulsion strong enough.
