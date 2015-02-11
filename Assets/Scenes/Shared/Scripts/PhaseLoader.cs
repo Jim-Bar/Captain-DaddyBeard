@@ -166,7 +166,10 @@ public class PhaseLoader : MonoBehaviour {
 
 	// Load the next level.
 	public static void LoadNext () {
-		Load (currentLevel + 1);
+		if (currentLevel == instance.firstPhasesTypes.Length)
+			Load (1);
+		else
+			Load (currentLevel + 1);
 	}
 
 	// Do the load. Note that this function is not static because it is called by Invoke ().
