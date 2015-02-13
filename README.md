@@ -1,19 +1,58 @@
 ﻿# Captain-DaddyBeard
 A multimodal game playable on PC and Android simultaneously !
 
-FAQ :
------
 
-**Q :** Le réseau wifi n'est pas créé, et le message "Wifi hotspot creation skipped" apparaît
+Configuration requise :
+=======================
 
-**R :** Cocher la case "Create wifi hotspot" du Service Connector. Ne pas créer le réseau wifi sert à débugger
-plus vite, en utilisant un gestionnaire de réseau wifi comme Virtual Router, qui le fait pour nous de manière
-permanente.
+- Un PC sous Windows (7 conseillé) avec wifi 
+- Les droits administrateurs sur ce PC
+- Une tablette (Nexus 7 conseillée)
 
-**Q :** Le RPCWrapper semble ne pas fonctionner, mais aucune erreur ne s'affiche
+Comment l’installer ?
+=====================
 
-**R :** Décocher la case "Ignore errors" du RPCWrapper. Cette option permet de cacher les RPC qui échouent lors
-des chargements de scènes (la tablette ayant du retard sur le PC et continuant à envoyer de RPC qui n'existent
-déjà plus sur le PC).
+Sur le PC
+---------
 
-Bon, j'en avais plein d'autres pendant que je codais, mais maintenant j'ai oublié -_-
+Copier le dossier contenant le jeu n’importe où sur l’ordinateur.
+
+Sur la tablette (testé avec une Nexus 7)
+----------------------------------------
+
+Installer le package du jeu (.apk) sur la tablette. Il existe plusieurs solutions pour cela, se référer à Google pour le faire.
+Alternativement, le package peut être automatiquement installé via USB en faisant un build Android du jeu depuis le projet Unity. La tablette doit avoir le mode développeur activé, et l’Android SDK doit être installé sur l’ordinateur.
+
+Comment le lancer ?
+===================
+
+Considération de Wifi
+---------------------
+
+    La connexion entre le PC et la tablette se fait par Wifi. Deux solutions sont possibles :
+connecter le PC et la tablette au même réseau wifi manuellement puis lancer le jeu
+laisser le PC créer le réseau wifi, et la tablette se connecter au réseau
+
+Dans tous les cas, l’application Windows doit être lancée avant celle sur tablette, et **le réseau wifi doit être créé avant de lancer l’application tablette**. Dans la suite, nous décrivons la deuxième solution.
+
+Sur le PC
+---------
+
+    Démarrer l’application en **mode administrateur** (autorise la création du réseau wifi). Ensuite, attendre que le réseau soit créé. Le réseau s’appelle “Daddy_Beard_Server”. Vous pouvez consulter son état parmi les réseaux auxquels vous êtes connectés via l’interface Windows. Le réseau est prêt quand il passe de l’état “No network access” à l’état “No Internet access”. Ceci peut prendre jusqu’à deux minutes suivant les ordinateurs.
+
+Sur la tablette
+---------------
+
+Attendre que le réseau soit prêt. Quand il est prêt, lancez l’application. Le jeu devrait se lancer et se connecter automatiquement. Quand la connexion a réussi, le dessin de la tablette se colore. N’oubliez pas d’activer le wifi de la tablette !
+
+Comment jouer ?
+===============
+
+Une fois les des applications lancées et connectées, la tablette demande une calibration. Suivez les instructions de la tablette.
+Une fois ceci fait, un viseur apparaît sur l’écran de l’ordinateur. Visez “Play”, et appuyez sur le bouton “Feu !” de la tablette. Vous arrivez sur le menu du choix du niveau. Sélectionnez en un en appuyant dessus, visez “Valider” et tirez. La sélection de l’arme est identique, à l’exception (certes illogique) qu’il faut glisser l’arme vers le haut de la tablette pour la sélectionner.
+Le jeu commence ! Un message vous dit que faire avec la tablette.
+En phase de déplacement, tenez la tablette à plat et penchez la à droite et à gauche pour faire tourner le monde et déplacer Captain DaddyBeard. Évitez de tomber, ramassez les bonus et essayez d’arriver à la prochaine patate.
+En phase de tir, tenez la tablette droite de manière à viser l’écran, et appuyez sur “Feu !” pour tirer. Vous pouvez activer le scan (consomme de l’énergie !) pour trouver des bonus cachés dans les nuages...
+En cas de problème, vous pouvez recalibrer la tablette depuis le menu pause ou depuis les menus du jeu (bouton en haut à gauche).
+
+*Dépôt Git : https://github.com/Zer0Zer0Huit/Captain-DaddyBeard*
