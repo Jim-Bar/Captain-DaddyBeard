@@ -29,7 +29,7 @@ Comment le lancer ?
 Considération de Wifi
 ---------------------
 
-    La connexion entre le PC et la tablette se fait par Wifi. Deux solutions sont possibles :
+La connexion entre le PC et la tablette se fait par Wifi. Deux solutions sont possibles :
 connecter le PC et la tablette au même réseau wifi manuellement puis lancer le jeu
 laisser le PC créer le réseau wifi, et la tablette se connecter au réseau
 
@@ -38,7 +38,7 @@ Dans tous les cas, l’application Windows doit être lancée avant celle sur ta
 Sur le PC
 ---------
 
-    Démarrer l’application en **mode administrateur** (autorise la création du réseau wifi). Ensuite, attendre que le réseau soit créé. Le réseau s’appelle “Daddy_Beard_Server”. Vous pouvez consulter son état parmi les réseaux auxquels vous êtes connectés via l’interface Windows. Le réseau est prêt quand il passe de l’état “No network access” à l’état “No Internet access”. Ceci peut prendre jusqu’à deux minutes suivant les ordinateurs.
+Démarrer l’application en **mode administrateur** (autorise la création du réseau wifi). Ensuite, attendre que le réseau soit créé. Le réseau s’appelle “Daddy_Beard_Server”. Vous pouvez consulter son état parmi les réseaux auxquels vous êtes connectés via l’interface Windows. Le réseau est prêt quand il passe de l’état “No network access” à l’état “No Internet access”. Ceci peut prendre jusqu’à deux minutes suivant les ordinateurs.
 
 Sur la tablette
 ---------------
