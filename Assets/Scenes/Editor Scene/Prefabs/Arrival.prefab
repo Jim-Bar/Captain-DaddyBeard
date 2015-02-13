@@ -55,7 +55,7 @@ MonoBehaviour:
   isFinalPhase: 0
   nextLevel: 1
   nextPhase: 2
-  nextPhaseType: 0
+  nextPhaseType: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
