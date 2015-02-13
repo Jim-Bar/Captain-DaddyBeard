@@ -10,7 +10,7 @@ public class UpdatePicture : MonoBehaviour
 	};
 	
 	[SerializeField] private TabletIndexEnum tabletIndex = TabletIndexEnum.Tablet1;
-	[SerializeField] private Sprite greenCheck = null;
+	[SerializeField] private Sprite tabletConnected = null;
 
 	private Image image;
 
@@ -19,8 +19,12 @@ public class UpdatePicture : MonoBehaviour
 		// Get the component of type Image.
 		image = gameObject.GetComponent<Image>();
 
-		if (greenCheck == null)
+		if (tabletConnected == null)
 			Debug.LogError (GetType().Name + " : No sprite given for the green check mark");
+
+		// If there is already a tablet connected (come back to main menu from the game).
+		if (Network.connections.Length > 0)
+			MarkAsChecked (Network.connections.Length);
 	}
 
 	private void OnPlayerConnected () {
@@ -31,6 +35,6 @@ public class UpdatePicture : MonoBehaviour
 	public void MarkAsChecked (int numClients) {
 		// Set sprite to the other sprite.
 		if (((int) tabletIndex) == numClients)
-			image.sprite = greenCheck;
+			image.sprite = tabletConnected;
 	}
 }

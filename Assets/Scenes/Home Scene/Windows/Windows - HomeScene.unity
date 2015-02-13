@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabletIndex: 1
-  greenCheck: {fileID: 21300000, guid: ef0f423ffd49dde4abc3fd285b2e749b, type: 3}
+  tabletConnected: {fileID: 21300000, guid: ef0f423ffd49dde4abc3fd285b2e749b, type: 3}
 --- !u!1 &875121351
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabletIndex: 2
-  greenCheck: {fileID: 21300000, guid: 6853b3575a303d04c8375374bd5e8de3, type: 3}
+  tabletConnected: {fileID: 0}
 --- !u!1 &1256613053
 GameObject:
   m_ObjectHideFlags: 0
