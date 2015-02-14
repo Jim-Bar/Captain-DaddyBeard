@@ -34,7 +34,7 @@ public class UnityBridge extends UnityPlayerActivity
 		// Check the device is not already connected to the hotspot.
     	WifiManager wifiManager = (WifiManager) context.getSystemService(WIFI_SERVICE);
     	WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-    	if (wifiInfo.getSSID().equals(ssid))
+    	if (!wifiInfo.getSSID().equals("\"" + ssid + "\"")) // getSSID returns the SSID with double quotes.
     	{
     		Log.i("CaptainDaddyBeard", "ServiceConnector : Connecting to wifi hotspot (ssid = \"" + ssid + "\", key = \"" + key + "\")");
     		
