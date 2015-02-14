@@ -17,23 +17,27 @@ public class MonsterSpawner : MonoBehaviour {
 	[SerializeField] private GameObject seekMonster;
 
 	private GameObject player = null;
+	private Camera mainCamera = null;
 
 	private void Start () {
 		GetReferenceToPlayer ();
+		mainCamera = Camera.main;
 	}
 
 	private void Update () {
-		SpawnMonster (flyingMonster,Random.Range (2,5),17,1);
-		SpawnMonster (jumpingMonster,0,17,2);
-		SpawnMonster (slipingMonster,0,17,3);
-		SpawnMonster (seekMonster,12,Random.Range (5,12),4);
+		Vector3 cameraPos = Camera.main.transform.position;
+
+		SpawnMonster (flyingMonster, cameraPos.x + mainCamera.orthographicSize * mainCamera.aspect + 2, cameraPos.y + Random.Range (0, mainCamera.orthographicSize), 1);
+		SpawnMonster (jumpingMonster, cameraPos.x + mainCamera.orthographicSize * mainCamera.aspect + 2, player.transform.position.y, 2);
+		SpawnMonster (slipingMonster, cameraPos.x + mainCamera.orthographicSize * mainCamera.aspect + 2, player.transform.position.y, 3);
+		SpawnMonster (seekMonster, cameraPos.x + Random.Range (mainCamera.orthographicSize * mainCamera.aspect, mainCamera.orthographicSize * mainCamera.aspect / 2), cameraPos.y + 2 * mainCamera.orthographicSize, 4);
 	}
 
-	private void SpawnMonster (GameObject monsterPrefab, float height, float posX, int numPrefab) {
+	private void SpawnMonster (GameObject monsterPrefab, float posX, float posY, int numPrefab) {
 		float deltaTime = Time.deltaTime;
 		if (Random.Range (0, 300 * deltaTime) < deltaTime)
 		{
-			Vector3 pos = player.transform.position + new Vector3 (posX, height, 0);
+			Vector3 pos = new Vector3 (posX, posY, player.transform.position.z);
 			GameObject monster = Instantiate (monsterPrefab, pos, Quaternion.identity) as GameObject;
 			monster.transform.parent = gameObject.transform;
 			RPCWrapper.RPC("InstanciateGO", RPCMode.Server, numPrefab, pos);
