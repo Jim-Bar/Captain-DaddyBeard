@@ -144,7 +144,7 @@ public class AimingManager : MonoBehaviour {
 			}
 		}
 		else if (!showOnlyWhenPaused || (showOnlyWhenPaused && Time.timeScale == 0)) // Recalibrate button (in game, only when pause, i.e when time scale equals 0).
-			if (GUI.Button (new Rect (0, 0, 200 * Screen.height / 1104, 200 * Screen.height / 1104), buttonCalibration, GUIStyle.none)) // Adapt button size to screen.
+			if (GUI.Button (new Rect (0, 0, 200 * Screen.height / 1104, 200 * Screen.height / 1104), buttonCalibration, GUIStyle.none)) // Adapt button size to screen (values here are arbitrary).
 			{
 				upperLeftCalibrationDone = false;
 				lowerRightCalibrationDone = false;
