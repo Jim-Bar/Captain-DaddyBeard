@@ -9,6 +9,18 @@ Configuration requise :
 - Les droits administrateurs sur ce PC
 - Une tablette (Nexus 7 conseillée)
 
+A propos du Git
+===============
+
+Il y a deux branches différentes sur le Git. La branche soutenance est l'état du projet tel qu'il était au jour de la soutenance le 11/02/15. La branche master possède plusieurs améliorations et corrections de bugs. On notera en particulier la mise en place d'une interface responsive, et le recul de la caméra par rapport à la scène, ce qui rend le jeu beaucoup plus jouable. Il est conseillé de préférer la branche master à la branche soutenance.
+
+Si vous utilisez la branche master et clonez le projet via Git, pensez à activer la création du résea wifi automatique. Pour ce faire, dans Unity, cherchez le prefab "Game Manager Server" situé dans "Assets/Scenes/Home Scene/Windows/Prefabs" et cochez la case "Create Wifi hotspot" du script "ServiceConnector.cs". Si vous utilisez directement le build, il n'y a rien à faire.
+
+Où trouver les builds ?
+=======================
+
+Les Builds sont présents sur Google Drive à cette adresse : https://drive.google.com/folderview?id=0B21ptyZsvR0JZzRoWGR5NmdaN1E&usp=sharing
+
 Comment l’installer ?
 =====================
 
