@@ -67,4 +67,4 @@ En phase de déplacement, tenez la tablette à plat et penchez la à droite et �
 En phase de tir, tenez la tablette droite de manière à viser l’écran, et appuyez sur “Feu !” pour tirer. Vous pouvez activer le scan (consomme de l’énergie !) pour trouver des bonus cachés dans les nuages...
 En cas de problème, vous pouvez recalibrer la tablette depuis le menu pause ou depuis les menus du jeu (bouton en haut à gauche).
 
-*Dépôt Git : https://github.com/Zer0Zer0Huit/Captain-DaddyBeard*
+*Dépôt Git : https://github.com/Jim-Bar/Captain-DaddyBeard*
